@@ -11,7 +11,7 @@ ul.topnav {
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 9999;
+    z-index: 9998;
     width: 100%;
 }
 
@@ -48,6 +48,10 @@ ul.topnav li.right {float: right;}
     font-size: 60px;
     text-shadow: 2px 2px 4px #000000;
     font-family: "Breamcatcher", Verdana, Serif;
+}
+#MaterialPantry {
+    position: relative;
+    z-index: 9999;
 }
 #LeftBar {
     line-height:30px;
