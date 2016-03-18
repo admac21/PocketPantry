@@ -1,19 +1,85 @@
+body {
+    margin: 0;
+    font-family: "Verdana", "Times New Roman", Serif;
+}
+ul.topnav {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    width: 100%;
+}
+
+ul.topnav li {float: left;}
+
+ul.topnav li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+ul.topnav li a:hover:not(.active) {background-color: #111;}
+
+ul.topnav li a.active {background-color: #4CAF50;}
+
+ul.topnav li.right {float: right;}
+
+@media screen and (max-width: 600px){
+    ul.topnav li.right,
+    ul.topnav li {float: none;}
+}
 #MainHeader {
-    background-color:black;
+    background: url(foodimage.jpg);
+    background-size: 100% 120%;
+    background-repeat: no-repeat;
     color:white;
     text-align:center;
     padding:5px;
+    height:240px;
 }
-#SiteNavigation {
+#Title {
+    font-size: 60px;
+    text-shadow: 2px 2px 4px #000000;
+    font-family: "Breamcatcher", Verdana, Serif;
+}
+#LeftBar {
     line-height:30px;
     background-color:#eeeeee;
     height:300px;
-    width:100px;
+    width:300px;
     float:left;
     padding:5px;
 }
+.button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+}
+.addbutton {
+    background-color: white;
+    color: black;
+    border: 2px solid #4CAF50;
+}
+.addbutton:hover {
+    background-color: #4CAF50; /* Green */
+    color: white;
+}
 #PageContent {
-    width:350px;
+    width:600px;
     float:left;
     padding:10px;
 }

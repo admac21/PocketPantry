@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <meta charset="UTF-8">
+    <title>Pocket Pantry</title>
+    <script type="text/javascript" src="//code.jquery.com/jquery-latest.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#addbutton").click(function(){
+                $("ol").prepend("<li>Ingredient 1:</li>");
+            });
+        });
+    </script>
+</head>
+<body>
+<ul class="topnav">
+    <li><a class="active" href="#home">Home</a></li>
+    <li><a href="#news">News</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li class="right"><a href="#about">About</a></li>
+</ul>
+<header id="MainHeader">
+    <h1 id="Title">Pocket  <img src="MaterialPantry.png" id="MaterialPantry" alt="PocketPantryLogo" height="200" width="200" align="center">  Pantry</h1>
+</header>
+<nav id="LeftBar">
+    <ul id="AddIngs">
+        <a>What's in your pantry?</a>
+        <div class="my-form">
+            <form role="form" method="post">
+                <p class="text-box">
+                    <label for="box1"><span class="box-number">1</span></label>
+                    <input type="text" name="boxes[]" value="" id="box1" />
+
+                </p>
+                <p><input type="submit" value="Submit" /></p>
+                <a class="add-box" href="#">Add</a>
+            </form>
+        </div>
+        <script type="text/javascript">
+            jQuery(document).ready(function($){
+                $('.my-form .add-box').click(function(){
+                    var n = $('.text-box').length + 1;
+                    var box_html = $('<p class="text-box"><label for="box' + n + '"><span class="box-number">'
+                            + n + '</span></label> <input type="text" name="boxes[]" value="" id="box'
+                            + n + '" /> <a href="#" class="remove-box">X</a></p>');
+                    box_html.hide();
+                    $('.my-form p.text-box:last').after(box_html);
+                    box_html.fadeIn('slow');
+                    return false;
+                });
+            });
+            $('.my-form').on('click', '.remove-box', function(){
+                $(this).parent().css( 'background-color', '#FF6C6C' );
+                $(this).parent().fadeOut("slow", function() {
+                    $(this).remove();
+                    $('.box-number').each(function(index){
+                        $(this).text( index + 1 );
+                    });
+                });
+                return false;
+            });
+        </script>
+    </ul>
+</nav>
+<section id="PageContent">
+    <h1>Pocket Pantry</h1>
+    <p>Bacon ipsum dolor amet flank meatball beef sirloin ham. Capicola pancetta ribeye filet mignon frankfurter fatback shoulder.
+        Rump cupim leberkas drumstick pork chop swine picanha jerky. Kielbasa flank kevin pork belly,
+        leberkas corned beef venison jowl landjaeger tri-tip ground round tongue pork loin swine pork chop.
+        Turducken meatball andouille, hamburger pork chop venison chicken drumstick doner kielbasa ground round.</p>
+    <p>Turkey short loin ball tip, venison beef ribs ground round biltong jowl cupim fatback pig. Ribeye tongue strip steak frankfurter.
+        Short ribs beef filet mignon, kevin pork loin porchetta pork belly chuck corned beef flank bacon cow.
+        Jerky t-bone boudin strip steak jowl, kielbasa picanha pancetta.
+        Sausage pork loin t-bone filet mignon fatback swine. Boudin capicola corned beef picanha pancetta pork chop.</p>
+    <p>Turkey short loin ball tip, venison beef ribs ground round biltong jowl cupim fatback pig. Ribeye tongue strip steak frankfurter.
+        Short ribs beef filet mignon, kevin pork loin porchetta pork belly chuck corned beef flank bacon cow.
+        Jerky t-bone boudin strip steak jowl, kielbasa picanha pancetta.
+        Sausage pork loin t-bone filet mignon fatback swine. Boudin capicola corned beef picanha pancetta pork chop.</p>
+</section>
+<footer id="PageFooter">
+    <a href="#">Legal Stuff</a>
+</footer>
+</body>
+</html>
