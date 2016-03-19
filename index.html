@@ -16,9 +16,13 @@
 <body>
 <ul class="topnav">
     <li><a class="active" href="#home">Home</a></li>
-    <li><a href="#news">News</a></li>
+    <li><a href="#about">About</a></li>
     <li><a href="#contact">Contact</a></li>
-    <li class="right"><a href="#about">About</a></li>
+    <li><form>
+        <input type="text1" name="search" placeholder="Search recipes">
+    </form></li>
+    <li class="right"><a href="#signup">Signup</a></li>
+    <li class="right"><a href="#login">Login</a></li>
 </ul>
 <header id="MainHeader">
     <h1 id="Title">Pocket  <img src="MaterialPantry.png" id="MaterialPantry" alt="PocketPantryLogo"
@@ -34,8 +38,8 @@
                     <input type="text" name="boxes[]" value="" id="box1" />
 
                 </p>
-                <p><input type="submit" value="Submit" /></p>
-                <a class="add-box" href="#">Add</a>
+                <a class="add-box" href="#"><button class="button addbutton">Add</button></a>
+                <p><button class="button searchbutton">Search</button></p>
             </form>
         </div>
         <script type="text/javascript">
@@ -44,7 +48,7 @@
                     var n = $('.text-box').length + 1;
                     var box_html = $('<p class="text-box"><label for="box' + n + '"><span class="box-number">'
                             + n + '</span></label> <input type="text" name="boxes[]" value="" id="box'
-                            + n + '" /> <a href="#" class="remove-box">X</a></p>');
+                            + n + '" /> <a href="#" class="remove-box"><button class="button deletebutton">X</button></a></p>');
                     box_html.hide();
                     $('.my-form p.text-box:last').after(box_html);
                     box_html.fadeIn('slow');
@@ -52,7 +56,6 @@
                 });
             });
             $('.my-form').on('click', '.remove-box', function(){
-                $(this).parent().css( 'background-color', '#FF6C6C' );
                 $(this).parent().fadeOut("slow", function() {
                     $(this).remove();
                     $('.box-number').each(function(index){
