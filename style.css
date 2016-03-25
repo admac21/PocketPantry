@@ -74,7 +74,7 @@ input[type=text1]:focus {
 }
 #LeftBar {
     line-height:30px;
-    background-color:#FFFF9D;
+    background-color:#333;
     height:800px;
     width:400px;
     float:left;
