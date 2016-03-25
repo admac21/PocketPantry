@@ -132,7 +132,7 @@ input[type=text]:focus {
     padding:10px;
 }
 #PageFooter {
-    background-color:black;
+    background-color: #333;
     color:white;
     clear:both;
     text-align:center;
