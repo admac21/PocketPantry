@@ -7,7 +7,6 @@ body {
     background-repeat: no-repeat;
     background-attachment: fixed;
     font-family: "Verdana", "Times New Roman", Serif;
-    height: 100%;
 }
 ul.topnav {
     list-style-type: none;
@@ -81,6 +80,7 @@ input[type=text]:focus {
     overflow: visible;
 }
 #LeftBar {
+    border-radius: 10px;
     line-height:30px;
     width: 30%;
     float:left;
@@ -95,6 +95,22 @@ input[type=text]:focus {
     float:right;
     padding: 10px;
     margin: 2%;
+
+}
+#resultshdr {
+    float: left;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 1%;
+    background-color: #ffffff;
+    border: 1px solid black;
+    opacity: 0.7;
+}
+#result1, #result2, #result3 {
+    border-radius: 10px;
+    float:right;
+    padding: 10px;
+    margin: 1%;
     background-color: #ffffff;
     border: 1px solid black;
     opacity: 0.7;
@@ -152,10 +168,15 @@ input[type=text]:focus {
     height: 100%;
     margin: 0 auto -4em;
 }
+#PageFooter {
+    bottom: 0;
+}
 #PageFooter, .push {
     background-color: #333;
     text-align: center;
     height: 2em;
+    bottom:100%;
     padding: 5px;
     clear: both;
+    width: 100%;
 }

@@ -13,6 +13,15 @@
             });
         });
     </script>
+    <script>
+        var width = $(window).width();
+        $(window).resize(function(){
+            if($(this).width() != width){
+                width = $(this).width();
+                console.log(width);
+            }
+        });
+    </script>
 </head>
 <body>
 <ul class="topnav">
@@ -70,19 +79,19 @@
     </ul>
 </nav>
 <nav id="PageContent">
-    <h1>Results</h1>
-    <p>Bacon ipsum dolor amet flank meatball beef sirloin ham. Capicola pancetta ribeye filet mignon frankfurter fatback shoulder.
+    <h1 id="resultshdr">Results</h1>
+    <div id="result1"><p>Bacon ipsum dolor amet flank meatball beef sirloin ham. Capicola pancetta ribeye filet mignon frankfurter fatback shoulder.
         Rump cupim leberkas drumstick pork chop swine picanha jerky. Kielbasa flank kevin pork belly,
         leberkas corned beef venison jowl landjaeger tri-tip ground round tongue pork loin swine pork chop.
-        Turducken meatball andouille, hamburger pork chop venison chicken drumstick doner kielbasa ground round.</p>
-    <p>Turkey short loin ball tip, venison beef ribs ground round biltong jowl cupim fatback pig. Ribeye tongue strip steak frankfurter.
+        Turducken meatball andouille, hamburger pork chop venison chicken drumstick doner kielbasa ground round.</p></div>
+    <div id="result2"><p>Turkey short loin ball tip, venison beef ribs ground round biltong jowl cupim fatback pig. Ribeye tongue strip steak frankfurter.
         Short ribs beef filet mignon, kevin pork loin porchetta pork belly chuck corned beef flank bacon cow.
         Jerky t-bone boudin strip steak jowl, kielbasa picanha pancetta.
-        Sausage pork loin t-bone filet mignon fatback swine. Boudin capicola corned beef picanha pancetta pork chop.</p>
-    <p>Turkey short loin ball tip, venison beef ribs ground round biltong jowl cupim fatback pig. Ribeye tongue strip steak frankfurter.
+        Sausage pork loin t-bone filet mignon fatback swine. Boudin capicola corned beef picanha pancetta pork chop.</p></div>
+    <div id="result3"><p>Turkey short loin ball tip, venison beef ribs ground round biltong jowl cupim fatback pig. Ribeye tongue strip steak frankfurter.
         Short ribs beef filet mignon, kevin pork loin porchetta pork belly chuck corned beef flank bacon cow.
         Jerky t-bone boudin strip steak jowl, kielbasa picanha pancetta.
-        Sausage pork loin t-bone filet mignon fatback swine. Boudin capicola corned beef picanha pancetta pork chop.</p>
+        Sausage pork loin t-bone filet mignon fatback swine. Boudin capicola corned beef picanha pancetta pork chop.</p></div>
     </nav>
     </div>
 <footer id="PageFooter">
