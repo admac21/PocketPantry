@@ -1,8 +1,11 @@
+* {
+    box-sizing: border-box;
+}
 body {
     background: url(background_food.jpg);
-    background-size: auto;
+    background-size: cover;
+    background-repeat: no-repeat;
     background-attachment: fixed;
-    margin: 0;
     font-family: "Verdana", "Times New Roman", Serif;
 }
 ul.topnav {
@@ -78,18 +81,30 @@ input[type=text]:focus {
 }
 #LeftBar {
     line-height:30px;
-    background-color:#333;
-    height:800px;
-    width:360px;
+    width: 30%;
     float:left;
-    padding:10px;
-    margin: 30px;
+    padding: 10px;
+    margin: 2%;
     background-color: #ffffff;
     border: 1px solid black;
     opacity: 0.7;
 }
+#PageContent {
+    width:60%;
+    float:right;
+    padding: 10px;
+    margin: 2%;
+    background-color: #ffffff;
+    border: 1px solid black;
+    opacity: 0.7;
+}
+#row1:after {
+    content: "";
+    clear: both;
+    display: block;
+}
 #whatsinyourpantry {
-    color: white;
+    color: black;
 }
 .text-box {
     color: white;
@@ -129,15 +144,6 @@ input[type=text]:focus {
 .deletebutton:hover {
     background-color: #FF6138; /* Green */
     color: white;
-}
-#PageContent {
-    width:600px;
-    float:left;
-    padding:10px;
-    margin: 30px;
-    background-color: #ffffff;
-    border: 1px solid black;
-    opacity: 0.7;
 }
 #PageFooter {
     background-color: #333;
