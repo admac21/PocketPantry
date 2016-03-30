@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pocket Pantry</title>
+    <!--jQuery for scroll function navbar-->
+    <script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js'></script>
     <script type="text/javascript" src="//code.jquery.com/jquery-latest.js"></script>
     <script>
         $(document).ready(function(){
@@ -12,6 +14,37 @@
                 $("ol").prepend("<li>Ingredient 1:</li>");
             });
         });
+    </script>
+    <script type='text/javascript'>
+        //<![CDATA[
+        $(function() {
+            // Stick the #nav to the top of the window
+            var nav = $('#nav');
+            var navHomeY = nav.offset().top;
+            var isFixed = false;
+            var $w = $(window);
+            $w.scroll(function() {
+                var scrollTop = $w.scrollTop();
+                var shouldBeFixed = scrollTop > navHomeY;
+                if (shouldBeFixed && !isFixed) {
+                    nav.css({
+                        position: 'fixed',
+                        top: 0,
+                        left: nav.offset().left,
+                        width: nav.width()
+                    });
+                    isFixed = true;
+                }
+                else if (!shouldBeFixed && isFixed)
+                {
+                    nav.css({
+                        position: 'static'
+                    });
+                    isFixed = false;
+                }
+            });
+        });
+        //]]>
     </script>
     <script>
         var width = $(window).width();
@@ -24,20 +57,53 @@
     </script>
 </head>
 <body>
-<ul class="topnav">
-    <li><a class="active" href="#home">Home</a></li>
-    <li><a href="#about">About</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li><form>
-        <input type="text1" name="search" placeholder="Search recipes">
-    </form></li>
-    <li class="right"><a href="#signup">Signup</a></li>
-    <li class="right"><a href="#login">Login</a></li>
-</ul>
 <header id="MainHeader">
     <h1 id="Title">Pocket  <img src="MaterialPantry.png" id="MaterialPantry" alt="PocketPantryLogo"
                                 height="200" width="200" align="center">  Pantry</h1>
 </header>
+
+<!-- Alternative way of doing scroll navigation bar (or whatever it is called)
+<nav id='nav_bar'>
+    <ul class='nav_links'>
+        <li><a href="url">Nav Bar</a></li>
+        <li><a href="url">Sign In</a></li>
+        <li><a href="url">Blog</a></li>
+        <li><a href="url">About</a></li>
+    </ul>
+</nav>-->
+
+    <ul class="navWrap">
+        <div id="nav">
+            <ul>
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#about" class="about">About</a></li>
+                <li><a href="#contact" class="contact">Contact</a></li>
+                <li><form>
+                    <input type="searchBox" name="search" placeholder="Search recipes">
+                </form></li>
+                <li class="right"><a href="#signup" class="signup">Signup</a></li>
+                <li class="right"><a href="#login" class="login">Login</a></li>
+            </ul>
+            <br class="clearLeft" />
+        </div>
+    </ul>
+<!-- Alternative way of doing scroll navigation bar (or whatever it is called)
+<script>$(document).ready(function() {
+
+$(window).scroll(function () {
+//if you hard code, then use console
+//.log to determine when you want the
+//nav bar to stick.
+console.log($(window).scrollTop())
+if ($(window).scrollTop() > 280) {
+$('#nav_bar').addClass('navbar-fixed');
+}
+if ($(window).scrollTop() < 281) {
+$('#nav_bar').removeClass('navbar-fixed');
+}
+});
+});
+</script>-->
 <div class="row1">
 <nav id="LeftBar">
     <ul id="AddIngs">
@@ -78,22 +144,44 @@
         </script>
     </ul>
 </nav>
-<nav id="PageContent">
-    <h1 id="resultshdr">Results</h1>
-    <div id="result1"><p>Bacon ipsum dolor amet flank meatball beef sirloin ham. Capicola pancetta ribeye filet mignon frankfurter fatback shoulder.
-        Rump cupim leberkas drumstick pork chop swine picanha jerky. Kielbasa flank kevin pork belly,
-        leberkas corned beef venison jowl landjaeger tri-tip ground round tongue pork loin swine pork chop.
-        Turducken meatball andouille, hamburger pork chop venison chicken drumstick doner kielbasa ground round.</p></div>
-    <div id="result2"><p>Turkey short loin ball tip, venison beef ribs ground round biltong jowl cupim fatback pig. Ribeye tongue strip steak frankfurter.
-        Short ribs beef filet mignon, kevin pork loin porchetta pork belly chuck corned beef flank bacon cow.
-        Jerky t-bone boudin strip steak jowl, kielbasa picanha pancetta.
-        Sausage pork loin t-bone filet mignon fatback swine. Boudin capicola corned beef picanha pancetta pork chop.</p></div>
-    <div id="result3"><p>Turkey short loin ball tip, venison beef ribs ground round biltong jowl cupim fatback pig. Ribeye tongue strip steak frankfurter.
-        Short ribs beef filet mignon, kevin pork loin porchetta pork belly chuck corned beef flank bacon cow.
-        Jerky t-bone boudin strip steak jowl, kielbasa picanha pancetta.
-        Sausage pork loin t-bone filet mignon fatback swine. Boudin capicola corned beef picanha pancetta pork chop.</p></div>
-    </nav>
+    <div class="PageContent">
+    <div class="responsive">
+        <div class="img">
+            <a target="_blank" href="foodimage.jpg">
+                <img src="foodimage.jpg" alt="Trolltunga Norway" width="1000" height="400">
+            </a>
+            <div class="desc">Add a description of the image here</div>
+        </div>
     </div>
+
+
+    <div class="responsive">
+        <div class="img">
+            <a target="_blank" href="foodimage.jpg">
+                <img src="foodimage.jpg" alt="Forest" width="600" height="400">
+            </a>
+            <div class="desc">Add a description of the image here</div>
+        </div>
+    </div>
+
+    <div class="responsive">
+        <div class="img">
+            <a target="_blank" href="foodimage.jpg">
+                <img src="foodimage.jpg" alt="Northern Lights" width="600" height="400">
+            </a>
+            <div class="desc">Add a description of the image here</div>
+        </div>
+    </div>
+
+    <div class="responsive">
+        <div class="img">
+            <a target="_blank" href="foodimage.jpg">
+                <img src="foodimage.jpg" alt="Mountains" width="600" height="400">
+            </a>
+            <div class="desc">Add a description of the image here</div>
+        </div>
+    </div>
+        </div>
 <footer id="PageFooter">
     <a>Legal Stuff</a>
 </footer>

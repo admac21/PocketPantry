@@ -8,40 +8,60 @@ body {
     background-attachment: fixed;
     font-family: "Verdana", "Times New Roman", Serif;
 }
-ul.topnav {
+#wrap {
+    margin: 10px auto;
+    background: #333;
+    padding: 0px;
+    width: 700px;
+}
+#navWrap {
+    height: 30px;
+}
+#nav {
+    padding: 0px;
+    margin-bottom: 100px;
+    left: 20%;
+    right: 20%;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.8);
+    background: #333;
     list-style-type: none;
+    overflow: hidden;
+    position: absolute;
+    top: 300px;
+}
+#nav ul {
     margin: 0;
     padding: 0;
-    overflow: hidden;
-    background-color: #333;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 9998;
-    width: 100%;
 }
-
-ul.topnav li {float: left;}
-
-ul.topnav li a {
+#nav li {
+    float: left;
+    background-color: #333;
+    color: #F00;
+    list-style-type: none;
+}
+#nav li a {
     display: block;
     color: white;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
+    left: 0;
 }
-
-ul.topnav li a:hover:not(.active) {background-color: #111;}
-
-ul.topnav li a.active {background-color: #ff6138;}
-
-ul.topnav li.right {float: right;}
-
+#nav li a:hover:not(.active) {
+    background-color: #111;
+}
+#nav li a.active {
+    background-color: #ff6138;
+}
+#nav li.right {float: right;}
+br.clearLeft {
+    clear: left;
+}​
 @media screen and (max-width: 600px){
-    ul.topnav li.right,
-    ul.topnav li {float: none;}
+    #nav li.right,
+    #nav li {float: none;}
 }
-input[type=text], input[type=text1] {
+input[type=text], input[type=searchBox] {
     width: 175px;
     box-sizing: border-box;
     border: 3px solid #333;
@@ -55,7 +75,7 @@ input[type=text], input[type=text1] {
     -webkit-transition: width 0.4s ease-in-out;
     transition: width 0.4s ease-in-out;
 }
-input[type=text1]:focus {
+input[type=searchBox]:focus {
     width: 100%;
     border-color: #79BD8F;
 }
@@ -66,7 +86,7 @@ input[type=text]:focus {
     color:white;
     text-align:center;
     padding:5px;
-    height:250px;
+    height:400px;
 }
 #Title {
     padding-bottom: 40px;
@@ -89,20 +109,6 @@ input[type=text]:focus {
     background-color: #ffffff;
     box-shadow: 0px 0px 10px rgba(0,0,0,0.8);
 }
-#PageContent {
-    width:62%;
-    float:right;
-    padding: 10px;
-    margin: 2%;
-}
-#resultshdr {
-    float: left;
-    border-radius: 10px;
-    padding: 10px;
-    margin: 1%;
-    background-color: #ffffff;
-    box-shadow: 0px 0px 10px rgba(0,0,0,0.8);
-}
 #result1, #result2, #result3 {
     border-radius: 10px;
     float:right;
@@ -110,6 +116,13 @@ input[type=text]:focus {
     margin: 1%;
     background-color: #ffffff;
     box-shadow: 0px 0px 10px rgba(0,0,0,0.8);
+}
+#result1pic {
+    overflow: hidden;
+    background-image: url("foodimage.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 #row1:after {
     content: "";
@@ -161,7 +174,6 @@ input[type=text]:focus {
 .wrapper {
     min-height: 100%;
     height: auto !important;
-    height: 100%;
     margin: 0 auto -4em;
 }
 #PageFooter {
@@ -175,4 +187,100 @@ input[type=text]:focus {
     padding: 5px;
     clear: both;
     width: 100%;
+}
+
+/* Alternative way of doing scroll navigation bar (or whatever it is called)
+.navbar-fixed {
+    top: 0;
+    z-index: 100;
+    position: fixed;
+    width: 100%;
+    left: 0;
+    right: 0;
+}
+
+#banner {
+    width: 100%;
+    height: 273px;
+    background-color: gray;
+    overflow: hidden;
+}
+
+#nav_bar {
+    border: 0;
+    background-color: #202020;
+    border-radius: 0px;
+    margin-bottom: 0;
+    height: 30px;
+    left: 20%;
+    right: 20%;
+}
+
+.nav_links {
+    margin: 0;
+}
+
+.nav_links li {
+    display: inline-block;
+    margin-top: 4px;
+}
+.nav_links li a {
+    padding: 0 15.5px;
+    color: #3498db;
+    text-decoration: none;
+}*/
+
+div.img {
+    position: relative;
+    display: block;
+}
+
+.responsive:hover {
+    box-shadow: 0 0 25px rgba(0,0,0,0.9);
+}
+
+div.img img {
+    width: 100%;
+    height: auto;
+}
+
+div.desc {
+    padding: 15px;
+    text-align: center;
+}
+
+#PageContent {
+    position: relative;
+    display: block;
+    float: right;
+}
+
+.responsive {
+    width: 24.99999%;
+    display: block;
+    float: right;
+    border-radius: 10px;
+    margin: 1%;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px rgba(0,0,0,0.8);
+    position: relative;
+}
+
+@media only screen and (max-width: 700px){
+    .responsive {
+        width: 49.99999%;
+        margin: 6px 0;
+    }
+}
+
+@media only screen and (max-width: 500px){
+    .responsive {
+        width: 100%;
+    }
+}
+
+.clearfix:after {
+    content: "";
+    display: table;
+    clear: both;
 }
