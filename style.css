@@ -103,6 +103,7 @@ input[type=ingredient]:focus {
     height:450px;
     margin-bottom: 3%;
 }
+/*Hide logo and title in mobile view*/
 @media only screen and (max-width: 500px){
     #Title, #MaterialPantry {
         display: none;
@@ -134,6 +135,7 @@ input[type=ingredient]:focus {
     background-color: #ffffff;
     box-shadow: 0px 0px 10px rgba(0,0,0,0.8);
 }
+/*Fix size of LeftBar in mobile view*/
 @media only screen and (max-width: 500px){
     #LeftBar {
         width: 92%;
@@ -165,7 +167,6 @@ input[type=ingredient]:focus {
     font-size: 16px;
     transition-duration: 0.4s;
 }
-
 .addbutton {
     background-color: white;
     color: black;
@@ -190,15 +191,6 @@ input[type=ingredient]:focus {
 .deletebutton:hover {
     background-color: #FF6138; /* Green */
     color: white;
-}
-.wrapper {
-    min-height: 100%;
-    height: auto !important;
-    margin: 0 auto -4em;
-}
-div.img {
-    position: relative;
-    display: block;
 }
 /*Strengthen box shadow when mouse is hovered over*/
 .results:hover {
@@ -243,6 +235,7 @@ div.desc {
     border-top: 1px solid #ccc;
     padding: 0;
 }
+/*Container for result information*/
 .resultInformation {
     margin: auto;
     width: 100%;
@@ -266,9 +259,6 @@ div.desc {
 #heart1 {
     width: 30%;
 }
-#heart3 {
-    right: 10px;
-}
 /*Make search results responsive*/
 @media only screen and (max-width: 700px){
     .results {
@@ -281,12 +271,6 @@ div.desc {
     .results {
         width: 100%;
     }
-}
-/*????????????????????????????????????????????????????????????????????????????????????????????????????????????????*/
-.clearfix:after {
-    content: "";
-    display: table;
-    clear: both;
 }
 /*Make footer stick to bottom*/
 #PageFooter {
@@ -459,7 +443,7 @@ div.desc {
 .icon-link:hover .fa {
     line-height: 48px;
 }
-/*Chnage color of button icon on hover*/
+/*Change color of button icon on hover*/
 .icon-link:hover .fa-facebook {
     color: #3b5998;
     -webkit-transition: color 150ms ease-in-out;
@@ -496,58 +480,24 @@ div.desc {
     line-height: 48px;
     font-size: 29px;
 }
-
-
-
-
-
-ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #333;
-}
-li {
-    float: left;
-    width: 100%;
-}
-li a, .dropbtn {
-    display: inline-block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-}
-li a:hover, .dropdown:hover .dropbtn {
-    background-color: red;
-}
-li.dropdown {
-    display: inline-block;
-}
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f9f9f9;
-    min-width: 100%;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-}
-.dropdown-content a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-    text-align: left;
-}
-.dropdown-content a:hover {background-color: #f1f1f1}
-.dropdown:hover .dropdown-content {
-    display: block;
-}
-@media screen and (max-width: 600px){
-    #li {
-        float: none;
-    }
-    .dropbtn {
+/*Make footer responsive*/
+@media only screen and (max-width: 700px){
+    #PageFooter {
         width: 100%;
+    }
+    #PageFooter.push {
+        bottom: 0;
+    }
+    #socialButtons {
+        margin-right: 1%;
+        padding: 1%;
+    }
+    #getInTouch {
+        margin-left: 1%;
+    }
+    #aboutUs, #getInTouch, #socialButtons {
+        font-size: 50%;
+        width: 20%;
+        height: 20%;
     }
 }
