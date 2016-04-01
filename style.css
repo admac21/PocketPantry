@@ -2,32 +2,28 @@
     box-sizing: border-box;
 }
 body {
-    background: url(background_food.jpg);
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
     font-family: "Verdana", "Times New Roman", Serif;
 }
-#wrap {
-    margin: 10px auto;
-    background: #333;
-    padding: 0px;
-    width: 700px;
-}
-#navWrap {
-    height: 30px;
-}
+/*Customise navigation bar*/
 #nav {
-    padding: 0px;
+    padding: 0;
     margin-bottom: 100px;
-    left: 20%;
-    right: 20%;
-    box-shadow: 0px 0px 10px rgba(0,0,0,0.8);
+    margin-left: 15%;
+    margin-right: 15%;
+    box-shadow: 0 0 10px rgba(0,0,0,0.8);
     background: #333;
     list-style-type: none;
     overflow: hidden;
-    position: absolute;
-    top: 300px;
+    z-index: 9999;
+}
+/*Make top navigation bar sticky*/
+.navbar-fixed {
+    top: 0;
+    z-index: 100;
+    position: fixed;
+    width: 100%;
+    left: -15%;
+    right: 0;
 }
 #nav ul {
     margin: 0;
@@ -36,7 +32,6 @@ body {
 #nav li {
     float: left;
     background-color: #333;
-    color: #F00;
     list-style-type: none;
 }
 #nav li a {
@@ -50,10 +45,18 @@ body {
 #nav li a:hover:not(.active) {
     background-color: #111;
 }
+/*Change the color of current page's button*/
 #nav li a.active {
     background-color: #ff6138;
 }
-#nav li.right {float: right;}
+/*Move search box to the right side of navigation bar*/
+#nav li.right {
+    float: right;
+    margin-right: 2%;
+}
+#nav li.left {
+    margin-left: 2%;
+}
 br.clearLeft {
     clear: left;
 }​
@@ -61,7 +64,8 @@ br.clearLeft {
     #nav li.right,
     #nav li {float: none;}
 }
-input[type=text], input[type=searchBox] {
+/*Customise search boxes*/
+input[type=ingredient], input[type=searchBox] {
     width: 175px;
     box-sizing: border-box;
     border: 3px solid #333;
@@ -75,30 +79,39 @@ input[type=text], input[type=searchBox] {
     -webkit-transition: width 0.4s ease-in-out;
     transition: width 0.4s ease-in-out;
 }
+/*Expand width and change border color of recipe search box when clicked*/
 input[type=searchBox]:focus {
-    width: 100%;
     border-color: #79BD8F;
 }
-input[type=text]:focus {
-    border-color: #BEEB9F;
+/*Change border color of ingredient search box when clicked*/
+input[type=ingredient]:focus {
+    border-color: #79BD8F;
 }
+/*Display logo and header*/
 #MainHeader {
+    background: url(background_food.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     color:white;
     text-align:center;
     padding:5px;
-    height:400px;
+    height:450px;
 }
+/*Pocket Pantry title*/
 #Title {
     padding-bottom: 40px;
-    font-size: 60px;
-    text-shadow: 2px 2px 4px #000000;
+    font-size: 70px;
+    text-shadow: 4px 4px 6px #000000;
     font-family: "Breamcatcher", Verdana, Serif;
 }
+/*Logo*/
 #MaterialPantry {
     position: relative;
     z-index: 9999;
     overflow: visible;
 }
+/*Customise left bar*/
 #LeftBar {
     border-radius: 10px;
     line-height:30px;
@@ -106,23 +119,9 @@ input[type=text]:focus {
     float:left;
     padding: 10px;
     margin: 2%;
+    margin-bottom: 50%;
     background-color: #ffffff;
     box-shadow: 0px 0px 10px rgba(0,0,0,0.8);
-}
-#result1, #result2, #result3 {
-    border-radius: 10px;
-    float:right;
-    padding: 10px;
-    margin: 1%;
-    background-color: #ffffff;
-    box-shadow: 0px 0px 10px rgba(0,0,0,0.8);
-}
-#result1pic {
-    overflow: hidden;
-    background-image: url("foodimage.jpg");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
 }
 #row1:after {
     content: "";
@@ -130,7 +129,9 @@ input[type=text]:focus {
     display: block;
 }
 #whatsinyourpantry {
-    color: black;
+    font-size: 20px;
+    color: #FF6138;
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.7);
 }
 .text-box {
     color: white;
@@ -163,10 +164,12 @@ input[type=text]:focus {
     color: black;
     border: 3px solid red;
 }
+/*Change button color when mouse is hovered over*/
 .addbutton:hover, .searchbutton:hover {
     background-color: #79BD8F; /* Green */
     color: white;
 }
+/*Change button color when mouse is hovered over*/
 .deletebutton:hover {
     background-color: #FF6138; /* Green */
     color: white;
@@ -176,66 +179,12 @@ input[type=text]:focus {
     height: auto !important;
     margin: 0 auto -4em;
 }
-#PageFooter {
-    bottom: 0;
-}
-#PageFooter, .push {
-    background-color: #333;
-    text-align: center;
-    height: 2em;
-    bottom:100%;
-    padding: 5px;
-    clear: both;
-    width: 100%;
-}
-
-/* Alternative way of doing scroll navigation bar (or whatever it is called)
-.navbar-fixed {
-    top: 0;
-    z-index: 100;
-    position: fixed;
-    width: 100%;
-    left: 0;
-    right: 0;
-}
-
-#banner {
-    width: 100%;
-    height: 273px;
-    background-color: gray;
-    overflow: hidden;
-}
-
-#nav_bar {
-    border: 0;
-    background-color: #202020;
-    border-radius: 0px;
-    margin-bottom: 0;
-    height: 30px;
-    left: 20%;
-    right: 20%;
-}
-
-.nav_links {
-    margin: 0;
-}
-
-.nav_links li {
-    display: inline-block;
-    margin-top: 4px;
-}
-.nav_links li a {
-    padding: 0 15.5px;
-    color: #3498db;
-    text-decoration: none;
-}*/
-
 div.img {
     position: relative;
     display: block;
 }
-
-.responsive:hover {
+/*Strengthen box shadow when mouse is hovered over*/
+.results:hover {
     box-shadow: 0 0 25px rgba(0,0,0,0.9);
 }
 
@@ -250,31 +199,34 @@ div.desc {
 }
 
 #PageContent {
-    position: relative;
     display: block;
+    margin-left:auto;
+    margin-right:auto;
+    height:auto;
+    width:auto;
     float: right;
 }
 
-.responsive {
-    width: 24.99999%;
+.results {
+    width: 45%;
     display: block;
-    float: right;
+    float: left;
     border-radius: 10px;
-    margin: 1%;
-    background-color: #ffffff;
+    background-color: white;
     box-shadow: 0 0 10px rgba(0,0,0,0.8);
-    position: relative;
+    margin: 2%;
+    margin-left: 8%;
 }
 
 @media only screen and (max-width: 700px){
-    .responsive {
+    .results {
         width: 49.99999%;
         margin: 6px 0;
     }
 }
 
 @media only screen and (max-width: 500px){
-    .responsive {
+    .results {
         width: 100%;
     }
 }
@@ -283,4 +235,211 @@ div.desc {
     content: "";
     display: table;
     clear: both;
+}
+
+#PageFooter {
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+#PageFooter, .push {
+    background-color: #333;
+    bottom:100%;
+    padding: 5px;
+    clear: both;
+    width: 100%;
+    height: 200px;
+}
+#getInTouch {
+    float: left;
+    margin-top: 20px;
+    margin-left: 15%;
+}
+#getInTouchHeader {
+    font-weight: bold;
+    color: #FF6138;
+    float: right;
+}
+#getInTouchBox a:not(#getInTouchHeader) {
+    color: white;
+    float: right;
+}
+#aboutUs {
+    float: left;
+    margin-top: 20px;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+#aboutUsHeader {
+    font-weight: bold;
+    color: #FF6138;
+    float: left;
+}
+#aboutUsBox a:not(#aboutUsHeader) {
+    color: white;
+    float: left;
+    line-height: 150%;
+}
+#socialButtons {
+    float: left;
+    margin-top: 20px;
+    margin-right: 10%;
+}
+.icon-link {
+    width: 48px;
+    height: 48px;
+    background-color: #666;
+    line-height: 48px;
+    text-align: center;
+    vertical-align: middle;
+    display: inline-block;
+    cursor: pointer;
+    outline: none;
+    margin: 5px;
+    box-sizing: content-box;
+}
+.icon-link.fill.facebook {
+    background-color: #3b5998;
+}
+.icon-link.fill.facebook:hover {
+    background-color: #fff;
+}
+.icon-link.fill.facebook:hover .fa-facebook {
+    color: #3b5998;
+    -webkit-transition: color 150ms ease-in-out;
+    transition: color 150ms ease-in-out;
+}
+.icon-link.fill.twitter {
+    background-color: #00aced;
+}
+.icon-link.fill.twitter:hover {
+    background-color: #fff;
+}
+.icon-link.fill.twitter:hover .fa-twitter {
+    color: #00aced;
+    -webkit-transition: color 150ms ease-in-out;
+    transition: color 150ms ease-in-out;
+}
+.icon-link.fill.google-plus {
+    background-color: #dd4b39;
+}
+.icon-link.fill.google-plus:hover {
+    background-color: #fff;
+}
+.icon-link.fill.google-plus:hover .fa-google-plus {
+    color: #dd4b39;
+    -webkit-transition: color 150ms ease-in-out;
+    transition: color 150ms ease-in-out;
+}
+.icon-link.fill.youtube {
+    background-color: #df1c31;
+}
+.icon-link.fill.youtube:hover {
+    background-color: #fff;
+}
+.icon-link.fill.youtube:hover .fa-youtube {
+    color: #df1c31;
+    -webkit-transition: color 150ms ease-in-out;
+    transition: color 150ms ease-in-out;
+}
+.icon-link.fill.pinterest {
+    background-color: #b81621;
+}
+.icon-link.fill.pinterest:hover {
+    background-color: #fff;
+}
+.icon-link.fill.pinterest:hover .fa-pinterest {
+    color: #b81621;
+    -webkit-transition: color 150ms ease-in-out;
+    transition: color 150ms ease-in-out;
+}
+.icon-link.fill.tumblr {
+    background-color: #32506d;
+}
+.icon-link.fill.tumblr:hover {
+    background-color: #fff;
+}
+.icon-link.fill.tumblr:hover .fa-tumblr {
+    color: #32506d;
+    -webkit-transition: color 150ms ease-in-out;
+    transition: color 150ms ease-in-out;
+}
+.icon-link.brand {
+    background-color: #fff;
+}
+.icon-link.brand .fa {
+    color: #006FC2;
+}
+.icon-link.round {
+    border-radius: 50%;
+}
+.icon-link.round-corner {
+    border-radius: 5px;
+}
+.icon-link:hover {
+    -webkit-transition: background-color 150ms ease-in-out;
+    transition: background-color 150ms ease-in-out;
+    height: 48px;
+    line-height: 45px;
+    width: 48px;
+    background-color: #fff;
+}
+.icon-link:hover.facebook {
+    border: 2px solid #3b5998;
+}
+.icon-link:hover.tumblr {
+    border: 2px solid #32506d;
+}
+.icon-link:hover.twitter {
+    border: 2px solid #00aced;
+}
+.icon-link:hover.google-plus {
+    border: 2px solid #dd4b39;
+}
+.icon-link:hover.youtube {
+    border: 2px solid #df1c31;
+}
+.icon-link:hover.pinterest {
+    border: 2px solid #b81621;
+}
+.icon-link:hover.tumblr {
+    border: 2px solid #32506d;
+}
+.icon-link:hover .fa {
+    line-height: 48px;
+}
+.icon-link:hover .fa-facebook {
+    color: #3b5998;
+    -webkit-transition: color 150ms ease-in-out;
+    transition: color 150ms ease-in-out;
+}
+.icon-link:hover .fa-twitter {
+    color: #00aced;
+    -webkit-transition: color 150ms ease-in-out;
+    transition: color 150ms ease-in-out;
+}
+.icon-link:hover .fa-google-plus {
+    color: #dd4b39;
+    -webkit-transition: color 150ms ease-in-out;
+    transition: color 150ms ease-in-out;
+}
+.icon-link:hover .fa-youtube {
+    color: #df1c31;
+    -webkit-transition: color 150ms ease-in-out;
+    transition: color 150ms ease-in-out;
+}
+.icon-link:hover .fa-pinterest {
+    color: #b81621;
+    -webkit-transition: color 150ms ease-in-out;
+    transition: color 150ms ease-in-out;
+}
+.icon-link:hover .fa-tumblr {
+    color: #32506d;
+    -webkit-transition: color 150ms ease-in-out;
+    transition: color 150ms ease-in-out;
+}
+.icon-link .fa {
+    color: #fff;
+    line-height: 48px;
+    font-size: 29px;
 }

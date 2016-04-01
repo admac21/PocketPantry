@@ -1,118 +1,66 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <link rel="stylesheet" href="normalize.css">
+    <link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css'>
     <link rel="stylesheet" type="text/css" href="style.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pocket Pantry</title>
-    <!--jQuery for scroll function navbar-->
-    <script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js'></script>
+    <!--jQuery for navigation bar sticky scroll function-->
     <script type="text/javascript" src="//code.jquery.com/jquery-latest.js"></script>
-    <script>
-        $(document).ready(function(){
-            $("#addbutton").click(function(){
-                $("ol").prepend("<li>Ingredient 1:</li>");
-            });
-        });
-    </script>
-    <script type='text/javascript'>
-        //<![CDATA[
-        $(function() {
-            // Stick the #nav to the top of the window
-            var nav = $('#nav');
-            var navHomeY = nav.offset().top;
-            var isFixed = false;
-            var $w = $(window);
-            $w.scroll(function() {
-                var scrollTop = $w.scrollTop();
-                var shouldBeFixed = scrollTop > navHomeY;
-                if (shouldBeFixed && !isFixed) {
-                    nav.css({
-                        position: 'fixed',
-                        top: 0,
-                        left: nav.offset().left,
-                        width: nav.width()
-                    });
-                    isFixed = true;
-                }
-                else if (!shouldBeFixed && isFixed)
-                {
-                    nav.css({
-                        position: 'static'
-                    });
-                    isFixed = false;
-                }
-            });
-        });
-        //]]>
-    </script>
-    <script>
-        var width = $(window).width();
-        $(window).resize(function(){
-            if($(this).width() != width){
-                width = $(this).width();
-                console.log(width);
-            }
-        });
-    </script>
 </head>
 <body>
+<!--Logo and header-->
 <header id="MainHeader">
     <h1 id="Title">Pocket  <img src="MaterialPantry.png" id="MaterialPantry" alt="PocketPantryLogo"
                                 height="200" width="200" align="center">  Pantry</h1>
-</header>
-
-<!-- Alternative way of doing scroll navigation bar (or whatever it is called)
-<nav id='nav_bar'>
-    <ul class='nav_links'>
-        <li><a href="url">Nav Bar</a></li>
-        <li><a href="url">Sign In</a></li>
-        <li><a href="url">Blog</a></li>
-        <li><a href="url">About</a></li>
-    </ul>
-</nav>-->
-
+    <!--Navigation bar-->
     <ul class="navWrap">
-        <div id="nav">
+        <div id='nav'>
             <ul>
-                <li><a href="#home" class="active">Home</a></li>
+                <li class="left"><a href="#home" class="active">Home</a></li>
                 <li><a href="#about" class="about">About</a></li>
                 <li><a href="#contact" class="contact">Contact</a></li>
-                <li><form>
+                <li><a href="#signup" class="signup">Signup</a></li>
+                <li><a href="#login" class="login">Login</a></li>
+                <li class="right"><form>
                     <input type="searchBox" name="search" placeholder="Search recipes">
                 </form></li>
-                <li class="right"><a href="#signup" class="signup">Signup</a></li>
-                <li class="right"><a href="#login" class="login">Login</a></li>
             </ul>
             <br class="clearLeft" />
         </div>
     </ul>
-<!-- Alternative way of doing scroll navigation bar (or whatever it is called)
-<script>$(document).ready(function() {
-
-$(window).scroll(function () {
-//if you hard code, then use console
-//.log to determine when you want the
-//nav bar to stick.
-console.log($(window).scrollTop())
-if ($(window).scrollTop() > 280) {
-$('#nav_bar').addClass('navbar-fixed');
-}
-if ($(window).scrollTop() < 281) {
-$('#nav_bar').removeClass('navbar-fixed');
-}
+</header>
+<!--Make navigation bar sticky when user scrolls past it-->
+<script>$(document).ready(function () {
+    $(window).scroll(function () {
+        console.log($(window).scrollTop())
+        if ($(window).scrollTop() > 33) {
+            $('#nav').addClass('navbar-fixed');
+        }
+        if ($(window).scrollTop() < 331) {
+            $('#nav').removeClass('navbar-fixed');
+        }
+    });
 });
-});
+</script>
+<!--Still trying to get sticky left bar to work...
+<script src="garand-sticky-9434b1f/jquery.sticky.js"></script>
+<script>
+    $(document).ready(function(){
+        $("#LeftBar").sticky({topSpacing:70});
+    });
 </script>-->
 <div class="row1">
 <nav id="LeftBar">
     <ul id="AddIngs">
-        <a id="whatsinyourpantry">What's in your pantry?</a>
+        <a id="whatsinyourpantry">What's In Your Pantry?</a>
         <div class="my-form">
             <form role="form" method="post">
                 <p class="text-box">
                     <label for="box1"><span class="box-number">1</span></label>
-                    <input type="text" name="boxes[]" value="" id="box1" />
+                    <input type="ingredient" name="boxes[]" value="" id="box1" />
 
                 </p>
                 <a class="add-box" href="#"><button class="button addbutton">Add</button></a>
@@ -124,7 +72,7 @@ $('#nav_bar').removeClass('navbar-fixed');
                 $('.my-form .add-box').click(function(){
                     var n = $('.text-box').length + 1;
                     var box_html = $('<p class="text-box"><label for="box' + n + '"><span class="box-number">'
-                            + n + '</span></label> <input type="text" name="boxes[]" value="" id="box'
+                            + n + '</span></label> <input type="ingredient" name="boxes[]" value="" id="box'
                             + n + '" /> <a href="#" class="remove-box"><button class="button deletebutton">X</button></a></p>');
                     box_html.hide();
                     $('.my-form p.text-box:last').after(box_html);
@@ -144,46 +92,78 @@ $('#nav_bar').removeClass('navbar-fixed');
         </script>
     </ul>
 </nav>
-    <div class="PageContent">
-    <div class="responsive">
+    <!--Left side of the screen where results are shown-->
+    <div class="ResultArea">
+    <div class="results">
         <div class="img">
             <a target="_blank" href="foodimage.jpg">
-                <img src="foodimage.jpg" alt="Trolltunga Norway" width="1000" height="400">
+                <img src="foodimage.jpg" alt="MexicanBroth" width="800" height="400">
             </a>
-            <div class="desc">Add a description of the image here</div>
+            <div class="desc">Surprisingly filling Mexican broth</div>
         </div>
     </div>
 
 
-    <div class="responsive">
+    <div class="results">
         <div class="img">
             <a target="_blank" href="foodimage.jpg">
-                <img src="foodimage.jpg" alt="Forest" width="600" height="400">
+                <img src="foodimage.jpg" alt="Bolognese" width="800" height="400">
             </a>
-            <div class="desc">Add a description of the image here</div>
+            <div class="desc">Spaghetti Bolognese</div>
         </div>
     </div>
 
-    <div class="responsive">
+    <div class="results">
         <div class="img">
             <a target="_blank" href="foodimage.jpg">
-                <img src="foodimage.jpg" alt="Northern Lights" width="600" height="400">
+                <img src="foodimage.jpg" alt="FishChips" width="800" height="400">
             </a>
-            <div class="desc">Add a description of the image here</div>
+            <div class="desc">Fish & Chips</div>
         </div>
     </div>
 
-    <div class="responsive">
+    <div class="results">
         <div class="img">
             <a target="_blank" href="foodimage.jpg">
-                <img src="foodimage.jpg" alt="Mountains" width="600" height="400">
+                <img src="foodimage.jpg" alt="Chicken" width="800" height="400">
             </a>
-            <div class="desc">Add a description of the image here</div>
+            <div class="desc">Stir fried chicken</div>
         </div>
     </div>
-        </div>
+    </div>
+    </div>
+<!--Footer-->
 <footer id="PageFooter">
-    <a>Legal Stuff</a>
+    <div id="getInTouch">
+        <div id="getInTouchBox">
+    <a id="getInTouchHeader">Get In Touch</a><br>
+            <a></a><br>
+        <a>info@pocketpantry.co.uk</a><br>
+        <a>01224 242399</a><br>
+        <a></a><br>
+        <a>333 Pantry Way</a><br>
+        <a>Aberdeen</a><br>
+        <a>AB10 L0L</a>
+        </div>
+    </div>
+    <div id="aboutUs">
+        <div id="aboutUsBox">
+            <a id="aboutUsHeader">About Us</a><br>
+            <a></a><br>
+            <a>Pocket Pantry; a web app that allows</a><br>
+            <a>you to enter the food that you have in</a><br>
+            <a>your fridge/cupboards and it will suggest</a><br>
+            <a>recipes to make with what you have.</a>
+        </div>
+    </div>
+    <div id="socialButtons">
+    <a class="icon-link facebook"><i class="fa fa-facebook"></i></a>
+    <a class="icon-link twitter"><i class="fa fa-twitter"></i></a>
+    <a class="icon-link google-plus"><i class="fa fa-google-plus"></i></a><br>
+    <a class="icon-link youtube"><i class="fa fa-youtube"></i></a>
+    <a class="icon-link pinterest"><i class="fa fa-pinterest"></i></a>
+    <a class="icon-link tumblr"><i class="fa fa-tumblr"></i></a>
+    </div>
 </footer>
 </body>
 </html>
