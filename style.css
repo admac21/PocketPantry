@@ -42,6 +42,7 @@ body {
     text-decoration: none;
     left: 0;
 }
+/*Change button color to black on hover*/
 #nav li a:hover:not(.active) {
     background-color: #111;
 }
@@ -60,6 +61,7 @@ body {
 br.clearLeft {
     clear: left;
 }​
+ /*Make navigation bar responsive*/
 @media screen and (max-width: 600px){
     #nav li.right,
     #nav li {float: none;}
@@ -136,6 +138,7 @@ input[type=ingredient]:focus {
 .text-box {
     color: white;
 }
+/*Customise buttons*/
 .button {
     background-color: white; /* White */
     border: none;
@@ -146,9 +149,9 @@ input[type=ingredient]:focus {
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
-    -webkit-transition-duration: 0.4s; /* Safari */
     transition-duration: 0.4s;
 }
+
 .addbutton {
     background-color: white;
     color: black;
@@ -187,17 +190,17 @@ div.img {
 .results:hover {
     box-shadow: 0 0 25px rgba(0,0,0,0.9);
 }
-
+/*Results images*/
 div.img img {
     width: 100%;
     height: auto;
 }
-
+/*Results text*/
 div.desc {
     padding: 15px;
     text-align: center;
 }
-
+/*Wrapper for search results*/
 #PageContent {
     display: block;
     margin-left:auto;
@@ -206,7 +209,7 @@ div.desc {
     width:auto;
     float: right;
 }
-
+/*Individual search results*/
 .results {
     width: 45%;
     display: block;
@@ -217,31 +220,44 @@ div.desc {
     margin: 2%;
     margin-left: 8%;
 }
-
+/*Customise line after result title*/
+.resultHr {
+    margin-left: 5%;
+    margin-right: 5%;
+    height: 2px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    padding: 0;
+}
+.ings {
+    margin: 2%;
+}
+/*Make search results responsive*/
 @media only screen and (max-width: 700px){
     .results {
         width: 49.99999%;
         margin: 6px 0;
     }
 }
-
+/*Make search results responsive*/
 @media only screen and (max-width: 500px){
     .results {
         width: 100%;
     }
 }
-
+/*????????????????????????????????????????????????????????????????????????????????????????????????????????????????*/
 .clearfix:after {
     content: "";
     display: table;
     clear: both;
 }
-
+/*Make footer stick to bottom*/
 #PageFooter {
     bottom: 0;
     left: 0;
     right: 0;
 }
+/*Push footer to bottom when page is extended horizontally*/
 #PageFooter, .push {
     background-color: #333;
     bottom:100%;
@@ -250,6 +266,7 @@ div.desc {
     width: 100%;
     height: 200px;
 }
+/*Get in touch section in footer*/
 #getInTouch {
     float: left;
     margin-top: 20px;
@@ -264,6 +281,7 @@ div.desc {
     color: white;
     float: right;
 }
+/*About us section in footer*/
 #aboutUs {
     float: left;
     margin-top: 20px;
@@ -280,11 +298,13 @@ div.desc {
     float: left;
     line-height: 150%;
 }
+/*Social media buttons section in footer*/
 #socialButtons {
     float: left;
     margin-top: 20px;
     margin-right: 10%;
 }
+/*Customise buttons*/
 .icon-link {
     width: 48px;
     height: 48px;
@@ -297,13 +317,17 @@ div.desc {
     outline: none;
     margin: 5px;
     box-sizing: content-box;
+    border-radius: 10%;
 }
+/*Set icon color*/
 .icon-link.fill.facebook {
     background-color: #3b5998;
 }
+/*Set icon color on hover*/
 .icon-link.fill.facebook:hover {
     background-color: #fff;
 }
+/*Set icon color change on hover smooth*/
 .icon-link.fill.facebook:hover .fa-facebook {
     color: #3b5998;
     -webkit-transition: color 150ms ease-in-out;
@@ -364,18 +388,7 @@ div.desc {
     -webkit-transition: color 150ms ease-in-out;
     transition: color 150ms ease-in-out;
 }
-.icon-link.brand {
-    background-color: #fff;
-}
-.icon-link.brand .fa {
-    color: #006FC2;
-}
-.icon-link.round {
-    border-radius: 50%;
-}
-.icon-link.round-corner {
-    border-radius: 5px;
-}
+/*Make button's background color white on hover*/
 .icon-link:hover {
     -webkit-transition: background-color 150ms ease-in-out;
     transition: background-color 150ms ease-in-out;
@@ -384,6 +397,7 @@ div.desc {
     width: 48px;
     background-color: #fff;
 }
+/*Change button border color on hover*/
 .icon-link:hover.facebook {
     border: 2px solid #3b5998;
 }
@@ -408,6 +422,7 @@ div.desc {
 .icon-link:hover .fa {
     line-height: 48px;
 }
+/*Chnage color of button icon on hover*/
 .icon-link:hover .fa-facebook {
     color: #3b5998;
     -webkit-transition: color 150ms ease-in-out;
@@ -438,6 +453,7 @@ div.desc {
     -webkit-transition: color 150ms ease-in-out;
     transition: color 150ms ease-in-out;
 }
+/*Set size and color of button icons*/
 .icon-link .fa {
     color: #fff;
     line-height: 48px;

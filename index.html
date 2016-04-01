@@ -53,6 +53,7 @@
     });
 </script>-->
 <div class="row1">
+    <!--Left bar-->
 <nav id="LeftBar">
     <ul id="AddIngs">
         <a id="whatsinyourpantry">What's In Your Pantry?</a>
@@ -61,12 +62,12 @@
                 <p class="text-box">
                     <label for="box1"><span class="box-number">1</span></label>
                     <input type="ingredient" name="boxes[]" value="" id="box1" />
-
                 </p>
                 <a class="add-box" href="#"><button class="button addbutton">Add</button></a>
                     <button class="button searchbutton">Search</button>
             </form>
         </div>
+        <!--Add, remove and search button functions-->
         <script type="text/javascript">
             jQuery(document).ready(function($){
                 $('.my-form .add-box').click(function(){
@@ -92,7 +93,7 @@
         </script>
     </ul>
 </nav>
-    <!--Left side of the screen where results are shown-->
+    <!--Right side of the screen where results are shown-->
     <div class="ResultArea">
     <div class="results">
         <div class="img">
@@ -100,34 +101,39 @@
                 <img src="foodimage.jpg" alt="MexicanBroth" width="800" height="400">
             </a>
             <div class="desc">Surprisingly filling Mexican broth</div>
+            <hr class="resultHr">
+            <a class="ings">+ Unicorn meat</a><br>
+            <a class="ings">+ Fairy dust</a><br>
+            <a class="ings">+ Lava from Mordor</a><br>
+            <a class="ings">- Motivation</a>
         </div>
     </div>
-
-
     <div class="results">
         <div class="img">
             <a target="_blank" href="foodimage.jpg">
                 <img src="foodimage.jpg" alt="Bolognese" width="800" height="400">
             </a>
             <div class="desc">Spaghetti Bolognese</div>
+            <hr class="resultHr">
+
         </div>
     </div>
-
     <div class="results">
         <div class="img">
             <a target="_blank" href="foodimage.jpg">
                 <img src="foodimage.jpg" alt="FishChips" width="800" height="400">
             </a>
             <div class="desc">Fish & Chips</div>
+            <hr class="resultHr">
         </div>
     </div>
-
     <div class="results">
         <div class="img">
             <a target="_blank" href="foodimage.jpg">
                 <img src="foodimage.jpg" alt="Chicken" width="800" height="400">
             </a>
             <div class="desc">Stir fried chicken</div>
+            <hr class="resultHr">
         </div>
     </div>
     </div>
@@ -156,6 +162,7 @@
             <a>recipes to make with what you have.</a>
         </div>
     </div>
+    <!--Buttons for social media-->
     <div id="socialButtons">
     <a class="icon-link facebook"><i class="fa fa-facebook"></i></a>
     <a class="icon-link twitter"><i class="fa fa-twitter"></i></a>
