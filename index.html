@@ -33,17 +33,32 @@
     </ul>
 </header>
 <!--Make navigation bar sticky when user scrolls past it-->
-<script>$(document).ready(function () {
-    $(window).scroll(function () {
-        console.log($(window).scrollTop())
-        if ($(window).scrollTop() > 33) {
-            $('#nav').addClass('navbar-fixed');
-        }
-        if ($(window).scrollTop() < 331) {
-            $('#nav').removeClass('navbar-fixed');
-        }
-    });
-});
+<script>
+    if ($(window).width() < 700) {
+        $(document).ready(function () {
+            $(window).scroll(function () {
+                console.log($(window).scrollTop())
+                if ($(window).scrollTop() > 25) {
+                    $('#nav').addClass('navbar-fixed');
+                }
+                if ($(window).scrollTop() < 26) {
+                    $('#nav').removeClass('navbar-fixed');
+                }
+            });
+        });
+    } else {
+        $(document).ready(function () {
+            $(window).scroll(function () {
+                console.log($(window).scrollTop())
+                if ($(window).scrollTop() > 33) {
+                    $('#nav').addClass('navbar-fixed');
+                }
+                if ($(window).scrollTop() < 331) {
+                    $('#nav').removeClass('navbar-fixed');
+                }
+            });
+        });
+    }
 </script>
 <!--Still trying to get sticky left bar to work...
 <script src="garand-sticky-9434b1f/jquery.sticky.js"></script>
