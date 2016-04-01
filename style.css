@@ -62,25 +62,10 @@ br.clearLeft {
     clear: left;
 }​
  /*Make navigation bar responsive*/
-/*@media screen and (max-width: 600px){
+@media screen and (max-width: 600px){
     #nav li.right,
-    #nav li {float: none;}
-}*/
-/*Responsive Styles*/
-
-@media screen and (max-width : 700px){
-    /*Make dropdown links appear inline*/
-    #nav ul {
-        position: static;
-        display: none;
-    }
-    /*Create vertical spacing*/
     #nav li {
-        margin-bottom: 1px;
-    }
-    /*Make all menu links full width*/
-    #nav ul li, #nav li a {
-        width: 100%;
+        float: none;
     }
 }
 /*Customise search boxes*/
@@ -112,10 +97,16 @@ input[type=ingredient]:focus {
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    color:white;
-    text-align:center;
+    color: white;
+    text-align: center;
     padding:5px;
     height:450px;
+    margin-bottom: 3%;
+}
+@media only screen and (max-width: 500px){
+    #Title, #MaterialPantry {
+        display: none;
+    }
 }
 /*Pocket Pantry title*/
 #Title {
@@ -137,10 +128,16 @@ input[type=ingredient]:focus {
     width: 30%;
     float:left;
     padding: 10px;
-    margin: 2%;
-    margin-bottom: 50%;
+    margin-top: 1%;
+    margin-left: 4%;
+    margin-bottom: 60%;
     background-color: #ffffff;
     box-shadow: 0px 0px 10px rgba(0,0,0,0.8);
+}
+@media only screen and (max-width: 500px){
+    #LeftBar {
+        width: 92%;
+    }
 }
 #row1:after {
     content: "";
@@ -234,7 +231,7 @@ div.desc {
     border-radius: 10px;
     background-color: white;
     box-shadow: 0 0 10px rgba(0,0,0,0.8);
-    margin: 2%;
+    margin: 1%;
     margin-left: 8%;
 }
 /*Customise line after result title*/
@@ -247,26 +244,30 @@ div.desc {
     padding: 0;
 }
 .resultInformation {
-    width: auto;
-    overflow: hidden;
+    margin: auto;
+    width: 100%;
 }
 .resultIngs {
-    width: 60%;
+    width: 50%;
+    padding-bottom: 5%;
+    float: left;
 }
 .ings {
     width: 60%;
     margin: 0.5%;
+    padding-left: 5%;
     float: left;
 }
-#heartimage {
-    min-width: 20%;
-    float: left;
-    display:block;
-    margin:auto;
+#heart2 {
+    float: right;
+    margin-right: 10%;
+    margin-top: 6%;
 }
-#heart {
-    display: block;
-    margin-bottom: 5%;
+#heart1 {
+    width: 30%;
+}
+#heart3 {
+    right: 10px;
 }
 /*Make search results responsive*/
 @media only screen and (max-width: 700px){
