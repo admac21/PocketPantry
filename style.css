@@ -62,9 +62,26 @@ br.clearLeft {
     clear: left;
 }​
  /*Make navigation bar responsive*/
-@media screen and (max-width: 600px){
+/*@media screen and (max-width: 600px){
     #nav li.right,
     #nav li {float: none;}
+}*/
+/*Responsive Styles*/
+
+@media screen and (max-width : 700px){
+    /*Make dropdown links appear inline*/
+    #nav ul {
+        position: static;
+        display: none;
+    }
+    /*Create vertical spacing*/
+    #nav li {
+        margin-bottom: 1px;
+    }
+    /*Make all menu links full width*/
+    #nav ul li, #nav li a {
+        width: 100%;
+    }
 }
 /*Customise search boxes*/
 input[type=ingredient], input[type=searchBox] {
@@ -229,11 +246,27 @@ div.desc {
     border-top: 1px solid #ccc;
     padding: 0;
 }
-.ings {
-    margin: 2%;
+.resultInformation {
+    width: auto;
+    overflow: hidden;
 }
-.heartimage {
-    background-size: 20%;
+.resultIngs {
+    width: 60%;
+}
+.ings {
+    width: 60%;
+    margin: 0.5%;
+    float: left;
+}
+#heartimage {
+    min-width: 20%;
+    float: left;
+    display:block;
+    margin:auto;
+}
+#heart {
+    display: block;
+    margin-bottom: 5%;
 }
 /*Make search results responsive*/
 @media only screen and (max-width: 700px){
