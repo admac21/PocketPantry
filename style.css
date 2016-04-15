@@ -35,6 +35,8 @@ body {
     list-style-type: none;
     overflow: hidden;
     z-index: 9999;
+    transition-property: width;
+    transition-duration: 2s;
 }
 /*Make top navigation bar sticky*/
 .navbar-fixed {
@@ -44,6 +46,8 @@ body {
     width: 100%;
     left: -15%;
     right: 0;
+    transition-property: width;
+    transition-duration: 2s;
 }
 #nav ul {
     margin: 0;
