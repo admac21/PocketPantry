@@ -4,6 +4,10 @@
 body {
     font-family: "Verdana", "Times New Roman", Serif;
 }
+#position-saver {
+    height: 50px;
+    width: 100%;
+}
 /*Make everything responsive*/
 @media screen and (max-width: 500px){
     #nav li.right,
@@ -35,8 +39,7 @@ body {
     list-style-type: none;
     overflow: hidden;
     z-index: 9999;
-    transition-property: width;
-    transition-duration: 2s;
+    position: static;
 }
 /*Make top navigation bar sticky*/
 .navbar-fixed {
@@ -222,7 +225,7 @@ div.img img {
 div.desc {
     float: left;
     padding: 20px;
-    text-align: center;
+    text-align: left;
     width: 50%;
     font-size: 20px;
 }

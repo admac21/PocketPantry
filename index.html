@@ -20,9 +20,9 @@
     <ul class="navWrap">
         <div id='nav'>
             <ul>
-                <li class="left"><a href="#home" class="active">Home</a></li>
-                <li><a href="#about" class="about">About</a></li>
-                <li><a href="#contact" class="contact">Contact</a></li>
+                <li class="left"><a href="#Title" class="active">Home</a></li>
+                <li><a href="#aboutUs" class="about">About</a></li>
+                <li><a href="#getInTouch" class="contact">Contact</a></li>
                 <li><a href="#signup" class="signup">Signup</a></li>
                 <li><a href="#login" class="login">Login</a></li>
                 <li class="right"><form>
@@ -41,10 +41,12 @@
             $(window).scroll(function () {
                 console.log($(window).scrollTop())
                 if ($(window).scrollTop() > 25) {
-                    $('#nav').addClass('navbar-fixed');
+                    $('#nav').position('static');
+//                    $('#nav').addClass('navbar-fixed');
                 }
                 if ($(window).scrollTop() < 26) {
-                    $('#nav').removeClass('navbar-fixed');
+                    $('#nav').position('fixed');
+//                    $('#nav').removeClass('navbar-fixed');
                 }
             });
         });
@@ -53,10 +55,15 @@
             $(window).scroll(function () {
                 console.log($(window).scrollTop())
                 if ($(window).scrollTop() > 33) {
-                    $('#nav').addClass('navbar-fixed');
+                    $("#nav").css({top: 0, position: 'fixed'});
+                        $( "#nav" ).animate({
+                            left: "-=50", right: "+=50"
+                        }, 1000, function() {
+                            // Animation complete.
+                        });
                 }
                 if ($(window).scrollTop() < 331) {
-                    $('#nav').removeClass('navbar-fixed');
+                    $("#nav").css({position: "static", width: '70%'});
                 }
             });
         });
@@ -135,7 +142,12 @@
             </div>
         </div>
     <div class="results">
-        <div class="desc">Spaghetti Bolognese</div>
+        <div class="descWrapper">
+            <div class="desc">Surprisingly filling Hobbit broth</div>
+            <div class="heart1">
+                <img src="heartIcon3.png" class="heart3" alt="heart">
+            </div>
+        </div>
         <div class="img">
             <a target="_blank" href="foodimage.jpg">
                 <img src="foodimage.jpg" alt="Bolognese" width="800" height="400">
@@ -148,15 +160,15 @@
                 <a class="ings">- Beer</a><br>
                 <a class="ings">- Skills</a>
             </div>
-            <div class="heart1">
-                <a class="heart2" href="heart_icon">
-                    <img src="heart_icon.png" class="heart3" alt="heart">
-                </a>
-            </div>
     </div>
         </div>
         <div class="results">
-            <div class="desc">Spaghetti Bolognese</div>
+            <div class="descWrapper">
+                <div class="desc">Surprisingly filling Hobbit broth</div>
+                <div class="heart1">
+                    <img src="heartIcon3.png" class="heart3" alt="heart">
+                </div>
+            </div>
             <div class="img">
                 <a target="_blank" href="foodimage.jpg">
                     <img src="foodimage.jpg" alt="Bolognese" width="800" height="400">
@@ -168,16 +180,16 @@
                     <a class="ings">+ Magic beans</a><br>
                     <a class="ings">- Beer</a><br>
                     <a class="ings">- Skills</a>
-                </div>
-                <div class="heart1">
-                    <a class="heart2" href="heart_icon">
-                        <img src="heart_icon.png" class="heart3" alt="heart">
-                    </a>
                 </div>
             </div>
         </div>
         <div class="results">
-            <div class="desc">Spaghetti Bolognese</div>
+            <div class="descWrapper">
+                <div class="desc">Spaghetti bolognese</div>
+                <div class="heart1">
+                    <img src="heartIcon3.png" class="heart3" alt="heart">
+                </div>
+            </div>
             <div class="img">
                 <a target="_blank" href="foodimage.jpg">
                     <img src="foodimage.jpg" alt="Bolognese" width="800" height="400">
@@ -189,11 +201,6 @@
                     <a class="ings">+ Magic beans</a><br>
                     <a class="ings">- Beer</a><br>
                     <a class="ings">- Skills</a>
-                </div>
-                <div class="heart1">
-                    <a class="heart2" href="heart_icon">
-                        <img src="heart_icon.png" class="heart3" alt="heart">
-                    </a>
                 </div>
             </div>
         </div>
@@ -225,13 +232,31 @@
     </div>
     <!--Buttons for social media-->
     <div id="socialButtons">
-    <a class="icon-link facebook"><i class="fa fa-facebook"></i></a>
-    <a class="icon-link twitter"><i class="fa fa-twitter"></i></a>
-    <a class="icon-link google-plus"><i class="fa fa-google-plus"></i></a><br>
-    <a class="icon-link youtube"><i class="fa fa-youtube"></i></a>
-    <a class="icon-link pinterest"><i class="fa fa-pinterest"></i></a>
-    <a class="icon-link tumblr"><i class="fa fa-tumblr"></i></a>
+        <a href="https://www.facebook.com/profile.php?id=563989053776695&ref=ts&fref=ts" class="icon-link facebook"><i class="fa fa-facebook"></i></a>
+        <a href="https://twitter.com/PocketPantryApp" class="icon-link twitter"><i class="fa fa-twitter"></i></a>
+        <a class="icon-link google-plus"><i class="fa fa-google-plus"></i></a><br>
+        <a class="icon-link youtube"><i class="fa fa-youtube"></i></a>
+        <a href="https://www.instagram.com/pocketpantry/" class="icon-link pinterest"><i class="fa fa-pinterest"></i></a>
+        <a class="icon-link tumblr"><i class="fa fa-tumblr"></i></a>
     </div>
+</footer>
+
+<!-- Scripts -->
+<script type="text/javascript">
+    //Function declaration
+    $(document).ready(function(){
+        $('a[href^="#"]').on('click',function (e) {
+            e.preventDefault();
+
+            var target = this.hash;
+            var $target = $(target);
+
+            $('html, body').stop().animate({
+                'scrollTop': $target.offset().top
+            }, 900, 'swing');
+        });
+    });
+</script>
 </footer>
 </body>
 </html>
