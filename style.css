@@ -147,7 +147,7 @@ input[type=ingredient]:focus {
     padding: 10px;
     margin-top: 1%;
     margin-left: 4%;
-    margin-bottom: 60%;
+    margin-bottom: 80%;
     background-color: #ffffff;
     box-shadow: 0px 0px 10px rgba(0,0,0,0.8);
 }
@@ -201,12 +201,12 @@ input[type=ingredient]:focus {
 }
 /*Change button color when mouse is hovered over*/
 .addbutton:hover, .searchbutton:hover {
-    background-color: #79BD8F; /* Green */
+    background-color: #79BD8F;
     color: white;
 }
 /*Change button color when mouse is hovered over*/
 .deletebutton:hover {
-    background-color: #FF6138; /* Green */
+    background-color: #FF6138;
     color: white;
 }
 /*Strengthen box shadow when mouse is hovered over*/
@@ -220,8 +220,15 @@ div.img img {
 }
 /*Results text*/
 div.desc {
-    padding: 15px;
+    float: left;
+    padding: 20px;
     text-align: center;
+    width: 50%;
+    font-size: 20px;
+}
+.descWrapper {
+    margin: auto;
+    width: 100%;
 }
 /*Wrapper for search results*/
 #PageContent {
@@ -231,6 +238,10 @@ div.desc {
     height:auto;
     width:auto;
     float: right;
+}
+.resultArea {
+    width: 45%;
+    height: 100%;
 }
 /*Individual search results*/
 .results {
@@ -242,15 +253,6 @@ div.desc {
     box-shadow: 0 0 10px rgba(0,0,0,0.8);
     margin: 1%;
     margin-left: 8%;
-}
-/*Customise line after result title*/
-.resultHr {
-    margin-left: 5%;
-    margin-right: 5%;
-    height: 2px;
-    border: 0;
-    border-top: 1px solid #ccc;
-    padding: 0;
 }
 /*Container for result information*/
 .resultInformation {
@@ -276,18 +278,28 @@ div.desc {
 }
 /*Heart image*/
 .heart2 {
-    height: 20%;
-    width: 20%;
+    height: auto;
+    width: auto;
     margin: 1%;
     overflow: hidden;
 }
 .heart1 {
-    height: 25%;
+    float: right;
+    height: 15%;
     width: 25%;
+    padding: 15px;
+    margin-right: 1%;
 }
 .heart3 {
     width: 25%;
-    height: 25%;
+    height: 15%;
+    float: right;
+    background-color: #666;
+}
+.heart3:hover {
+    -webkit-transition: background-color 150ms ease-in-out;
+    transition: background-color 150ms ease-in-out;
+    background-color: #FF6138;
 }
 /*Make search results responsive*/
 @media only screen and (max-width: 700px){
@@ -369,6 +381,7 @@ div.desc {
     margin: 5px;
     box-sizing: content-box;
     border-radius: 10%;
+    border: 2px solid #333;
 }
 /*Set icon color*/
 .icon-link.fill.facebook {
@@ -444,7 +457,7 @@ div.desc {
     -webkit-transition: background-color 150ms ease-in-out;
     transition: background-color 150ms ease-in-out;
     height: 48px;
-    line-height: 45px;
+    line-height: 48px;
     width: 48px;
     background-color: #fff;
 }
@@ -534,6 +547,9 @@ div.desc {
     .icon-link:hover {
         height: 38px;
         width: 38px;
+        line-height: 38px;
+    }
+    .icon-link:hover .fa {
         line-height: 38px;
     }
     #aboutUs, #getInTouch {
