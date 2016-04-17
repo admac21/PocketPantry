@@ -55,27 +55,15 @@
             $(window).scroll(function () {
                 console.log($(window).scrollTop())
                 if ($(window).scrollTop() > 33) {
-                    $("#nav").css({top: 0, position: 'fixed'});
-                        $( "#nav" ).animate({
-                            left: "-=50", right: "+=50"
-                        }, 1000, function() {
-                            // Animation complete.
-                        });
+                    $("#nav").css({top: 0, position: 'fixed', width: '100%', marginLeft: '0', marginRight: '0', left: '0'});
                 }
                 if ($(window).scrollTop() < 331) {
-                    $("#nav").css({position: "static", width: '70%'});
+                    $("#nav").css({position: "static", marginLeft: '15%', marginRight: '15%', width: '70%'});
                 }
             });
         });
     }
 </script>
-<!--Still trying to get sticky left bar to work...
-<script src="garand-sticky-9434b1f/jquery.sticky.js"></script>
-<script>
-    $(document).ready(function(){
-        $("#LeftBar").sticky({topSpacing:70});
-    });
-</script>-->
 <div class="row1">
     <!--Left bar-->
 <nav id="LeftBar">

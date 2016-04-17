@@ -40,6 +40,8 @@ body {
     overflow: hidden;
     z-index: 9999;
     position: static;
+    transition: width, 0.7s;
+    transition-timing-function: ease-in-out;
 }
 /*Make top navigation bar sticky*/
 .navbar-fixed {
@@ -89,7 +91,7 @@ br.clearLeft {
     clear: left;
 }​
 /*Customise search boxes*/
-input[type=ingredient], input[type=searchBox] {
+input[type=ingredient], input[type=searchBox], input[type=text-box] {
     width: 175px;
     box-sizing: border-box;
     border: 3px solid #333;
