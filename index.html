@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pocket Pantry</title>
     <!--jQuery for navigation bar sticky scroll function-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script type="text/javascript" src="//code.jquery.com/jquery-latest.js"></script>
 </head>
 <body>
 <!--Logo and header-->
@@ -41,10 +41,12 @@
             $(window).scroll(function () {
                 console.log($(window).scrollTop())
                 if ($(window).scrollTop() > 25) {
-                    $('#nav').addClass('navbar-fixed');
+                    $('#nav').position('static');
+//                    $('#nav').addClass('navbar-fixed');
                 }
                 if ($(window).scrollTop() < 26) {
-                    $('#nav').removeClass('navbar-fixed');
+                    $('#nav').position('fixed');
+//                    $('#nav').removeClass('navbar-fixed');
                 }
             });
         });
@@ -53,23 +55,15 @@
             $(window).scroll(function () {
                 console.log($(window).scrollTop())
                 if ($(window).scrollTop() > 33) {
-                    $('#nav').addClass('navbar-fixed');
+                    $("#nav").css({top: 0, position: 'fixed', width: '100%', marginLeft: '0', marginRight: '0', left: '0'});
                 }
                 if ($(window).scrollTop() < 331) {
-                    $('#nav').removeClass('navbar-fixed');
+                    $("#nav").css({position: "static", marginLeft: '15%', marginRight: '15%', width: '70%'});
                 }
             });
         });
     }
 </script>
-
-<!--Still trying to get sticky left bar to work...
-<script src="garand-sticky-9434b1f/jquery.sticky.js"></script>
-<script>
-    $(document).ready(function(){
-        $("#LeftBar").sticky({topSpacing:70});
-    });
-</script>-->
 <div class="row1">
     <!--Left bar-->
 <nav id="LeftBar">
@@ -136,7 +130,12 @@
             </div>
         </div>
     <div class="results">
-        <div class="desc">Spaghetti Bolognese</div>
+        <div class="descWrapper">
+            <div class="desc">Surprisingly filling Hobbit broth</div>
+            <div class="heart1">
+                <img src="heartIcon3.png" class="heart3" alt="heart">
+            </div>
+        </div>
         <div class="img">
             <a target="_blank" href="foodimage.jpg">
                 <img src="foodimage.jpg" alt="Bolognese" width="800" height="400">
@@ -149,15 +148,15 @@
                 <a class="ings">- Beer</a><br>
                 <a class="ings">- Skills</a>
             </div>
-            <div class="heart1">
-                <a class="heart2" href="heart_icon">
-                    <img src="heart_icon.png" class="heart3" alt="heart">
-                </a>
-            </div>
     </div>
         </div>
         <div class="results">
-            <div class="desc">Spaghetti Bolognese</div>
+            <div class="descWrapper">
+                <div class="desc">Surprisingly filling Hobbit broth</div>
+                <div class="heart1">
+                    <img src="heartIcon3.png" class="heart3" alt="heart">
+                </div>
+            </div>
             <div class="img">
                 <a target="_blank" href="foodimage.jpg">
                     <img src="foodimage.jpg" alt="Bolognese" width="800" height="400">
@@ -169,16 +168,16 @@
                     <a class="ings">+ Magic beans</a><br>
                     <a class="ings">- Beer</a><br>
                     <a class="ings">- Skills</a>
-                </div>
-                <div class="heart1">
-                    <a class="heart2" href="heart_icon">
-                        <img src="heart_icon.png" class="heart3" alt="heart">
-                    </a>
                 </div>
             </div>
         </div>
         <div class="results">
-            <div class="desc">Spaghetti Bolognese</div>
+            <div class="descWrapper">
+                <div class="desc">Spaghetti bolognese</div>
+                <div class="heart1">
+                    <img src="heartIcon3.png" class="heart3" alt="heart">
+                </div>
+            </div>
             <div class="img">
                 <a target="_blank" href="foodimage.jpg">
                     <img src="foodimage.jpg" alt="Bolognese" width="800" height="400">
@@ -190,11 +189,6 @@
                     <a class="ings">+ Magic beans</a><br>
                     <a class="ings">- Beer</a><br>
                     <a class="ings">- Skills</a>
-                </div>
-                <div class="heart1">
-                    <a class="heart2" href="heart_icon">
-                        <img src="heart_icon.png" class="heart3" alt="heart">
-                    </a>
                 </div>
             </div>
         </div>
@@ -226,12 +220,12 @@
     </div>
     <!--Buttons for social media-->
     <div id="socialButtons">
-    <a href="https://www.facebook.com/profile.php?id=563989053776695&ref=ts&fref=ts" class="icon-link facebook"><i class="fa fa-facebook"></i></a>
-    <a href="https://twitter.com/PocketPantryApp" class="icon-link twitter"><i class="fa fa-twitter"></i></a>
-    <a class="icon-link google-plus"><i class="fa fa-google-plus"></i></a><br>
-    <a class="icon-link youtube"><i class="fa fa-youtube"></i></a>
-    <a href="https://www.instagram.com/pocketpantry/" class="icon-link pinterest"><i class="fa fa-pinterest"></i></a>
-    <a class="icon-link tumblr"><i class="fa fa-tumblr"></i></a>
+        <a href="https://www.facebook.com/profile.php?id=563989053776695&ref=ts&fref=ts" class="icon-link facebook"><i class="fa fa-facebook"></i></a>
+        <a href="https://twitter.com/PocketPantryApp" class="icon-link twitter"><i class="fa fa-twitter"></i></a>
+        <a class="icon-link google-plus"><i class="fa fa-google-plus"></i></a><br>
+        <a class="icon-link youtube"><i class="fa fa-youtube"></i></a>
+        <a href="https://www.instagram.com/pocketpantry/" class="icon-link pinterest"><i class="fa fa-pinterest"></i></a>
+        <a class="icon-link tumblr"><i class="fa fa-tumblr"></i></a>
     </div>
 </footer>
 
@@ -251,5 +245,6 @@
         });
     });
 </script>
+</footer>
 </body>
 </html>

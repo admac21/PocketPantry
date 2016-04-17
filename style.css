@@ -4,6 +4,10 @@
 body {
     font-family: "Verdana", "Times New Roman", Serif;
 }
+#position-saver {
+    height: 50px;
+    width: 100%;
+}
 /*Make everything responsive*/
 @media screen and (max-width: 500px){
     #nav li.right,
@@ -35,8 +39,9 @@ body {
     list-style-type: none;
     overflow: hidden;
     z-index: 9999;
-    transition-property: width;
-    transition-duration: 2s;
+    position: static;
+    transition: width, 0.7s;
+    transition-timing-function: ease-in-out;
 }
 /*Make top navigation bar sticky*/
 .navbar-fixed {
@@ -86,7 +91,7 @@ br.clearLeft {
     clear: left;
 }​
 /*Customise search boxes*/
-input[type=ingredient], input[type=searchBox] {
+input[type=ingredient], input[type=searchBox], input[type=text-box] {
     width: 175px;
     box-sizing: border-box;
     border: 3px solid #333;
@@ -100,7 +105,7 @@ input[type=ingredient], input[type=searchBox] {
     -webkit-transition: width 0.4s ease-in-out;
     transition: width 0.4s ease-in-out;
 }
-/*Expand width and change border color of recipe search box when clicked*/
+/*Change border color of recipe search box when clicked*/
 input[type=searchBox]:focus {
     border-color: #79BD8F;
 }
@@ -222,7 +227,7 @@ div.img img {
 div.desc {
     float: left;
     padding: 20px;
-    text-align: center;
+    text-align: left;
     width: 50%;
     font-size: 20px;
 }
