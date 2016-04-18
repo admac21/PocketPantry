@@ -531,7 +531,7 @@ div.desc {
     font-size: 29px;
 }
 /*Make footer responsive*/
-@media only screen and (max-width: 500px){
+@media only screen and (max-width: 700px){
     #PageFooter {
         width: 100%;
     }
@@ -566,4 +566,75 @@ div.desc {
         margin-left: 1%;
         margin-right: 1%;
     }
+}
+
+
+/*Mobile navbar*/
+#nav-trigger {
+    display: none;
+    text-align: center;
+    position: static;
+}
+#nav-trigger span {
+    display: inline-block;
+    padding: 10px 30px;
+    width: 100%;
+    background-color: #FF6138;
+    color: white;
+    cursor: pointer;
+    text-transform: uppercase; }
+#nav-trigger span:after {
+    display: inline-block;
+    margin-left: 10px;
+    width: 20px;
+    height: 10px;
+    content: "";
+    border-left: solid 10px transparent;
+    border-top: solid 10px #fff;
+    border-right: solid 10px transparent; }
+#nav-trigger span:hover {
+    background-color: #FF9138; }
+#nav-trigger span.open:after {
+    border-left: solid 10px transparent;
+    border-top: none;
+    border-bottom: solid 10px #fff;
+    border-right: solid 10px transparent; }
+
+
+nav#nav-mobile {
+    position: static;
+    display: none;
+}
+nav#nav-mobile ul {
+    display: none;
+    list-style-type: none;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin-left: 0;
+    margin-right: 0;
+    text-align: center;
+    background-color: #333; }
+nav#nav-mobile li {
+    display: block;
+    padding: 5px 0;
+    margin: 0 5px;
+    border-bottom: solid 1px #cc0028; }
+nav#nav-mobile li:last-child {
+    border-bottom: none; }
+nav#nav-mobile a {
+    display: block;
+    color: white;
+    padding: 10px 30px; }
+nav#nav-mobile a:hover {
+    background-color: #FF6138;
+    color: black; }
+
+/* Mobile navbar Media Queries*/
+@media all and (max-width: 700px) {
+    #nav-trigger {
+        display: block; }
+
+    nav#nav-mobile {
+        display: block; }
 }
