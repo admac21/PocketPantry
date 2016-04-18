@@ -41,12 +41,10 @@
             $(window).scroll(function () {
                 console.log($(window).scrollTop())
                 if ($(window).scrollTop() > 25) {
-                    $('#nav').position('static');
-//                    $('#nav').addClass('navbar-fixed');
+                    $("#nav").css({top: 0, position: 'fixed', width: '100%', marginLeft: '0', marginRight: '0', left: '0'});
                 }
                 if ($(window).scrollTop() < 26) {
-                    $('#nav').position('fixed');
-//                    $('#nav').removeClass('navbar-fixed');
+                    $("#nav").css({position: "static", marginLeft: '15%', marginRight: '15%', width: '70%'});
                 }
             });
         });

@@ -91,8 +91,8 @@ br.clearLeft {
     clear: left;
 }​
 /*Customise search boxes*/
-input[type=ingredient], input[type=searchBox], input[type=text-box] {
-    width: 175px;
+ input:not([type]), input[type="searchBox"], input[type="ingredient"] {
+    width: 190px;
     box-sizing: border-box;
     border: 3px solid #333;
     border-radius: 4px;
@@ -102,16 +102,18 @@ input[type=ingredient], input[type=searchBox], input[type=text-box] {
     background-position: 10px 10px;
     background-repeat: no-repeat;
     padding: 10px 20px 12px 40px;
-    -webkit-transition: width 0.4s ease-in-out;
-    transition: width 0.4s ease-in-out;
+     transition: all .4s ease;
 }
 /*Change border color of recipe search box when clicked*/
 input[type=searchBox]:focus {
     border-color: #79BD8F;
+    width: 250px;
+    transition: all .4s ease;
 }
 /*Change border color of ingredient search box when clicked*/
 input[type=ingredient]:focus {
     border-color: #79BD8F;
+    transition: all .4s ease;
 }
 /*Display logo and header*/
 #MainHeader {
