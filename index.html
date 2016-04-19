@@ -57,7 +57,8 @@
                 console.log($(window).scrollTop());
                 if ($(window).scrollTop() > 25) {
                     $("#nav-trigger").css({width: '100%', marginTop: 0, top: 0, position: 'fixed'});
-                    $("#nav-mobile").css({width: '100%', marginTop: 0, top: 0, position: 'fixed'});
+                    $("#nav-mobile").css({width: '100%', marginTop: 0, marginBottom: '50px', top: 0, position: 'fixed'});
+                    $("nav#nav-mobile ul.expanded").css({marginTop: '50px'});
 
                 }
                 if ($(window).scrollTop() < 26) {
