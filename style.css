@@ -128,8 +128,10 @@ input[type=ingredient]:focus {
     height:450px;
     margin-bottom: 3%;
 }
-@media screen and (max-width: 500px){
+@media screen and (max-width: 700px){
     #MainHeader {
+        background: url("background_food.png");
+        background-size: cover;
         height: 240px;
     }
 }
@@ -145,6 +147,13 @@ input[type=ingredient]:focus {
     position: relative;
     z-index: 9999;
     overflow: visible;
+}
+#MaterialPantry2 {
+    position: relative;
+    height: 120px;
+    width: 120px;
+    alignment: center;
+    margin-top: 40px;
 }
 /*Customise left bar*/
 #LeftBar {

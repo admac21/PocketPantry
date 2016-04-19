@@ -34,20 +34,22 @@
             <span>Menu</span>
         </div>
         <nav id="nav-mobile"></nav>
+    <img src="MaterialPantry.png" id="MaterialPantry2" alt="PocketPantryLogo">
 </header>
 <!--Make navigation bar sticky when user scrolls past it.
  One for desktop view and one for mobile view-->
 <script>
     if ($(window).width() < 700) {
         $("#nav").hide();
+
         $(document).ready(function () {
             $("#nav-mobile").html($("#nav").html());
             $("#nav-trigger span").click(function () {
                 if ($("nav#nav-mobile ul").hasClass("expanded")) {
-                    $("nav#nav-mobile ul.expanded").removeClass("expanded").slideUp(250);
+                    $("nav#nav-mobile ul.expanded").removeClass("expanded").slideUp(350);
                     $(this).removeClass("open");
                 } else {
-                    $("nav#nav-mobile ul").addClass("expanded").slideDown(250);
+                    $("nav#nav-mobile ul").addClass("expanded").slideDown(350);
                     $(this).addClass("open");
                 }
             });
@@ -57,8 +59,8 @@
                 console.log($(window).scrollTop());
                 if ($(window).scrollTop() > 25) {
                     $("#nav-trigger").css({width: '100%', marginTop: 0, top: 0, position: 'fixed'});
-                    $("#nav-mobile").css({width: '100%', marginTop: 0, marginBottom: '50px', top: 0, position: 'fixed'});
-                    $("nav#nav-mobile ul.expanded").css({marginTop: '50px'});
+                    $("#nav-mobile").css({width: '100%', marginTop: 0, top: 0, position: 'fixed'});
+                    $("nav#nav-mobile ul.expanded").css({marginTop: '40px'});
 
                 }
                 if ($(window).scrollTop() < 26) {
