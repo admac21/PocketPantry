@@ -117,7 +117,7 @@ input[type=ingredient]:focus {
 }
 /*Display logo and header*/
 #MainHeader {
-    background: url(background_food.png);
+    background: url(background_food.jpg);
     background-size: 100vw;
     background-repeat: no-repeat;
     background-attachment: fixed;
