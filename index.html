@@ -41,7 +41,7 @@
 <script>
     if ($(window).width() < 700) {
         $("#nav").hide();
-
+        $("#MaterialPantry2").css({visibility: 'visible'});
         $(document).ready(function () {
             $("#nav-mobile").html($("#nav").html());
             $("#nav-trigger span").click(function () {
@@ -62,9 +62,6 @@
                     $("#nav-mobile").css({width: '100%', marginTop: 0, top: 0, position: 'fixed'});
                     $("nav#nav-mobile ul.expanded").css({marginTop: '40px'});
 
-                }
-                if ($(window).scrollTop() < 26) {
-                    $("#nav-mobile").css({width: '100%',position: 'static'});
                 }
             });
         });
