@@ -17,7 +17,6 @@
     <h1 id="Title">Pocket  <img src="MaterialPantry.png" id="MaterialPantry" alt="PocketPantryLogo"
                                 height="200" width="200" align="center">  Pantry</h1>
     <!--Navigation bar-->
-    <ul class="navWrap">
         <div id='nav'>
             <ul>
                 <li class="left"><a href="#Title" class="active">Home</a></li>
@@ -31,29 +30,45 @@
             </ul>
             <br class="clearLeft" />
         </div>
-    </ul>
+        <div id="nav-trigger">
+            <span>Menu</span>
+        </div>
+        <nav id="nav-mobile"></nav>
 </header>
 <!--Make navigation bar sticky when user scrolls past it.
  One for desktop view and one for mobile view-->
 <script>
     if ($(window).width() < 700) {
+        $("#nav").hide();
+        $(document).ready(function () {
+            $("#nav-mobile").html($("#nav").html());
+            $("#nav-trigger span").click(function () {
+                if ($("nav#nav-mobile ul").hasClass("expanded")) {
+                    $("nav#nav-mobile ul.expanded").removeClass("expanded").slideUp(250);
+                    $(this).removeClass("open");
+                } else {
+                    $("nav#nav-mobile ul").addClass("expanded").slideDown(250);
+                    $(this).addClass("open");
+                }
+            });
+        });
         $(document).ready(function () {
             $(window).scroll(function () {
-                console.log($(window).scrollTop())
+                console.log($(window).scrollTop());
                 if ($(window).scrollTop() > 25) {
-                    $('#nav').position('static');
-//                    $('#nav').addClass('navbar-fixed');
+                    $("#nav-trigger").css({backgroundColor: 'black', width: '100%', marginTop: 0, top: 0, position: 'fixed'});
+                    $("#nav-mobile").css({backgroundColor: 'black', width: '100%', marginTop: 0, top: 0, position: 'fixed'});
+
                 }
                 if ($(window).scrollTop() < 26) {
-                    $('#nav').position('fixed');
-//                    $('#nav').removeClass('navbar-fixed');
+                    $("#nav-mobile").css({width: '100%',position: 'static'});
                 }
             });
         });
     } else {
         $(document).ready(function () {
             $(window).scroll(function () {
-                console.log($(window).scrollTop())
+                console.log($(window).scrollTop());
                 if ($(window).scrollTop() > 33) {
                     $("#nav").css({top: 0, position: 'fixed', width: '100%', marginLeft: '0', marginRight: '0', left: '0'});
                 }
