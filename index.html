@@ -10,8 +10,12 @@
     <title>Pocket Pantry</title>
     <!--jQuery for navigation bar sticky scroll function-->
     <script type="text/javascript" src="//code.jquery.com/jquery-latest.js"></script>
+    <!--include the Google Platform Library for Google sign-in-->
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <meta name="google-signin-client_id" content="568823689660-386ik3kjs8gbu26p6l9i9eveoa5fk0c2.apps.googleusercontent.com">
 </head>
 <body>
+<div id="blurMe">
 <!--Logo and header-->
 <header id="MainHeader">
     <h1 id="Title">Pocket  <img src="MaterialPantry.png" id="MaterialPantry" alt="PocketPantryLogo"
@@ -22,8 +26,37 @@
                 <li class="left"><a href="#Title" class="active">Home</a></li>
                 <li><a href="#aboutUs" class="about">About</a></li>
                 <li><a href="#getInTouch" class="contact">Contact</a></li>
-                <li><a href="#signup" class="signup">Signup</a></li>
-                <li><a href="#login" class="login">Login</a></li>
+
+                <script>
+                    function onSuccess(googleUser) {
+                        console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
+                    }
+                    function onFailure(error) {
+                        console.log(error);
+                    }
+                    function renderButton() {
+                        gapi.signin2.render('my-signin2', {
+                            'scope': 'profile email',
+                            'width': 240,
+                            'height': 50,
+                            'longtitle': true,
+                            'theme': 'dark',
+                            'onsuccess': onSuccess,
+                            'onfailure': onFailure
+                        });
+                    }
+                </script>
+                <li><a href="#" onclick="signOut();">Sign out</a></li>
+                <script>
+                    function signOut() {
+                        var auth2 = gapi.auth2.getAuthInstance();
+                        auth2.signOut().then(function () {
+                            console.log('User signed out.');
+                        });
+                    }
+                </script>
+                <li><a href="#signlogin" id="myBtn" class="login">Login or signin</a></li>
+
                 <li class="right"><form>
                     <input type="searchBox" name="search" placeholder="Search recipes">
                 </form></li>
@@ -35,6 +68,19 @@
         </div>
         <nav id="nav-mobile"></nav>
     <img src="MaterialPantry.png" id="MaterialPantry2" alt="PocketPantryLogo">
+    <!-- Trigger/Open The Modal -->
+
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close">X</span>
+            <li><a class="g-signin2" data-onsuccess="onSignIn"></a></li>
+            <li><a class="username" href="#username"> </a></li>
+        </div>
+
+    </div>
 </header>
 <!--Make navigation bar sticky when user scrolls past it.
  One for desktop view and one for mobile view-->
@@ -61,7 +107,6 @@
                     $("#nav-trigger").css({width: '100%', marginTop: 0, top: 0, position: 'fixed'});
                     $("#nav-mobile").css({width: '100%', marginTop: 0, top: 0, position: 'fixed'});
                     $("nav#nav-mobile ul.expanded").css({marginTop: '40px'});
-
                 }
             });
         });
@@ -260,6 +305,33 @@
         });
     });
 </script>
-</footer>
+<script>
+// Get the modal
+var modal = document.getElementById('myModal');
+
+// Get the button that opens the modal
+var a = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on the button, open the modal
+a.onclick = function() {
+    modal.style.display = "block";
+};
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+    modal.style.display = "none";
+};
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+</script>
+</div>
 </body>
 </html>
