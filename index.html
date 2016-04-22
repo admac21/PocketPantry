@@ -50,11 +50,11 @@
     <h1 id="Title">Pocket <img src="MaterialPantry.png" id="MaterialPantry" alt="PocketPantryLogo"
                                height="200" width="200" align="center"> Pantry</h1>
     <!--Navigation bar-->
-    <div id='nav'>
-        <ul>
-            <li class="left"><a href="#Title" class="active">Home</a></li>
-            <li><a href="#aboutUs" class="about">About</a></li>
-            <li><a href="#getInTouch" class="contact">Contact</a></li>
+        <nav id="nav">
+            <ul>
+                <li class="left"><a href="#blurMe" id="home" tabindex="1">Home</a></li>
+                <li><a href="#aboutUs" class="about" tabindex="2">About</a></li>
+                <li><a href="#getInTouch" class="contact" tabindex="3">Contact</a></li>
 
             <script>
                 function onSuccess(googleUser) {
@@ -137,7 +137,7 @@
 <script>
     if ($(window).width() < 700) {
         $("#nav").hide();
-        $("#MaterialPantry2").css({visibility: 'visible'});
+        $("#MainHeader").toggleClass("toggle");
         $(document).ready(function () {
             $("#nav-mobile").html($("#nav").html());
             $("#nav-trigger span").click(function () {
@@ -311,8 +311,8 @@
                 </div>
             </div>
         </div>
+    </section>
     </div>
-</div>
 <!--Footer-->
 <footer id="PageFooter">
     <div id="getInTouch">
