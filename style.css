@@ -71,15 +71,25 @@ body {
     text-decoration: none;
     left: 0;
 }
+/*Change the color of current page's button*/
+#home {
+    background-color: #ff6138;
+}
 /*Change button color to black on hover*/
-#nav li a:hover:not(.active) {
+#nav li a:hover {
     background-color: #111;
     transition: all .4s;
 }
-/*Change the color of current page's button*/
-#nav li a.active {
-    background-color: #ff6138;
+#home:hover{
+    background-color: #BD4829;
+    transition: all .4s;
 }
+
+#nav li a:focus{
+    background: #00A388;
+    transition: all .4s;
+}
+
 /*Move search box to the right side of navigation bar*/
 #nav li.right {
     float: right;
@@ -125,6 +135,7 @@ input[type=ingredient]:focus {
 /*Display logo and header*/
 #MainHeader {
     background: url(background_food.jpg);
+    filter: blur (5px);
     background-size: 100vw;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -413,7 +424,7 @@ div.desc {
     outline: none;
     margin: 5px;
     box-sizing: content-box;
-    border-radius: 10%;
+    border-radius: 20%;
     border: 2px solid #333;
 }
 /*Set icon color*/
