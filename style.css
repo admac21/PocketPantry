@@ -153,6 +153,10 @@ input[type=ingredient]:focus {
     }
 }
 /*Pocket Pantry title*/
+@font-face {
+    font-family: Breamcatcher;
+    src: url('breamcatcher.ttf');
+}
 #Title {
     padding-bottom: 40px;
     font-size: 70px;
