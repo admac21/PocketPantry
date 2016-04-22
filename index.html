@@ -12,43 +12,14 @@
     <script type="text/javascript" src="//code.jquery.com/jquery-latest.js"></script>
     <!--include the Google Platform Library for Google sign-in-->
     <script src="https://apis.google.com/js/platform.js" async defer></script>
-    <meta name="google-signin-client_id"
-          content="568823689660-386ik3kjs8gbu26p6l9i9eveoa5fk0c2.apps.googleusercontent.com">
+    <meta name="google-signin-client_id" content="568823689660-386ik3kjs8gbu26p6l9i9eveoa5fk0c2.apps.googleusercontent.com">
 </head>
 <body>
-<!--The Popup login window -->
-<div id="myModal" class="modal">
-    <!-- Popup content -->
-    <div class="modal-content">
-        <span class="close">X</span>
-        <!--Login button-->
-        <li><a class="g-signin2" data-onsuccess="onSignIn" onclick="login1()"></a></li>
-        <!--Logout button-->
-        <li><a href="#" class="logout" onclick="logout1()">Logout</a></li>
-    </div>
-
-</div>
-<script>
-    window.fbAsyncInit = function() {
-        FB.init({
-            appId      : '985300261517338',
-            xfbml      : true,
-            version    : 'v2.6'
-        });
-    };
-
-    (function(d, s, id){
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) {return;}
-        js = d.createElement(s); js.id = id;
-        js.src = "//connect.facebook.net/en_US/sdk.js";
-        fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));
-</script>
+<div id="blurMe">
 <!--Logo and header-->
 <header id="MainHeader">
-    <h1 id="Title">Pocket <img src="MaterialPantry.png" id="MaterialPantry" alt="PocketPantryLogo"
-                               height="200" width="200" align="center"> Pantry</h1>
+    <h1 id="Title">Pocket  <img src="MaterialPantry.png" id="MaterialPantry" alt="PocketPantryLogo"
+                                height="200" width="200" align="center">  Pantry</h1>
     <!--Navigation bar-->
         <nav id="nav">
             <ul>
@@ -56,81 +27,60 @@
                 <li><a href="#aboutUs" class="about" tabindex="2">About</a></li>
                 <li><a href="#getInTouch" class="contact" tabindex="3">Contact</a></li>
 
-            <script>
-                function onSuccess(googleUser) {
-                    console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
-                }
-                function onFailure(error) {
-                    console.log(error);
-                }
-                function renderButton() {
-                    gapi.signin2.render('g-signin2', {
-                        'scope': 'profile email',
-                        'width': 240,
-                        'height': 50,
-                        'longtitle': true,
-                        'theme': 'dark',
-                        'onsuccess': onSuccess,
-                        'onfailure': onFailure
-                    });
-                }
-            </script>
-            <script>
-                function signOut() {
-                    var auth2 = gapi.auth2.getAuthInstance();
-                    auth2.signOut().then(function () {
-                        console.log('User signed out.');
-                    });
-                }
-            </script>
-            <!--Login button-->
-            <li><a href="#signlogin" id="loginBtn" class="login">Login</a></li>
-            <li class="right">
-                <form>
+                <script>
+                    function onSuccess(googleUser) {
+                        console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
+                    }
+                    function onFailure(error) {
+                        console.log(error);
+                    }
+                    function renderButton() {
+                        gapi.signin2.render('my-signin2', {
+                            'scope': 'profile email',
+                            'width': 240,
+                            'height': 50,
+                            'longtitle': true,
+                            'theme': 'dark',
+                            'onsuccess': onSuccess,
+                            'onfailure': onFailure
+                        });
+                    }
+                </script>
+                <li><a href="#" onclick="signOut();" tabindex="4">Sign out</a></li>
+                <script>
+                    function signOut() {
+                        var auth2 = gapi.auth2.getAuthInstance();
+                        auth2.signOut().then(function () {
+                            console.log('User signed out.');
+                        });
+                    }
+                </script>
+                <li><a href="#signlogin" id="myBtn" class="login">Login or signin</a></li>
+
+                <li class="right"><form>
                     <input type="searchBox" name="search" placeholder="Search recipes">
-                </form>
-            </li>
-        </ul>
-        <br class="clearLeft"/>
-    </div>
-    <!--Mobile navbar trigger-->
-    <div id="nav-trigger">
-        <span>Menu</span>
-    </div>
-    <!--Mobile navbar-->
-    <nav id="nav-mobile"></nav>
+                </form></li>
+            </ul>
+            <br class="clearLeft" />
+        </nav>
+        <div id="nav-trigger">
+            <span>Menu</span>
+        </div>
+        <nav id="nav-mobile"></nav>
     <img src="MaterialPantry.png" id="MaterialPantry2" alt="PocketPantryLogo">
-    <script>
-        function logout1() {
-            signOut();
-            $('.login').text('Login')
-        };
-        function login1() {
-            if ($('.login').text('Login')) {
-                $('.login').text('Logout')
-            }
-        }
-        <!--Blur background when login button is clicked-->
-        function Blur() {
-            $('#Title, #PageContent, .results, #LeftBar, #PageFooter, #MainHeader').css({
-                'filter'         : 'blur(2px)',
-                '-webkit-filter' : 'blur(2px)',
-                '-moz-filter'    : 'blur(2px)',
-                '-o-filter'      : 'blur(2px)',
-                '-ms-filter'     : 'blur(2px)',
-                transition : 'all 0.3s ease-in-out'})
-        }
-        <!--unblur background when popup is closed-->
-        function unBlur() {
-            $('#Title, #PageContent, .results, #LeftBar, #PageFooter, #MainHeader').css({
-                'filter'         : 'blur(0px)',
-                '-webkit-filter' : 'blur(0px)',
-                '-moz-filter'    : 'blur(0px)',
-                '-o-filter'      : 'blur(0px)',
-                '-ms-filter'     : 'blur(0px)',
-                transition : 'all 0.3s ease-in-out'});
-        }
-    </script>
+    <!-- Trigger/Open The Modal -->
+
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close">X</span>
+            <li><a class="g-signin2" data-onsuccess="onSignIn"></a></li>
+            <li><a class="username" href="#username"> </a></li>
+        </div>
+
+    </div>
 </header>
 <!--Make navigation bar sticky when user scrolls past it.
  One for desktop view and one for mobile view-->
@@ -165,14 +115,7 @@
             $(window).scroll(function () {
                 console.log($(window).scrollTop());
                 if ($(window).scrollTop() > 33) {
-                    $("#nav").css({
-                        top: 0,
-                        position: 'fixed',
-                        width: '100%',
-                        marginLeft: '0',
-                        marginRight: '0',
-                        left: '0'
-                    });
+                    $("#nav").css({top: 0, position: 'fixed', width: '100%', marginLeft: '0', marginRight: '0', left: '0'});
                 }
                 if ($(window).scrollTop() < 331) {
                     $("#nav").css({position: "static", marginLeft: '15%', marginRight: '15%', width: '70%'});
@@ -183,91 +126,89 @@
 </script>
 <div class="row1">
     <!--Left bar-->
-    <nav id="LeftBar">
-        <ul id="AddIngs">
-            <a id="whatsinyourpantry">What's In Your Pantry?</a>
-            <div class="my-form">
-                <form role="form" method="post">
-                    <p class="text-box">
-                        <label for="box1"><span class="box-number">1</span></label>
-                        <input type="ingredient" name="boxes[]" value="" id="box1"/>
-                    </p>
-                    <a class="add-box" href="#">
-                        <button class="button addbutton">Add</button>
-                    </a>
+<nav id="LeftBar">
+    <ul id="AddIngs">
+        <a id="whatsinyourpantry">What's In Your Pantry?</a>
+        <div class="my-form">
+            <form role="form" method="post">
+                <p class="text-box">
+                    <label for="box1"><span class="box-number">1</span></label>
+                    <input type="ingredient" name="boxes[]" value="" id="box1" />
+                </p>
+                <a class="add-box" href="#"><button class="button addbutton">Add</button></a>
                     <button class="button searchbutton">Search</button>
-                </form>
-            </div>
-            <!--Add, remove and search button functions-->
-            <script type="text/javascript">
-                jQuery(document).ready(function ($) {
-                    $('.my-form .add-box').click(function () {
-                        var n = $('.text-box').length + 1;
-                        var box_html = $('<p class="text-box"><label for="box' + n + '"><span class="box-number">'
-                                + n + '</span></label> <input type="ingredient" name="boxes[]" value="" id="box'
-                                + n + '" /> <a href="#" class="remove-box"><button class="button deletebutton">X</button></a></p>');
-                        box_html.hide();
-                        $('.my-form p.text-box:last').after(box_html);
-                        box_html.fadeIn('slow');
-                        return false;
-                    });
-                });
-                $('.my-form').on('click', '.remove-box', function () {
-                    $(this).parent().fadeOut("slow", function () {
-                        $(this).remove();
-                        $('.box-number').each(function (index) {
-                            $(this).text(index + 1);
-                        });
-                    });
+            </form>
+        </div>
+        <!--Add, remove and search button functions-->
+        <script type="text/javascript">
+            jQuery(document).ready(function($){
+                $('.my-form .add-box').click(function(){
+                    var n = $('.text-box').length + 1;
+                    var box_html = $('<p class="text-box"><label for="box' + n + '"><span class="box-number">'
+                            + n + '</span></label> <input type="ingredient" name="boxes[]" value="" id="box'
+                            + n + '" /> <a href="#" class="remove-box"><button class="button deletebutton">X</button></a></p>');
+                    box_html.hide();
+                    $('.my-form p.text-box:last').after(box_html);
+                    box_html.fadeIn('slow');
                     return false;
                 });
-            </script>
-        </ul>
-    </nav>
+            });
+            $('.my-form').on('click', '.remove-box', function(){
+                $(this).parent().fadeOut("slow", function() {
+                    $(this).remove();
+                    $('.box-number').each(function(index){
+                        $(this).text( index + 1 );
+                    });
+                });
+                return false;
+            });
+        </script>
+    </ul>
+</nav>
     <!--Right side of the screen where results are shown-->
-    <div class="ResultArea">
-        <div class="results">
-            <div class="descWrapper">
-                <div class="desc">Surprisingly filling Hobbit broth</div>
-                <div class="heart1">
-                    <img src="heartIcon3.png" class="heart3" alt="heart">
-                </div>
-            </div>
-            <div class="img">
-                <a target="_blank" href="foodimage.jpg">
-                    <img src="foodimage.jpg" alt="HobbitBroth" width="800" height="400">
-                </a>
+    <section class="ResultArea">
+    <div class="results">
+        <div class="descWrapper">
+        <div class="desc">Surprisingly filling Hobbit broth</div>
+        <div class="heart1">
+            <img src="heartIcon3.png" class="heart3" alt="heart">
+        </div>
+        </div>
+        <div class="img">
+            <a target="_blank" href="foodimage.jpg">
+                <img src="foodimage.jpg" alt="HobbitBroth" width="800" height="400">
+            </a>
             </div>
             <div class="resultInformation">
                 <div class="resultIngs">
-                    <a class="ings">+ Unicorn meat</a><br>
-                    <a class="ings">+ Fairy dust</a><br>
-                    <a class="ings">+ Lava from Mordor</a><br>
-                    <a class="ings">- Motivation</a>
-                </div>
+            <a class="ings">+ Unicorn meat</a><br>
+            <a class="ings">+ Fairy dust</a><br>
+            <a class="ings">+ Lava from Mordor</a><br>
+            <a class="ings">- Motivation</a>
+            </div>
 
             </div>
         </div>
-        <div class="results">
-            <div class="descWrapper">
-                <div class="desc">Surprisingly filling Hobbit broth</div>
-                <div class="heart1">
-                    <img src="heartIcon3.png" class="heart3" alt="heart">
-                </div>
+    <div class="results">
+        <div class="descWrapper">
+            <div class="desc">Surprisingly filling Hobbit broth</div>
+            <div class="heart1">
+                <img src="heartIcon3.png" class="heart3" alt="heart">
             </div>
-            <div class="img">
-                <a target="_blank" href="foodimage.jpg">
-                    <img src="foodimage.jpg" alt="Bolognese" width="800" height="400">
-                </a>
+        </div>
+        <div class="img">
+            <a target="_blank" href="foodimage.jpg">
+                <img src="foodimage.jpg" alt="Bolognese" width="800" height="400">
+            </a>
+        </div>
+        <div class="resultInformation">
+            <div class="resultIngs">
+                <a class="ings">+ Rancor brains</a><br>
+                <a class="ings">+ Magic beans</a><br>
+                <a class="ings">- Beer</a><br>
+                <a class="ings">- Skills</a>
             </div>
-            <div class="resultInformation">
-                <div class="resultIngs">
-                    <a class="ings">+ Rancor brains</a><br>
-                    <a class="ings">+ Magic beans</a><br>
-                    <a class="ings">- Beer</a><br>
-                    <a class="ings">- Skills</a>
-                </div>
-            </div>
+    </div>
         </div>
         <div class="results">
             <div class="descWrapper">
@@ -317,14 +258,14 @@
 <footer id="PageFooter">
     <div id="getInTouch">
         <div id="getInTouchBox">
-            <a id="getInTouchHeader">Get In Touch</a><br>
+    <a id="getInTouchHeader">Get In Touch</a><br>
             <a></a><br>
-            <a>info@pocketpantry.co.uk</a><br>
-            <a>01224 242399</a><br>
-            <a></a><br>
-            <a>333 Pantry Way</a><br>
-            <a>Aberdeen</a><br>
-            <a>AB10 L0L</a>
+        <a>info@pocketpantry.co.uk</a><br>
+        <a>01224 242399</a><br>
+        <a></a><br>
+        <a>333 Pantry Way</a><br>
+        <a>Aberdeen</a><br>
+        <a>AB10 L0L</a>
         </div>
     </div>
     <div id="aboutUs">
@@ -339,13 +280,11 @@
     </div>
     <!--Buttons for social media-->
     <div id="socialButtons">
-        <a href="https://www.facebook.com/profile.php?id=563989053776695&ref=ts&fref=ts" class="icon-link facebook"><i
-                class="fa fa-facebook"></i></a>
+        <a href="https://www.facebook.com/profile.php?id=563989053776695&ref=ts&fref=ts" class="icon-link facebook"><i class="fa fa-facebook"></i></a>
         <a href="https://twitter.com/PocketPantryApp" class="icon-link twitter"><i class="fa fa-twitter"></i></a>
         <a class="icon-link google-plus"><i class="fa fa-google-plus"></i></a><br>
         <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="icon-link youtube"><i class="fa fa-youtube"></i></>
-        <a href="https://www.instagram.com/pocketpantry/" class="icon-link pinterest"><i
-                class="fa fa-pinterest"></i></a>
+        <a href="https://www.instagram.com/pocketpantry/" class="icon-link pinterest"><i class="fa fa-pinterest"></i></a>
         <a class="icon-link tumblr"><i class="fa fa-tumblr"></i></a>
     </div>
 </footer>
@@ -353,8 +292,8 @@
 <!-- Scripts -->
 <script type="text/javascript">
     //Function declaration
-    $(document).ready(function () {
-        $('a[href^="#"]').on('click', function (e) {
+    $(document).ready(function(){
+        $('a[href^="#"]').on('click',function (e) {
             e.preventDefault();
 
             var target = this.hash;
@@ -367,34 +306,32 @@
     });
 </script>
 <script>
-    // Get the modal
-    var modal = document.getElementById('myModal');
+// Get the modal
+var modal = document.getElementById('myModal');
 
-    // Get the button that opens the modal
-    var a = document.getElementById("loginBtn");
+// Get the button that opens the modal
+var a = document.getElementById("myBtn");
 
-    // Get the <span> element that closes the modal
-    var span = document.getElementsByClassName("close")[0];
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
 
-    // When the user clicks on the button, open the modal
-    a.onclick = function () {
-        modal.style.display = "block";
-        Blur();
-    };
+// When the user clicks on the button, open the modal
+a.onclick = function() {
+    modal.style.display = "block";
+};
 
-    // When the user clicks on <span> (x), close the modal
-    span.onclick = function () {
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+    modal.style.display = "none";
+};
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
         modal.style.display = "none";
-        unBlur();
-    };
-
-    // When the user clicks anywhere outside of the modal, close it
-    window.onclick = function (event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
-            unBlur();
-        }
     }
+}
 </script>
+</div>
 </body>
 </html>
