@@ -76,7 +76,7 @@ body {
     background-color: #ff6138;
 }
 /*Change button color to black on hover*/
-#nav li a:hover {
+#nav li a:hover:not(#home) {
     background-color: #111;
     transition: all .4s;
 }
@@ -160,7 +160,6 @@ input[type=ingredient]:focus {
 #Title {
     padding-top: 45px;
     padding-bottom: 20px;
-    vertical-align: middle;
     font-size: 90px;
     text-shadow: 4px 4px 6px #000000;
     font-family: "Breamcatcher", Verdana, Serif;
