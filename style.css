@@ -161,14 +161,14 @@ input[type=ingredient]:focus {
     padding-top: 45px;
     padding-bottom: 20px;
     vertical-align: middle;
-    font-size: 70px;
+    font-size: 90px;
     text-shadow: 4px 4px 6px #000000;
     font-family: "Breamcatcher", Verdana, Serif;
 }
 /*Logo*/
 #MaterialPantry {
     position: relative;
-    margin-top: -45px;
+    margin-top: -70px;
     z-index: 999;
     overflow: visible;
 }
