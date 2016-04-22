@@ -633,7 +633,7 @@ div.desc {
 #nav-trigger span:after {
     display: inline-block;
     width: 20px;
-    height: 100px;
+    height: 15px;
     content: "";
 }
 #nav-trigger span:hover {
