@@ -158,7 +158,9 @@ input[type=ingredient]:focus {
     src: url('breamcatcher.ttf');
 }
 #Title {
-    padding-bottom: 40px;
+    padding-top: 45px;
+    padding-bottom: 20px;
+    vertical-align: middle;
     font-size: 70px;
     text-shadow: 4px 4px 6px #000000;
     font-family: "Breamcatcher", Verdana, Serif;
@@ -166,6 +168,7 @@ input[type=ingredient]:focus {
 /*Logo*/
 #MaterialPantry {
     position: relative;
+    margin-top: -45px;
     z-index: 999;
     overflow: visible;
 }
