@@ -21,7 +21,7 @@
     <h1 id="Title">Pocket  <img src="MaterialPantry.png" id="MaterialPantry" alt="PocketPantryLogo"
                                 height="200" width="200" align="center">  Pantry</h1>
     <!--Navigation bar-->
-        <div id='nav'>
+        <nav id="nav">
             <ul>
                 <li class="left"><a href="#Title" id="home" tabindex="1">Home</a></li>
                 <li><a href="#aboutUs" class="about" tabindex="2">About</a></li>
@@ -62,7 +62,7 @@
                 </form></li>
             </ul>
             <br class="clearLeft" />
-        </div>
+        </nav>
         <div id="nav-trigger">
             <span>Menu</span>
         </div>
@@ -87,7 +87,7 @@
 <script>
     if ($(window).width() < 700) {
         $("#nav").hide();
-        $("#MaterialPantry2").css({visibility: 'visible'});
+        $("#MainHeader").toggleClass("toggle");
         $(document).ready(function () {
             $("#nav-mobile").html($("#nav").html());
             $("#nav-trigger span").click(function () {
@@ -166,7 +166,7 @@
     </ul>
 </nav>
     <!--Right side of the screen where results are shown-->
-    <div class="ResultArea">
+    <section class="ResultArea">
     <div class="results">
         <div class="descWrapper">
         <div class="desc">Surprisingly filling Hobbit broth</div>
@@ -252,7 +252,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </section>
     </div>
 <!--Footer-->
 <footer id="PageFooter">
