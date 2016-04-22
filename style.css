@@ -74,6 +74,7 @@ body {
 /*Change button color to black on hover*/
 #nav li a:hover:not(.active) {
     background-color: #111;
+    transition: all .4s;
 }
 /*Change the color of current page's button*/
 #nav li a.active {
@@ -115,10 +116,16 @@ input[type=ingredient]:focus {
     border-color: #79BD8F;
     transition: all .4s ease;
 }
+@media only screen and (max-width: 700px){
+    input[type=ingredient] {
+        width: 50%;
+        margin-bottom: 5%;
+    }
+}
 /*Display logo and header*/
 #MainHeader {
     background: url(background_food.jpg);
-    background-size: cover;
+    background-size: 100vw;
     background-repeat: no-repeat;
     background-attachment: fixed;
     color: white;
@@ -127,8 +134,10 @@ input[type=ingredient]:focus {
     height:450px;
     margin-bottom: 3%;
 }
-@media screen and (max-width: 500px){
+@media screen and (max-width: 700px){
     #MainHeader {
+        background: url("background_food.png");
+        background-size: cover;
         height: 240px;
     }
 }
@@ -142,8 +151,18 @@ input[type=ingredient]:focus {
 /*Logo*/
 #MaterialPantry {
     position: relative;
-    z-index: 9999;
+    z-index: 999;
     overflow: visible;
+}
+#MaterialPantry2 {
+    position: relative;
+    height: 120px;
+    width: 120px;
+    alignment: center;
+    margin-top: 40px;
+    visibility: hidden;
+    overflow: hidden;
+    z-index: 1;
 }
 /*Customise left bar*/
 #LeftBar {
@@ -159,7 +178,7 @@ input[type=ingredient]:focus {
     box-shadow: 0px 0px 10px rgba(0,0,0,0.8);
 }
 /*Fix size of LeftBar in mobile view*/
-@media only screen and (max-width: 500px){
+@media only screen and (max-width: 700px){
     #LeftBar {
         width: 92%;
         margin-bottom: 10%;
@@ -206,6 +225,12 @@ input[type=ingredient]:focus {
     color: black;
     border: 3px solid red;
 }
+/* delete button Media Querie*/
+@media all and (max-width: 700px) {
+    .deletebutton {
+        width: 20%;
+    }
+}
 /*Change button color when mouse is hovered over*/
 .addbutton:hover, .searchbutton:hover {
     background-color: #79BD8F;
@@ -219,6 +244,7 @@ input[type=ingredient]:focus {
 /*Strengthen box shadow when mouse is hovered over*/
 .results:hover {
     box-shadow: 0 0 25px rgba(0,0,0,0.9);
+    transition: all 0.4s;
 }
 /*Results images*/
 div.img img {
@@ -569,11 +595,14 @@ div.desc {
 }
 
 
+
+
 /*Mobile navbar*/
 #nav-trigger {
     display: none;
     text-align: center;
     position: static;
+    margin-left: -5px;
 }
 #nav-trigger span {
     display: inline-block;
@@ -582,28 +611,24 @@ div.desc {
     background-color: #FF6138;
     color: white;
     cursor: pointer;
-    text-transform: uppercase; }
+    text-transform: uppercase;
+}
 #nav-trigger span:after {
     display: inline-block;
-    margin-left: 10px;
     width: 20px;
     height: 10px;
     content: "";
-    border-left: solid 10px transparent;
-    border-top: solid 10px #fff;
-    border-right: solid 10px transparent; }
+}
 #nav-trigger span:hover {
-    background-color: #FF9138; }
-#nav-trigger span.open:after {
-    border-left: solid 10px transparent;
-    border-top: none;
-    border-bottom: solid 10px #fff;
-    border-right: solid 10px transparent; }
+    background-color: #FF9138;
+}
+
 
 
 nav#nav-mobile {
     position: static;
     display: none;
+    margin-left: -5px;
 }
 nav#nav-mobile ul {
     display: none;
@@ -611,30 +636,109 @@ nav#nav-mobile ul {
     position: absolute;
     left: 0;
     right: 0;
-    margin-left: 0;
-    margin-right: 0;
+    padding-left: 0;
     text-align: center;
-    background-color: #333; }
+    background-color: white;
+}
 nav#nav-mobile li {
     display: block;
     padding: 5px 0;
     margin: 0 5px;
-    border-bottom: solid 1px #cc0028; }
+    border-bottom: solid 1px #cc0028;
+}
 nav#nav-mobile li:last-child {
-    border-bottom: none; }
+    border-bottom: none;
+}
 nav#nav-mobile a {
     display: block;
-    color: white;
-    padding: 10px 30px; }
+    color: black;
+    padding: 10px 30px 10px 30px;
+}
 nav#nav-mobile a:hover {
     background-color: #FF6138;
-    color: black; }
+    color: black;
+}
 
 /* Mobile navbar Media Queries*/
 @media all and (max-width: 700px) {
     #nav-trigger {
-        display: block; }
-
+        display: block;
+    }
     nav#nav-mobile {
-        display: block; }
+        display: block;
+    }
 }
+
+
+
+
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 10000; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 0;
+    border: 1px solid #888;
+    width: 25%;
+    height: 70%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s;
+    transition: all 0.5s;
+}
+
+/* Add Animation */
+@-webkit-keyframes animatetop {
+    from {top:-300px; opacity:0}
+    to {top:0; opacity:1}
+}
+
+@keyframes animatetop {
+    from {top:-300px; opacity:0}
+    to {top:0; opacity:1}
+}
+
+/* The Close Button */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    margin-right: 2%;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+/*Google+ sign in button*/
+.g-signin2 {
+    float: left;
+    padding-top: 20%;
+    padding-left: 32%;
+    margin: 0 auto;
+}
+
+/*#Title, #PageContent, .results, #LeftBar, #nav  {*/
+    /*filter: blur(3px);*/
+/*}*/
