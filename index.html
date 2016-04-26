@@ -92,73 +92,10 @@
                         <button class="button searchbutton" id="searchb">Search</button>
                     </form>
                 </div>
-                <!--Add, remove and search button functions-->
-                <script type="text/javascript">
-                    jQuery(document).ready(function ($) {
-
-                        function getSearchBox() {
-                            var userInput = "";
-                            $(".text-box input").each(function () {
-                                        userInput += $(this).val() + ',';
-                                    }
-                            );
-                            alert(userInput);
-                            return userInput;
-                        }
-
-                        $("#searchb").click(function () {
-                            console.log("clicked");
-
-                            var baseURL = "http://food2fork.com/api/search?key=c374bfbac65d543206653a9fe750799d&q=ham&callback=?";
-                            /* $.getJSON(baseURL)
-                             .success(function( data ) {
-                             console.log("success: " +data);
-                             })
-                             .done(function( data ) {
-                             console.log("done: " +data);
-                             })
-                             .error(function(error) {
-                             console.log("error: " +error);
-                             });*/
-                            $.ajax({url: baseURL, success: function(jsondata){
-                                console.log(jsondata);
-                            }, error: function(xhr,status,error){
-                                console.log("error");
-                                console.log(xhr);
-                                console.log(status);
-                                console.log(error);
-                                }
-                            });
-
-                        });
 
 
-                        //end function
 
 
-                        $('.my-form .add-box').click(function () {
-                            var n = $('.text-box').length + 1;
-                            var box_html = $('<p class="text-box"><label for="box' + n + '"><span class="box-number">'
-                                    + n + '</span></label> <input type="ingredient" name="boxes[]" value="" id="box'
-                                    + n + '" /> <a href="#" class="remove-box"><button class="button deletebutton">X</button></a></p>');
-                            box_html.hide();
-                            $('.my-form p.text-box:last').after(box_html);
-                            box_html.fadeIn('slow');
-                            return false;
-                        });
-                    });
-                    $('.my-form').on('click', '.remove-box', function () {
-                        $(this).parent().fadeOut("slow", function () {
-                            $(this).remove();
-                            $('.box-number').each(function (index) {
-                                $(this).text(index + 1);
-                            });
-                        });
-                        return false;
-                    });
-
-
-                </script>
             </ul>
         </nav>
         <!--Right side of the screen where results are shown-->
@@ -285,7 +222,7 @@
             <a href="https://twitter.com/PocketPantryApp" class="icon-link twitter"><i class="fa fa-twitter"></i></a>
             <a class="icon-link google-plus"><i class="fa fa-google-plus"></i></a><br>
             <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="icon-link youtube"><i
-                    class="fa fa-youtube"></i></>
+                    class="fa fa-youtube"></i></a>
             <a href="https://www.instagram.com/pocketpantry/" class="icon-link pinterest"><i
                     class="fa fa-pinterest"></i></a>
             <a class="icon-link tumblr"><i class="fa fa-tumblr"></i></a>
@@ -345,6 +282,79 @@
                 //});
             }
             <!-- End of Responsive nav bar script -->
+
+            <!-- Add/remove new ingredient box script -->
+            $('.my-form .add-box').click(function () {
+                var n = $('.text-box').length + 1;
+                var box_html = $('<p class="text-box"><label for="box' + n + '"><span class="box-number">'
+                        + n + '</span></label> <input type="ingredient" name="boxes[]" value="" id="box'
+                        + n + '" /> <a href="#" class="remove-box"><button class="button deletebutton">X</button></a></p>');
+                box_html.hide();
+                $('.my-form p.text-box:last').after(box_html);
+                box_html.fadeIn('slow');
+                return false;
+            });
+
+            $('.my-form').on('click', '.remove-box', function () {
+                $(this).parent().fadeOut("slow", function () {
+                    $(this).remove();
+                    $('.box-number').each(function (index) {
+                        $(this).text(index + 1);
+                    });
+                });
+                return false;
+            });
+            <!-- end of add/remove new ingredient box script -->
+
+            function getSearchBox() {
+                var userInput = "";
+                $(".text-box input").each(function () {
+                            userInput += $(this).val() + ',';
+                        }
+                );
+                alert(userInput);
+                return userInput;
+            }
+
+            <!-- WIP : Search Ingredients -->
+
+            <!-- End WIP : Search Ingredients -->
+
+            <!-- This shit works-->
+
+            $("#searchb").click(function(){
+                //search();
+            });
+
+            function search() {
+
+
+                //var baseURL = "http://food2fork.com/api/search?key=c374bfbac65d543206653a9fe750799d&q=eggs&callback=?";
+                /* $.getJSON(baseURL)
+                .success(function( data ) {
+                console.log("success: " +data);
+            })
+                .done(function( data ) {
+                console.log("done: " +data);
+            })
+                .error(function(error) {
+                console.log("error: " +error);
+            });*/
+
+                $.ajax({url: baseURL,
+                    success: function(jsondata){
+                console.log(
+                        jsondata);
+            }, error: function(xhr, status, error) {
+                        console.log("error");
+                        console.log(xhr);
+                        console.log(status);
+                        console.log(error);
+
+                    }
+                });
+            }
+            <!-- End of this Shit Works -->
 
 
             //Function declaration
