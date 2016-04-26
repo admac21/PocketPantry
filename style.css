@@ -186,7 +186,7 @@ input[type=ingredient]:focus {
 }
 /*Customise left bar*/
 #LeftBar {
-    border-radius: 10px;
+    border-radius: 8px;
     line-height:30px;
     width: 30%;
     float:left;
@@ -195,7 +195,7 @@ input[type=ingredient]:focus {
     margin-left: 4%;
     margin-bottom: 80%;
     background-color: #ffffff;
-    box-shadow: 0px 0px 10px rgba(0,0,0,0.8);
+    box-shadow: 0px 0px 8px rgba(0,0,0,0.4);
 }
 /*Fix size of LeftBar in mobile view*/
 @media only screen and (max-width: 700px){
@@ -263,7 +263,7 @@ input[type=ingredient]:focus {
 }
 /*Strengthen box shadow when mouse is hovered over*/
 .results:hover {
-    box-shadow: 0 0 25px rgba(0,0,0,0.9);
+    box-shadow: 0 0 12px rgba(0,0,0,0.6);
     transition: all 0.4s;
 }
 /*Results images*/
@@ -301,9 +301,9 @@ div.desc {
     width: 45%;
     display: block;
     float: left;
-    border-radius: 10px;
+    border-radius: 8px;
     background-color: white;
-    box-shadow: 0 0 10px rgba(0,0,0,0.8);
+    box-shadow: 0 0 8px rgba(0,0,0,0.4);
     margin: 1%;
     margin-left: 8%;
 }
