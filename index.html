@@ -26,6 +26,15 @@
         <span class="close">X</span>
         <!--Login button-->
         <li><a class="g-signin2" data-onsuccess="onSignIn" onclick="login1()"></a></li>
+        <!--Facebook stuff-->
+        <fb-login-button scope="public_profile,email" onlogin="checkLoginState();">
+        </fb-login-button>
+        <div id="fb-root"></div>
+
+        <div class="fb-login-button" data-max-rows="1" data-size="medium" data-show-faces="false"
+             data-auto-logout-link="false"></div>
+
+
         <!--Logout button-->
         <li><a href="#" class="logout" onclick="logout1()">Logout</a></li>
     </div>
@@ -65,53 +74,7 @@
     </header>
     <!--Make navigation bar sticky when user scrolls past it.
      One for desktop view and one for mobile view-->
-    <script>
-        if ($(window).width() < 700) {
-            $("#nav").hide();
-            $("#MainHeader").toggleClass("toggle");
-            $(document).ready(function () {
-                $("#nav-mobile").html($("#nav").html());
-                $("#nav-trigger span").click(function () {
-                    if ($("nav#nav-mobile ul").hasClass("expanded")) {
-                        $("nav#nav-mobile ul.expanded").removeClass("expanded").slideUp(350);
-                        $(this).removeClass("open");
-                    } else {
-                        $("nav#nav-mobile ul").addClass("expanded").slideDown(350);
-                        $(this).addClass("open");
-                    }
-                });
-            });
-            $(document).ready(function () {
-                $(window).scroll(function () {
-                    console.log($(window).scrollTop());
-                    if ($(window).scrollTop() > 25) {
-                        $("#nav-trigger").css({width: '100%', marginTop: 0, top: 0, position: 'fixed'});
-                        $("#nav-mobile").css({width: '100%', marginTop: 0, top: 0, position: 'fixed'});
-                        $("nav#nav-mobile ul.expanded").css({marginTop: '40px'});
-                    }
-                });
-            });
-        } else {
-            $(document).ready(function () {
-                $(window).scroll(function () {
-                    console.log($(window).scrollTop());
-                    if ($(window).scrollTop() > 33) {
-                        $("#nav").css({
-                            top: 0,
-                            position: 'fixed',
-                            width: '100%',
-                            marginLeft: '0',
-                            marginRight: '0',
-                            left: '0'
-                        });
-                    }
-                    if ($(window).scrollTop() < 331) {
-                        $("#nav").css({position: "static", marginLeft: '15%', marginRight: '15%', width: '70%'});
-                    }
-                });
-            });
-        }
-    </script>
+
     <div class="row1">
         <!--Left bar-->
         <nav id="LeftBar">
@@ -126,7 +89,7 @@
                         <a class="add-box" href="#">
                             <button class="button addbutton">Add</button>
                         </a>
-                        <button class="button searchbutton">Search</button>
+                        <button class="button searchbutton" id="searchb">Search</button>
                     </form>
                 </div>
                 <!--Add, remove and search button functions-->
@@ -139,40 +102,43 @@
                                         userInput += $(this).val() + ',';
                                     }
                             );
-                            //alert(userInput);
+                            alert(userInput);
                             return userInput;
                         }
 
-                        $(".searchbutton").click(function () {
-                                    var baseURL = "http://food2fork.com/api/search?key=c374bfbac65d543206653a9fe750799d&q=" + getSearchBox();
-                                    $.getJSON(baseURL,
-                                            function (data) {
-                                                // Using YQL and JSONP
-                                                $.ajax({
-                                                    url: "http://food2fork.com/api/search",
+                        $("#searchb").click(function () {
+                            console.log("clicked");
 
-                                                    // The name of the callback parameter, as specified by the YQL service
-                                                    jsonp: "callback",
+                            var baseURL = "https://food2fork.com/api/search?key=c374bfbac65d543206653a9fe750799d&q=eggs";
+                            /* $.getJSON(baseURL)
+                             .success(function( data ) {
+                             console.log("success: " +data);
+                             })
+                             .done(function( data ) {
+                             console.log("done: " +data);
+                             })
+                             .error(function(error) {
+                             console.log("error: " +error);
+                             });*/
+                            $.ajax({
+                                url: baseURL, success: function (result) {
+                                    console.log("no result");
+                                    console.log(result);
+                                }, error: function (xhr, status, error) {
+                                    console.log("error");
+                                    console.log(xhr);
+                                    console.log(status);
+                                    console.log(error);
+                                }
+                            });
 
-                                                    // Tell jQuery we're expecting JSONP
-                                                    dataType: "jsonp",
+                        });
 
-                                                    // Tell YQL what we want and that we want JSON
-                                                    data: {
-                                                        q: "c374bfbac65d543206653a9fe750799dq=",
-                                                        format: "json"
-                                                    },
 
-                                                    // Work with the response
-                                                    success: function (response) {
-                                                        console.log(response); // server response
-                                                    }
-                                                });//console.log(data)
-                                            });
-                                } //end function
-                        );
+                        //end function
 
-                        $('.my-form .add-box').click(function(){
+
+                        $('.my-form .add-box').click(function () {
                             var n = $('.text-box').length + 1;
                             var box_html = $('<p class="text-box"><label for="box' + n + '"><span class="box-number">'
                                     + n + '</span></label> <input type="ingredient" name="boxes[]" value="" id="box'
@@ -183,11 +149,11 @@
                             return false;
                         });
                     });
-                    $('.my-form').on('click', '.remove-box', function(){
-                        $(this).parent().fadeOut("slow", function() {
+                    $('.my-form').on('click', '.remove-box', function () {
+                        $(this).parent().fadeOut("slow", function () {
                             $(this).remove();
-                            $('.box-number').each(function(index){
-                                $(this).text( index + 1 );
+                            $('.box-number').each(function (index) {
+                                $(this).text(index + 1);
                             });
                         });
                         return false;
@@ -207,8 +173,10 @@
                     </div>
                 </div>
                 <div class="img">
-                    <a target="_blank" href="foodimage.jpg">
-                        <img src="http://static.food2fork.com/Jalapeno2BPopper2BGrilled2BCheese2BSandwich2B12B500fd186186.jpg" alt="HobbitBroth" width="800" height="400">
+                    <a target="_blank"
+                       href="http://www.closetcooking.com/2011/04/jalapeno-popper-grilled-cheese-sandwich.html">
+                        <img src="http://static.food2fork.com/Jalapeno2BPopper2BGrilled2BCheese2BSandwich2B12B500fd186186.jpg"
+                             alt="HobbitBroth" width="800" height="400">
                     </a>
                 </div>
                 <div class="resultInformation">
@@ -223,14 +191,15 @@
             </div>
             <div class="results">
                 <div class="descWrapper">
-                    <div class="desc">Surprisingly filling Hobbit broth</div>
+                    <div class="desc">Perfect Ice Coffee</div>
                     <div class="heart1">
                         <img src="heartIcon3.png" class="heart3" alt="heart">
                     </div>
                 </div>
                 <div class="img">
-                    <a target="_blank" href="foodimage.jpg">
-                        <img src="foodimage.jpg" alt="Bolognese" width="800" height="400">
+                    <a target="_blank" href="http://thepioneerwoman.com/cooking/2011/06/perfect-iced-coffee/">
+                        <img src="http://static.food2fork.com/icedcoffee5766.jpg" alt="Bolognese" width="800"
+                             height="400">
                     </a>
                 </div>
                 <div class="resultInformation">
@@ -244,14 +213,15 @@
             </div>
             <div class="results">
                 <div class="descWrapper">
-                    <div class="desc">Surprisingly filling Hobbit broth</div>
+                    <div class="desc">Crash Hot Potatoes</div>
                     <div class="heart1">
                         <img src="heartIcon3.png" class="heart3" alt="heart">
                     </div>
                 </div>
                 <div class="img">
-                    <a target="_blank" href="foodimage.jpg">
-                        <img src="foodimage.jpg" alt="Bolognese" width="800" height="400">
+                    <a target="_blank" href="http://thepioneerwoman.com/cooking/2008/06/crash-hot-potatoes/">
+                        <img src="http://static.food2fork.com/CrashHotPotatoes5736.jpg" alt="Bolognese" width="800"
+                             height="400">
                     </a>
                 </div>
                 <div class="resultInformation">
@@ -324,10 +294,63 @@
         </div>
     </footer>
 
-    <!-- Scripts -->
+    <!------------------------- Scripts ---------------------------->
     <script type="text/javascript">
-        //Function declaration
+
         $(document).ready(function () {
+
+            <!-- Responsive nav bar script -->
+
+            if ($(window).width() < 700) {
+                $("#nav").hide();
+                $("#MainHeader").toggleClass("toggle");
+
+                $("#nav-mobile").html($("#nav").html());
+                $("#nav-trigger span").click(function () {
+                    if ($("nav#nav-mobile ul").hasClass("expanded")) {
+                        $("nav#nav-mobile ul.expanded").removeClass("expanded").slideUp(350);
+                        $(this).removeClass("open");
+                    } else {
+                        $("nav#nav-mobile ul").addClass("expanded").slideDown(350);
+                        $(this).addClass("open");
+                    }
+                });
+
+                //$(document).ready(function () {
+                $(window).scroll(function () {
+                    console.log($(window).scrollTop());
+                    if ($(window).scrollTop() > 25) {
+                        $("#nav-trigger").css({width: '100%', marginTop: 0, top: 0, position: 'fixed'});
+                        $("#nav-mobile").css({width: '100%', marginTop: 0, top: 0, position: 'fixed'});
+                        $("nav#nav-mobile ul.expanded").css({marginTop: '40px'});
+                    }
+                });
+                //});
+            } else {
+                //$(document).ready(function () {
+                $(window).scroll(function () {
+                    console.log($(window).scrollTop());
+                    if ($(window).scrollTop() > 33) {
+                        $("#nav").css({
+                            top: 0,
+                            position: 'fixed',
+                            width: '100%',
+                            marginLeft: '0',
+                            marginRight: '0',
+                            left: '0'
+                        });
+                    }
+                    if ($(window).scrollTop() < 331) {
+                        $("#nav").css({position: "static", marginLeft: '15%', marginRight: '15%', width: '70%'});
+                    }
+                });
+                //});
+            }
+            <!-- End of Responsive nav bar script -->
+
+
+            //Function declaration
+            //$(document).ready(function () {
             $('a[href^="#"]').on('click', function (e) {
                 e.preventDefault();
 
@@ -338,97 +361,230 @@
                     'scrollTop': $target.offset().top
                 }, 900, 'swing');
             });
-        });
-    </script>
-    <script>
-        // Get the modal
-        var modal = document.getElementById('myModal');
+            //});
 
-        // Get the button that opens the modal
-        var a = document.getElementById("loginBtn");
+            //Logout function
+            function logout1() {
+                signOut();
+                $('.login').text('Login')
+            }
 
-        // Get the <span> element that closes the modal
-        var span = document.getElementsByClassName("close")[0];
+            //Login function
+            function login1() {
+                if ($('.login').text('Login')) {
+                    $('.login').text('Logout')
+                }
+            }
 
-        // When the user clicks on the button, open the modal
-        a.onclick = function () {
-            modal.style.display = "block";
-            Blur();
-        };
+            <!--Blur background when login button is clicked-->
+            function Blur() {
+                $('#Title, #PageContent, .results, #LeftBar, #PageFooter, #MainHeader').css({
+                    'filter': 'blur(2px)',
+                    '-webkit-filter': 'blur(2px)',
+                    '-moz-filter': 'blur(2px)',
+                    '-o-filter': 'blur(2px)',
+                    '-ms-filter': 'blur(2px)',
+                    transition: 'all 0.3s ease-in-out'
+                })
+            }
 
-        // When the user clicks on <span> (x), close the modal
-        span.onclick = function () {
-            modal.style.display = "none";
-            unBlur();
-        };
+            <!--unblur background when popup is closed-->
+            function unBlur() {
+                $(' #Title, .results, #PageContent, #LeftBar, #PageFooter,#MainHeader').css({
+                    'z-index': 900,
+                    'filter': 'blur(0px)',
+                    '-webkit-filter': 'blur(0px)',
+                    '-moz-filter': 'blur(0px)',
+                    '-o-filter': 'blur(0px)',
+                    '-ms-filter': 'blur(0px)',
+                    transition: 'all 0.3s ease-in-out'
+                });
+                $('#nav').css('z-index', 9999);
 
-        // When the user clicks anywhere outside of the modal, close it
-        window.onclick = function (event) {
-            if (event.target == modal) {
+
+            }
+
+            //Signout function
+            function signOut() {
+                var auth2 = gapi.auth2.getAuthInstance();
+                auth2.signOut().then(function () {
+                    console.log('User signed out.');
+                });
+            }
+
+            <!-- Modal Script -->
+            // Get the modal
+            var modal = document.getElementById('myModal');
+
+            // Get the button that opens the modal
+            var a = document.getElementById("loginBtn");
+
+            // Get the <span> element that closes the modal
+            var span = document.getElementsByClassName("close")[0];
+
+            // When the user clicks on the button, open the modal
+            a.onclick = function () {
+                modal.style.display = "block";
+                Blur();
+            };
+
+            // When the user clicks on <span> (x), close the modal
+            span.onclick = function () {
                 modal.style.display = "none";
                 unBlur();
-            }
-        }
-    </script>
+            };
 
-    <script>
-        function logout1() {
-            signOut();
-            $('.login').text('Login')
-        };
-        function login1() {
-            if ($('.login').text('Login')) {
-                $('.login').text('Logout')
-            }
-        }
-        <!--Blur background when login button is clicked-->
-        function Blur() {
-            $('#Title, #PageContent, .results, #LeftBar, #PageFooter, #MainHeader').css({
-                'filter'         : 'blur(2px)',
-                '-webkit-filter' : 'blur(2px)',
-                '-moz-filter'    : 'blur(2px)',
-                '-o-filter'      : 'blur(2px)',
-                '-ms-filter'     : 'blur(2px)',
-                transition : 'all 0.3s ease-in-out'})
-        }
-        <!--unblur background when popup is closed-->
-        function unBlur() {
-            $('#Title, #PageContent, .results, #LeftBar, #PageFooter, #MainHeader').css({
-                'filter'         : 'blur(0px)',
-                '-webkit-filter' : 'blur(0px)',
-                '-moz-filter'    : 'blur(0px)',
-                '-o-filter'      : 'blur(0px)',
-                '-ms-filter'     : 'blur(0px)',
-                transition : 'all 0.3s ease-in-out'});
-        }
-    </script>
+            // When the user clicks anywhere outside of the modal, close it
+            window.onclick = function (event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                    unBlur();
+                }
+            };
+            <!-- End of modal script -->
 
-    <script>
-        function onSuccess(googleUser) {
-            console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
-        }
-        function onFailure(error) {
-            console.log(error);
-        }
-        function renderButton() {
-            gapi.signin2.render('g-signin2', {
-                'scope': 'profile email',
-                'width': 240,
-                'height': 50,
-                'longtitle': true,
-                'theme': 'dark',
-                'onsuccess': onSuccess,
-                'onfailure': onFailure
+            <!-- Google Script script -->
+            function onSuccess(googleUser) {
+                console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
+            }
+
+            function onFailure(error) {
+                console.log(error);
+            }
+
+            function renderButton() {
+                gapi.signin2.render('g-signin2', {
+                    'scope': 'profile email',
+                    'width': 240,
+                    'height': 50,
+                    'longtitle': true,
+                    'theme': 'dark',
+                    'onsuccess': onSuccess,
+                    'onfailure': onFailure
+                });
+            }
+
+            <!-- End of Google script -->
+
+            <!-- Facebook Script -->
+            //First Part
+            window.fbAsyncInit = function () {
+                FB.init({
+                    appId: '985300261517338',
+                    xfbml: true,
+                    version: 'v2.5'
+                });
+            };
+
+            (function (d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) {
+                    return;
+                }
+                js = d.createElement(s);
+                js.id = id;
+                js.src = "//connect.facebook.net/en_US/sdk.js";
+                fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));
+
+            //Second Part
+            // This is called with the results from from FB.getLoginStatus().
+            function statusChangeCallback(response) {
+                console.log('statusChangeCallback');
+                console.log(response);
+                // The response object is returned with a status field that lets the
+                // app know the current login status of the person.
+                // Full docs on the response object can be found in the documentation
+                // for FB.getLoginStatus().
+                if (response.status === 'connected') {
+                    // Logged into your app and Facebook.
+                    testAPI();
+                } else if (response.status === 'not_authorized') {
+                    // The person is logged into Facebook, but not your app.
+                    document.getElementById('status').innerHTML = 'Please log ' +
+                            'into this app.';
+                } else {
+                    // The person is not logged into Facebook, so we're not sure if
+                    // they are logged into this app or not.
+                    document.getElementById('status').innerHTML = 'Please log ' +
+                            'into Facebook.';
+                }
+            }
+
+            // This function is called when someone finishes with the Login
+            // Button.  See the onlogin handler attached to it in the sample
+            // code below.
+            function checkLoginState() {
+                FB.getLoginStatus(function (response) {
+                    statusChangeCallback(response);
+                });
+            }
+
+            window.fbAsyncInit = function () {
+                FB.init({
+                    appId: '{your-app-id}',
+                    cookie: true,  // enable cookies to allow the server to access
+                                   // the session
+                    xfbml: true,  // parse social plugins on this page
+                    version: 'v2.5' // use graph api version 2.5
+                });
+
+                // Now that we've initialized the JavaScript SDK, we call
+                // FB.getLoginStatus().  This function gets the state of the
+                // person visiting this page and can return one of three states to
+                // the callback you provide.  They can be:
+                //
+                // 1. Logged into your app ('connected')
+                // 2. Logged into Facebook, but not your app ('not_authorized')
+                // 3. Not logged into Facebook and can't tell if they are logged into
+                //    your app or not.
+                //
+                // These three cases are handled in the callback function.
+
+                FB.getLoginStatus(function (response) {
+                    statusChangeCallback(response);
+                });
+
+            };
+
+            // Load the SDK asynchronously
+            (function (d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) return;
+                js = d.createElement(s);
+                js.id = id;
+                js.src = "//connect.facebook.net/en_US/sdk.js";
+                fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));
+
+            // Here we run a very simple test of the Graph API after login is
+            // successful.  See statusChangeCallback() for when this call is made.
+            function testAPI() {
+                console.log('Welcome!  Fetching your information.... ');
+                FB.api('/me', function (response) {
+                    console.log('Successful login for: ' + response.name);
+                    document.getElementById('status').innerHTML =
+                            'Thanks for logging in, ' + response.name + '!';
+                });
+            }
+
+            //Facebook Login Status
+            FB.getLoginStatus(function (response) {
+                statusChangeCallback(response);
             });
-        }
-    </script>
-    <script>
-        function signOut() {
-            var auth2 = gapi.auth2.getAuthInstance();
-            auth2.signOut().then(function () {
-                console.log('User signed out.');
-            });
-        }
+        });
+
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.6&appId=985300261517338";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+
+        <!-- End of Facebook Script -->
+
     </script>
 
 </div>
