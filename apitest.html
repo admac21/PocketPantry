@@ -9,7 +9,7 @@
 
 <script>
     var baseURL = "https://food2fork.com/api/search?key=c374bfbac65d543206653a9fe750799d&q=eggs";
-     /*$.getJSON(baseURL)
+     $.getJSON(baseURL)
      .success(function( data ) {
      console.log("success: " +data);
      })
@@ -18,8 +18,8 @@
      })
      .error(function(error) {
      console.log("error: " +error);
-     });*/
-    $.ajax({url: baseURL, success: function(result){
+     });
+   /* $.ajax({url: baseURL, success: function(result){
         console.log("no result");
         console.log(result);
     }, error: function(xhr,status,error){
@@ -28,7 +28,7 @@
         console.log(status);
         console.log(error);
 
-    }});
+    }});*/
 </script>
 
 </body>
