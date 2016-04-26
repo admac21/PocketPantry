@@ -259,19 +259,32 @@
                         }
 
                         $("#searchb").click(function () {
-                                    var baseURL = "http://food2fork.com/api/search?key=c374bfbac65d543206653a9fe750799d";
-                                    $.getJSON(baseURL,{
-                                                q:getSearchBox() ,
-                                                format: "jsonp"
+                            console.log("clicked");
+
+                                    var baseURL = "https://food2fork.com/api/search?key=c374bfbac65d543206653a9fe750799d&q=eggs";
+                                   /* $.getJSON(baseURL)
+                                            .success(function( data ) {
+                                               console.log("success: " +data);
                                             })
                                             .done(function( data ) {
-                                               console.log(data);
+                                                console.log("done: " +data);
                                             })
                                             .error(function(error) {
-                                                console.log(error);
-                                            });
+                                                console.log("error: " +error);
+                                            });*/
+                            $.ajax({url: baseURL, success: function(result){
+                                console.log("no result");
+                                console.log(result);
+                            }, error: function(xhr,status,error){
+                                console.log("error");
+                                console.log(xhr);
+                                console.log(status);
+                                console.log(error);
+                            }});
 
                                     });
+
+
                         //end function
 
 
@@ -499,15 +512,14 @@
         <!--unblur background when popup is closed-->
         function unBlur() {
             $(' #Title, .results, #PageContent, #LeftBar, #PageFooter,#MainHeader').css({
+                'z-index'        : -1,
                 'filter'         : 'blur(0px)',
                 '-webkit-filter' : 'blur(0px)',
                 '-moz-filter'    : 'blur(0px)',
                 '-o-filter'      : 'blur(0px)',
                 '-ms-filter'     : 'blur(0px)',
                 transition : 'all 0.3s ease-in-out'});
-            $('#PageContent').css({
-                'z-index' : '-1'
-            });
+            $('#nav').css('z-index', 9999);
 
 
         }
