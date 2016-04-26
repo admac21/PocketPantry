@@ -12,15 +12,16 @@
     <script type="text/javascript" src="//code.jquery.com/jquery-latest.js"></script>
     <!--include the Google Platform Library for Google sign-in-->
     <script src="https://apis.google.com/js/platform.js" async defer></script>
-    <meta name="google-signin-client_id" content="568823689660-386ik3kjs8gbu26p6l9i9eveoa5fk0c2.apps.googleusercontent.com">
+    <meta name="google-signin-client_id"
+          content="568823689660-386ik3kjs8gbu26p6l9i9eveoa5fk0c2.apps.googleusercontent.com">
 </head>
 <body>
 <div id="top">
-<!--Logo and header-->
-<header id="MainHeader">
-    <h1 id="Title">Pocket  <img src="MaterialPantry.png" id="MaterialPantry" alt="PocketPantryLogo"
-                                height="200" width="200" align="center">  Pantry</h1>
-    <!--Navigation bar-->
+    <!--Logo and header-->
+    <header id="MainHeader">
+        <h1 id="Title">Pocket <img src="MaterialPantry.png" id="MaterialPantry" alt="PocketPantryLogo"
+                                   height="200" width="200" align="center"> Pantry</h1>
+        <!--Navigation bar-->
         <nav id="nav">
             <ul>
                 <li class="left"><a href="#top" id="home" tabindex="1">Home</a></li>
@@ -57,281 +58,338 @@
                 </script>
                 <li><a href="#signlogin" id="myBtn" class="login">Login or signin</a></li>
 
-                <li class="right"><form>
-                    <input type="searchBox" name="search" placeholder="Search recipes">
-                </form></li>
+                <li class="right">
+                    <form>
+                        <input type="searchBox" name="search" placeholder="Search recipes">
+                    </form>
+                </li>
             </ul>
-            <br class="clearLeft" />
+            <br class="clearLeft"/>
         </nav>
         <div id="nav-trigger">
             <span>Menu</span>
         </div>
         <nav id="nav-mobile"></nav>
-    <img src="MaterialPantry.png" id="MaterialPantry2" alt="PocketPantryLogo">
-    <!-- Trigger/Open The Modal -->
+        <img src="MaterialPantry.png" id="MaterialPantry2" alt="PocketPantryLogo">
+        <!-- Trigger/Open The Modal -->
 
-    <!-- The Modal -->
-    <div id="myModal" class="modal">
+        <!-- The Modal -->
+        <div id="myModal" class="modal">
 
-        <!-- Modal content -->
-        <div class="modal-content">
-            <span class="close">X</span>
-            <li><a class="g-signin2" data-onsuccess="onSignIn"></a></li>
-            <li><a class="username" href="#username"> </a></li>
+            <!-- Modal content -->
+            <div class="modal-content">
+                <span class="close">X</span>
+                <li><a class="g-signin2" data-onsuccess="onSignIn"></a></li>
+                <li><a class="username" href="#username"> </a></li>
+            </div>
+
         </div>
-
-    </div>
-</header>
-<!--Make navigation bar sticky when user scrolls past it.
- One for desktop view and one for mobile view-->
-<script>
-    if ($(window).width() < 700) {
-        $("#nav").hide();
-        $("#MainHeader").toggleClass("toggle");
-        $(document).ready(function () {
-            $("#nav-mobile").html($("#nav").html());
-            $("#nav-trigger span").click(function () {
-                if ($("nav#nav-mobile ul").hasClass("expanded")) {
-                    $("nav#nav-mobile ul.expanded").removeClass("expanded").slideUp(350);
-                    $(this).removeClass("open");
-                } else {
-                    $("nav#nav-mobile ul").addClass("expanded").slideDown(350);
-                    $(this).addClass("open");
-                }
-            });
-        });
-        $(document).ready(function () {
-            $(window).scroll(function () {
-                console.log($(window).scrollTop());
-                if ($(window).scrollTop() > 25) {
-                    $("#nav-trigger").css({width: '100%', marginTop: 0, top: 0, position: 'fixed'});
-                    $("#nav-mobile").css({width: '100%', marginTop: 0, top: 0, position: 'fixed'});
-                    $("nav#nav-mobile ul.expanded").css({marginTop: '40px'});
-                }
-            });
-        });
-    } else {
-        $(document).ready(function () {
-            $(window).scroll(function () {
-                console.log($(window).scrollTop());
-                if ($(window).scrollTop() > 33) {
-                    $("#nav").css({top: 0, position: 'fixed', width: '100%', marginLeft: '0', marginRight: '0', left: '0'});
-                }
-                if ($(window).scrollTop() < 331) {
-                    $("#nav").css({position: "static", marginLeft: '15%', marginRight: '15%', width: '70%'});
-                }
-            });
-        });
-    }
-</script>
-<div class="row1">
-    <!--Left bar-->
-<nav id="LeftBar">
-    <ul id="AddIngs">
-        <a id="whatsinyourpantry">What's In Your Pantry?</a>
-        <div class="my-form">
-            <form role="form" method="post">
-                <p class="text-box">
-                    <label for="box1"><span class="box-number">1</span></label>
-                    <input type="ingredient" name="boxes[]" value="" id="box1" />
-                </p>
-                <a class="add-box" href="#"><button class="button addbutton">Add</button></a>
-                    <button class="button searchbutton">Search</button>
-            </form>
-        </div>
-        <!--Add, remove and search button functions-->
-        <script type="text/javascript">
-            jQuery(document).ready(function($){
-                $('.my-form .add-box').click(function(){
-                    var n = $('.text-box').length + 1;
-                    var box_html = $('<p class="text-box"><label for="box' + n + '"><span class="box-number">'
-                            + n + '</span></label> <input type="ingredient" name="boxes[]" value="" id="box'
-                            + n + '" /> <a href="#" class="remove-box"><button class="button deletebutton">X</button></a></p>');
-                    box_html.hide();
-                    $('.my-form p.text-box:last').after(box_html);
-                    box_html.fadeIn('slow');
-                    return false;
+    </header>
+    <!--Make navigation bar sticky when user scrolls past it.
+     One for desktop view and one for mobile view-->
+    <script>
+        if ($(window).width() < 700) {
+            $("#nav").hide();
+            $("#MainHeader").toggleClass("toggle");
+            $(document).ready(function () {
+                $("#nav-mobile").html($("#nav").html());
+                $("#nav-trigger span").click(function () {
+                    if ($("nav#nav-mobile ul").hasClass("expanded")) {
+                        $("nav#nav-mobile ul.expanded").removeClass("expanded").slideUp(350);
+                        $(this).removeClass("open");
+                    } else {
+                        $("nav#nav-mobile ul").addClass("expanded").slideDown(350);
+                        $(this).addClass("open");
+                    }
                 });
             });
-            $('.my-form').on('click', '.remove-box', function(){
-                $(this).parent().fadeOut("slow", function() {
-                    $(this).remove();
-                    $('.box-number').each(function(index){
-                        $(this).text( index + 1 );
+            $(document).ready(function () {
+                $(window).scroll(function () {
+                    console.log($(window).scrollTop());
+                    if ($(window).scrollTop() > 25) {
+                        $("#nav-trigger").css({width: '100%', marginTop: 0, top: 0, position: 'fixed'});
+                        $("#nav-mobile").css({width: '100%', marginTop: 0, top: 0, position: 'fixed'});
+                        $("nav#nav-mobile ul.expanded").css({marginTop: '40px'});
+                    }
+                });
+            });
+        } else {
+            $(document).ready(function () {
+                $(window).scroll(function () {
+                    console.log($(window).scrollTop());
+                    if ($(window).scrollTop() > 33) {
+                        $("#nav").css({
+                            top: 0,
+                            position: 'fixed',
+                            width: '100%',
+                            marginLeft: '0',
+                            marginRight: '0',
+                            left: '0'
+                        });
+                    }
+                    if ($(window).scrollTop() < 331) {
+                        $("#nav").css({position: "static", marginLeft: '15%', marginRight: '15%', width: '70%'});
+                    }
+                });
+            });
+        }
+    </script>
+    <div class="row1">
+        <!--Left bar-->
+        <nav id="LeftBar">
+            <ul id="AddIngs">
+                <a id="whatsinyourpantry">What's In Your Pantry?</a>
+                <div class="my-form">
+                    <form role="form" method="post">
+                        <p class="text-box">
+                            <label for="box1"><span class="box-number">1</span></label>
+                            <input type="ingredient" name="boxes[]" value="" id="box1"/>
+                        </p>
+                        <a class="add-box" href="#">
+                            <button class="button addbutton">Add</button>
+                        </a>
+                        <button class="button searchbutton">Search</button>
+                    </form>
+                </div>
+                <!--Add, remove and search button functions-->
+                <script type="text/javascript">
+                    jQuery(document).ready(function ($) {
+
+                        function getSearchBox() {
+                            var userInput = "";
+                            $(".text-box input").each(function () {
+                                        userInput += $(this).val() + ',';
+                                    }
+                            );
+                            alert(userInput);
+                            return userInput;
+                        }
+
+                        $(".searchbutton").click(function () {
+                                    var baseURL = "http://food2fork.com/api/search?key=c374bfbac65d543206653a9fe750799d&q=" + getSearchBox();
+                                    $.getJSON(baseURL,
+                                            function (data) {
+                                                // Using YQL and JSONP
+                                                $.ajax({
+                                                    url: "http://food2fork.com/api/search",
+
+                                                    // The name of the callback parameter, as specified by the YQL service
+                                                    jsonp: "callback",
+
+                                                    // Tell jQuery we're expecting JSONP
+                                                    dataType: "jsonp",
+
+                                                    // Tell YQL what we want and that we want JSON
+                                                    data: {
+                                                        q: "c374bfbac65d543206653a9fe750799dq=",
+                                                        format: "json"
+                                                    },
+
+                                                    // Work with the response
+                                                    success: function (response) {
+                                                        console.log(response); // server response
+                                                    }
+                                                });//console.log(data)
+                                            });
+                                } //end function
+                        );
+
+
+                        $('.my-form .add-box').click(function(){
+                            var n = $('.text-box').length + 1;
+                            var box_html = $('<p class="text-box"><label for="box' + n + '"><span class="box-number">'
+                                    + n + '</span></label> <input type="ingredient" name="boxes[]" value="" id="box'
+                                    + n + '" /> <a href="#" class="remove-box"><button class="button deletebutton">X</button></a></p>');
+                            box_html.hide();
+                            $('.my-form p.text-box:last').after(box_html);
+                            box_html.fadeIn('slow');
+                            return false;
+                        });
                     });
-                });
-                return false;
+                    $('.my-form').on('click', '.remove-box', function(){
+                        $(this).parent().fadeOut("slow", function() {
+                            $(this).remove();
+                            $('.box-number').each(function(index){
+                                $(this).text( index + 1 );
+                            });
+                        });
+                        return false;
+                    });
+
+
+                </script>
+            </ul>
+        </nav>
+        <!--Right side of the screen where results are shown-->
+        <section class="ResultArea">
+            <div class="results">
+                <div class="descWrapper">
+                    <div class="desc">Surprisingly filling Hobbit broth</div>
+                    <div class="heart1">
+                        <img src="heartIcon3.png" class="heart3" alt="heart">
+                    </div>
+                </div>
+                <div class="img">
+                    <a target="_blank" href="foodimage.jpg">
+                        <img src="foodimage.jpg" alt="HobbitBroth" width="800" height="400">
+                    </a>
+                </div>
+                <div class="resultInformation">
+                    <div class="resultIngs">
+                        <a class="ings">+ Unicorn meat</a><br>
+                        <a class="ings">+ Fairy dust</a><br>
+                        <a class="ings">+ Lava from Mordor</a><br>
+                        <a class="ings">- Motivation</a>
+                    </div>
+
+                </div>
+            </div>
+            <div class="results">
+                <div class="descWrapper">
+                    <div class="desc">Surprisingly filling Hobbit broth</div>
+                    <div class="heart1">
+                        <img src="heartIcon3.png" class="heart3" alt="heart">
+                    </div>
+                </div>
+                <div class="img">
+                    <a target="_blank" href="foodimage.jpg">
+                        <img src="foodimage.jpg" alt="Bolognese" width="800" height="400">
+                    </a>
+                </div>
+                <div class="resultInformation">
+                    <div class="resultIngs">
+                        <a class="ings">+ Rancor brains</a><br>
+                        <a class="ings">+ Magic beans</a><br>
+                        <a class="ings">- Beer</a><br>
+                        <a class="ings">- Skills</a>
+                    </div>
+                </div>
+            </div>
+            <div class="results">
+                <div class="descWrapper">
+                    <div class="desc">Surprisingly filling Hobbit broth</div>
+                    <div class="heart1">
+                        <img src="heartIcon3.png" class="heart3" alt="heart">
+                    </div>
+                </div>
+                <div class="img">
+                    <a target="_blank" href="foodimage.jpg">
+                        <img src="foodimage.jpg" alt="Bolognese" width="800" height="400">
+                    </a>
+                </div>
+                <div class="resultInformation">
+                    <div class="resultIngs">
+                        <a class="ings">+ Rancor brains</a><br>
+                        <a class="ings">+ Magic beans</a><br>
+                        <a class="ings">- Beer</a><br>
+                        <a class="ings">- Skills</a>
+                    </div>
+                </div>
+            </div>
+            <div class="results">
+                <div class="descWrapper">
+                    <div class="desc">Spaghetti bolognese</div>
+                    <div class="heart1">
+                        <img src="heartIcon3.png" class="heart3" alt="heart">
+                    </div>
+                </div>
+                <div class="img">
+                    <a target="_blank" href="foodimage.jpg">
+                        <img src="foodimage.jpg" alt="Bolognese" width="800" height="400">
+                    </a>
+                </div>
+                <div class="resultInformation">
+                    <div class="resultIngs">
+                        <a class="ings">+ Rancor brains</a><br>
+                        <a class="ings">+ Magic beans</a><br>
+                        <a class="ings">- Beer</a><br>
+                        <a class="ings">- Skills</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <!--Footer-->
+    <footer id="PageFooter">
+        <div id="getInTouch">
+            <div id="getInTouchBox">
+                <a id="getInTouchHeader">Get In Touch</a><br>
+                <a></a><br>
+                <a>info@pocketpantry.co.uk</a><br>
+                <a>01224 242399</a><br>
+                <a></a><br>
+                <a>333 Pantry Way</a><br>
+                <a>Aberdeen</a><br>
+                <a>AB10 L0L</a>
+            </div>
+        </div>
+        <div id="aboutUs">
+            <div id="aboutUsBox">
+                <a id="aboutUsHeader">About Us</a><br>
+                <a></a><br>
+                <a>Pocket Pantry; a web app that allows</a><br>
+                <a>you to enter the food that you have in</a><br>
+                <a>your fridge/cupboards and it will suggest</a><br>
+                <a>recipes to make with what you have.</a>
+            </div>
+        </div>
+        <!--Buttons for social media-->
+        <div id="socialButtons">
+            <a href="https://www.facebook.com/profile.php?id=563989053776695&ref=ts&fref=ts" class="icon-link facebook"><i
+                    class="fa fa-facebook"></i></a>
+            <a href="https://twitter.com/PocketPantryApp" class="icon-link twitter"><i class="fa fa-twitter"></i></a>
+            <a class="icon-link google-plus"><i class="fa fa-google-plus"></i></a><br>
+            <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="icon-link youtube"><i
+                    class="fa fa-youtube"></i></>
+            <a href="https://www.instagram.com/pocketpantry/" class="icon-link pinterest"><i
+                    class="fa fa-pinterest"></i></a>
+            <a class="icon-link tumblr"><i class="fa fa-tumblr"></i></a>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script type="text/javascript">
+        //Function declaration
+        $(document).ready(function () {
+            $('a[href^="#"]').on('click', function (e) {
+                e.preventDefault();
+
+                var target = this.hash;
+                var $target = $(target);
+
+                $('html, body').stop().animate({
+                    'scrollTop': $target.offset().top
+                }, 900, 'swing');
             });
-        </script>
-    </ul>
-</nav>
-    <!--Right side of the screen where results are shown-->
-    <section class="ResultArea">
-    <div class="results">
-        <div class="descWrapper">
-        <div class="desc">Surprisingly filling Hobbit broth</div>
-        <div class="heart1">
-            <img src="heartIcon3.png" class="heart3" alt="heart">
-        </div>
-        </div>
-        <div class="img">
-            <a target="_blank" href="foodimage.jpg">
-                <img src="foodimage.jpg" alt="HobbitBroth" width="800" height="400">
-            </a>
-            </div>
-            <div class="resultInformation">
-                <div class="resultIngs">
-            <a class="ings">+ Unicorn meat</a><br>
-            <a class="ings">+ Fairy dust</a><br>
-            <a class="ings">+ Lava from Mordor</a><br>
-            <a class="ings">- Motivation</a>
-            </div>
-
-            </div>
-        </div>
-    <div class="results">
-        <div class="descWrapper">
-            <div class="desc">Surprisingly filling Hobbit broth</div>
-            <div class="heart1">
-                <img src="heartIcon3.png" class="heart3" alt="heart">
-            </div>
-        </div>
-        <div class="img">
-            <a target="_blank" href="foodimage.jpg">
-                <img src="foodimage.jpg" alt="Bolognese" width="800" height="400">
-            </a>
-        </div>
-        <div class="resultInformation">
-            <div class="resultIngs">
-                <a class="ings">+ Rancor brains</a><br>
-                <a class="ings">+ Magic beans</a><br>
-                <a class="ings">- Beer</a><br>
-                <a class="ings">- Skills</a>
-            </div>
-    </div>
-        </div>
-        <div class="results">
-            <div class="descWrapper">
-                <div class="desc">Surprisingly filling Hobbit broth</div>
-                <div class="heart1">
-                    <img src="heartIcon3.png" class="heart3" alt="heart">
-                </div>
-            </div>
-            <div class="img">
-                <a target="_blank" href="foodimage.jpg">
-                    <img src="foodimage.jpg" alt="Bolognese" width="800" height="400">
-                </a>
-            </div>
-            <div class="resultInformation">
-                <div class="resultIngs">
-                    <a class="ings">+ Rancor brains</a><br>
-                    <a class="ings">+ Magic beans</a><br>
-                    <a class="ings">- Beer</a><br>
-                    <a class="ings">- Skills</a>
-                </div>
-            </div>
-        </div>
-        <div class="results">
-            <div class="descWrapper">
-                <div class="desc">Spaghetti bolognese</div>
-                <div class="heart1">
-                    <img src="heartIcon3.png" class="heart3" alt="heart">
-                </div>
-            </div>
-            <div class="img">
-                <a target="_blank" href="foodimage.jpg">
-                    <img src="foodimage.jpg" alt="Bolognese" width="800" height="400">
-                </a>
-            </div>
-            <div class="resultInformation">
-                <div class="resultIngs">
-                    <a class="ings">+ Rancor brains</a><br>
-                    <a class="ings">+ Magic beans</a><br>
-                    <a class="ings">- Beer</a><br>
-                    <a class="ings">- Skills</a>
-                </div>
-            </div>
-        </div>
-    </section>
-    </div>
-<!--Footer-->
-<footer id="PageFooter">
-    <div id="getInTouch">
-        <div id="getInTouchBox">
-    <a id="getInTouchHeader">Get In Touch</a><br>
-            <a></a><br>
-        <a>info@pocketpantry.co.uk</a><br>
-        <a>01224 242399</a><br>
-        <a></a><br>
-        <a>333 Pantry Way</a><br>
-        <a>Aberdeen</a><br>
-        <a>AB10 L0L</a>
-        </div>
-    </div>
-    <div id="aboutUs">
-        <div id="aboutUsBox">
-            <a id="aboutUsHeader">About Us</a><br>
-            <a></a><br>
-            <a>Pocket Pantry; a web app that allows</a><br>
-            <a>you to enter the food that you have in</a><br>
-            <a>your fridge/cupboards and it will suggest</a><br>
-            <a>recipes to make with what you have.</a>
-        </div>
-    </div>
-    <!--Buttons for social media-->
-    <div id="socialButtons">
-        <a href="https://www.facebook.com/profile.php?id=563989053776695&ref=ts&fref=ts" class="icon-link facebook"><i class="fa fa-facebook"></i></a>
-        <a href="https://twitter.com/PocketPantryApp" class="icon-link twitter"><i class="fa fa-twitter"></i></a>
-        <a class="icon-link google-plus"><i class="fa fa-google-plus"></i></a><br>
-        <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="icon-link youtube"><i class="fa fa-youtube"></i></>
-        <a href="https://www.instagram.com/pocketpantry/" class="icon-link pinterest"><i class="fa fa-pinterest"></i></a>
-        <a class="icon-link tumblr"><i class="fa fa-tumblr"></i></a>
-    </div>
-</footer>
-
-<!-- Scripts -->
-<script type="text/javascript">
-    //Function declaration
-    $(document).ready(function(){
-        $('a[href^="#"]').on('click',function (e) {
-            e.preventDefault();
-
-            var target = this.hash;
-            var $target = $(target);
-
-            $('html, body').stop().animate({
-                'scrollTop': $target.offset().top
-            }, 900, 'swing');
         });
-    });
-</script>
-<script>
-// Get the modal
-var modal = document.getElementById('myModal');
+    </script>
+    <script>
+        // Get the modal
+        var modal = document.getElementById('myModal');
 
-// Get the button that opens the modal
-var a = document.getElementById("myBtn");
+        // Get the button that opens the modal
+        var a = document.getElementById("myBtn");
 
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
 
-// When the user clicks on the button, open the modal
-a.onclick = function() {
-    modal.style.display = "block";
-};
+        // When the user clicks on the button, open the modal
+        a.onclick = function () {
+            modal.style.display = "block";
+        };
 
-// When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-    modal.style.display = "none";
-};
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function () {
+            modal.style.display = "none";
+        };
 
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
-}
-</script>
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
 </div>
 </body>
 </html>

@@ -186,7 +186,7 @@ input[type=ingredient]:focus {
 }
 /*Customise left bar*/
 #LeftBar {
-    border-radius: 10px;
+    border-radius: 8px;
     line-height:30px;
     width: 30%;
     float:left;
@@ -301,7 +301,7 @@ div.desc {
     width: 45%;
     display: block;
     float: left;
-    border-radius: 10px;
+    border-radius: 8px;
     background-color: white;
     box-shadow: 0 0 8px rgba(0,0,0,0.4);
     margin: 1%;
