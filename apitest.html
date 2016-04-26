@@ -19,9 +19,8 @@
      .error(function(error) {
      console.log("error: " +error);
      });*/
-   $.ajax({url: baseURL, success: function(result){
-        console.log("no result");
-        console.log(result);
+   $.ajax({url: baseURL, success: function(jsondata){
+        console.log(jsondata);
     }, error: function(xhr,status,error){
         console.log("error");
         console.log(xhr);
