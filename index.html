@@ -338,16 +338,29 @@
                 console.log("error: " +error);
             });*/
 
-                $.ajax({url: baseURL,
-                    success: function(jsondata){
-                console.log(
-                        jsondata);
-            }, error: function(xhr, status, error) {
-                        console.log("error");
-                        console.log(xhr);
-                        console.log(status);
-                        console.log(error);
-
+//                $.ajax({url: baseURL,
+//                    success: function(jsondata){
+//                console.log(
+//                        jsondata);
+//            }, error: function(xhr, status, error) {
+//                        console.log("error");
+//                        console.log(xhr);
+//                        console.log(status);
+//                        console.log(error);
+//
+//                    }
+//                });
+                $.ajax({
+                    url: "http://pocketpantry.azurewebsites.net/theprox.php?url=http://food2fork.com/api/search",
+                    type: "GET",
+                    data: {key:"c374bfbac65d543206653a9fe750799d",q:"ham,eggs"},
+                    dataType: "json",
+                    success: function (response) {
+                        $('#content').text(JSON.stringify(response));
+                        console.log(response);
+                    },
+                    error: function (xhr, status) {
+                        alert("error");
                     }
                 });
                 return jsondata;
