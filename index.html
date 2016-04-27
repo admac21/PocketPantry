@@ -19,27 +19,57 @@
 <!-- Trigger/Open The Modal -->
 
 <!-- The Modal -->
-<div id="myModal" class="modal">
+<section id="myModal" class="modal">
 
     <!-- Popup content -->
-    <div class="modal-content">
+    <section class="modal-content">
         <span class="close">X</span>
         <!--Login button-->
         <li><a class="g-signin2" data-onsuccess="onSignIn" onclick="login1()"></a></li>
+        <script>
+            //Login function
+            function login1() {
+                if ($('.login').text('Login')) {
+                    $('.login').text('Logout')
+                }
+            }
+        </script>
         <!--Facebook stuff-->
-        <fb-login-button scope="public_profile,email" onlogin="checkLoginState();">
-        </fb-login-button>
         <div id="fb-root"></div>
 
-        <div class="fb-login-button" data-max-rows="1" data-size="medium" data-show-faces="false"
+        <div class="fb-login-button" data-max-rows="2" data-size="large" data-show-faces="false"
              data-auto-logout-link="false"></div>
-
 
         <!--Logout button-->
         <li><a href="#" class="logout" onclick="logout1()">Logout</a></li>
-    </div>
+        <script>
+            //Signout function
+            function signOut2() {
+                FB.logout();
+                    // user is now logged out of Facebook
+                    console.log('User signed out of Facebook');
+            }
+            </script>
+        <script>
+            function signOut1() {
+                var auth2 = gapi.auth2.getAuthInstance();
+                auth2.signOut().then(function () {
+                    // user is now logged out of Google+
+                    console.log('User signed out of Google+.');
+                });
+            }
+            </script>
+            <script>
+//            Logout function
+            function logout1() {
+                signOut1();
+                signOut2();
+                $('.login').text('Login')
+            }
+        </script>
+    </section>
 
-</div>
+</section>
 <div id="top">
     <!--Logo and header-->
     <header id="MainHeader">
@@ -348,7 +378,6 @@
             }
             <!-- End of Responsive nav bar script -->
 
-
             //Function declaration
             //$(document).ready(function () {
             $('a[href^="#"]').on('click', function (e) {
@@ -362,19 +391,6 @@
                 }, 900, 'swing');
             });
             //});
-
-            //Logout function
-            function logout1() {
-                signOut();
-                $('.login').text('Login')
-            }
-
-            //Login function
-            function login1() {
-                if ($('.login').text('Login')) {
-                    $('.login').text('Logout')
-                }
-            }
 
             <!--Blur background when login button is clicked-->
             function Blur() {
@@ -404,13 +420,7 @@
 
             }
 
-            //Signout function
-            function signOut() {
-                var auth2 = gapi.auth2.getAuthInstance();
-                auth2.signOut().then(function () {
-                    console.log('User signed out.');
-                });
-            }
+
 
             <!-- Modal Script -->
             // Get the modal
