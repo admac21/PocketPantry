@@ -37,7 +37,7 @@
         <section id="fb-root"></section>
 
         <section class="fb-login-button" data-max-rows="2" data-size="large" data-show-faces="false"
-             data-auto-logout-link="false"></section>
+                 data-auto-logout-link="false"></section>
 
         <!--Logout button-->
         <li><a href="#" class="logout" onclick="logout1()">Logout</a></li>
@@ -45,10 +45,10 @@
             //Signout function
             function signOut2() {
                 FB.logout();
-                    // user is now logged out of Facebook
-                    console.log('User signed out of Facebook');
+                // user is now logged out of Facebook
+                console.log('User signed out of Facebook');
             }
-            </script>
+        </script>
         <script>
             function signOut1() {
                 var auth2 = gapi.auth2.getAuthInstance();
@@ -57,9 +57,9 @@
                     console.log('User signed out of Google+.');
                 });
             }
-            </script>
-            <script>
-//            Logout function
+        </script>
+        <script>
+            //            Logout function
             function logout1() {
                 signOut1();
                 signOut2();
@@ -138,7 +138,7 @@
                         $("#searchb").click(function () {
                             console.log("clicked");
 
-                            var baseURL = "https://food2fork.com/api/search?key=c374bfbac65d543206653a9fe750799d&q=eggs";
+                            //var baseURL = "https://food2fork.com/api/search?key=c374bfbac65d543206653a9fe750799d&q=eggs";
                             /* $.getJSON(baseURL)
                              .success(function( data ) {
                              console.log("success: " +data);
@@ -185,143 +185,59 @@
                         });
                         //end function
 
-                        $('.my-form .add-box').click(function () {
-                            var n = $('.text-box').length + 1;
-                            var box_html = $('<p class="text-box"><label for="box' + n + '"><span class="box-number">'
-                                    + n + '</span></label> <input type="ingredient" name="boxes[]" value="" id="box'
-                                    + n + '" /> <a href="#" class="remove-box"><button class="button deletebutton">X</button></a></p>');
-                            box_html.hide();
-                            $('.my-form p.text-box:last').after(box_html);
-                            box_html.fadeIn('slow');
-                            return false;
-                        });
+
                     });
-                    $('.my-form').on('click', '.remove-box', function () {
-                        $(this).parent().fadeOut("slow", function () {
-                            $(this).remove();
-                            $('.box-number').each(function (index) {
-                                $(this).text(index + 1);
-                            });
-                        });
-                        return false;
-                    });
+
 
                 </script>
             </ul>
         </nav>
         <!--Right side of the screen where results are shown-->
         <section class="ResultArea">
-            <section class="results">
-                <section class="descWrapper">
-                    <section class="desc">Jalapeno Popper Grilled Cheese Sandwich</section>
-                    <section class="heart1">
+            <div class="results">
+                <div class="descWrapper">
+                    <div class="desc">Jalapeno Popper Grilled Cheese Sandwich</div>
+                    <div class="heart1">
                         <img src="heartIcon3.png" class="heart3" alt="heart">
-                    </section>
-                </section>
-                <section class="img">
+                    </div>
+                </div>
+                <div class="img">
                     <a target="_blank"
                        href="http://www.closetcooking.com/2011/04/jalapeno-popper-grilled-cheese-sandwich.html">
                         <img src="http://static.food2fork.com/Jalapeno2BPopper2BGrilled2BCheese2BSandwich2B12B500fd186186.jpg"
                              alt="HobbitBroth" width="800" height="400">
                     </a>
-                </section>
-                <section class="resultInformation">
-                    <section class="resultIngs">
+                </div>
+                <div class="resultInformation">
+                    <div class="resultIngs">
                         <a class="ings">+ Unicorn meat</a><br>
                         <a class="ings">+ Fairy dust</a><br>
                         <a class="ings">+ Lava from Mordor</a><br>
                         <a class="ings">- Motivation</a>
-                    </section>
+                    </div>
 
-                </section>
+                </div>
+            </div>
             </section>
-            <!--<section class="results">-->
-                <!--<section class="descWrapper">-->
-                    <!--<section class="desc">Perfect Ice Coffee</section>-->
-                    <!--<section class="heart1">-->
-                        <!--<img src="heartIcon3.png" class="heart3" alt="heart">-->
-                    <!--</section>-->
-                <!--</section>-->
-                <!--<section class="img">-->
-                    <!--<a target="_blank" href="http://thepioneerwoman.com/cooking/2011/06/perfect-iced-coffee/">-->
-                        <!--<img src="http://static.food2fork.com/icedcoffee5766.jpg" alt="Bolognese" width="800"-->
-                             <!--height="400">-->
-                    <!--</a>-->
-                <!--</section>-->
-                <!--<section class="resultInformation">-->
-                    <!--<section class="resultIngs">-->
-                        <!--<a class="ings">+ Rancor brains</a><br>-->
-                        <!--<a class="ings">+ Magic beans</a><br>-->
-                        <!--<a class="ings">- Beer</a><br>-->
-                        <!--<a class="ings">- Skills</a>-->
-                    <!--</section>-->
-                <!--</section>-->
-            <!--</section>-->
-            <!--<section class="results">-->
-                <!--<section class="descWrapper">-->
-                    <!--<section class="desc">Crash Hot Potatoes</section>-->
-                    <!--<section class="heart1">-->
-                        <!--<img src="heartIcon3.png" class="heart3" alt="heart">-->
-                    <!--</section>-->
-                <!--</section>-->
-                <!--<section class="img">-->
-                    <!--<a target="_blank" href="http://thepioneerwoman.com/cooking/2008/06/crash-hot-potatoes/">-->
-                        <!--<img src="http://static.food2fork.com/CrashHotPotatoes5736.jpg" alt="Bolognese" width="800"-->
-                             <!--height="400">-->
-                    <!--</a>-->
-                <!--</section>-->
-                <!--<section class="resultInformation">-->
-                    <!--<section class="resultIngs">-->
-                        <!--<a class="ings">+ Rancor brains</a><br>-->
-                        <!--<a class="ings">+ Magic beans</a><br>-->
-                        <!--<a class="ings">- Beer</a><br>-->
-                        <!--<a class="ings">- Skills</a>-->
-                    <!--</section>-->
-                <!--</section>-->
-            <!--</section>-->
-            <!--<section class="results">-->
-                <!--<section class="descWrapper">-->
-                    <!--<section class="desc" id="1234">Spaghetti bolognese</section>-->
-                    <!--<section class="heart1">-->
-                        <!--<img src="heartIcon3.png" class="heart3" alt="heart">-->
-                    <!--</section>-->
-                <!--</section>-->
-                <!--<section class="img">-->
-                    <!--<a target="_blank" href="foodimage.jpg">-->
-                        <!--<img src="foodimage.jpg" alt="Bolognese" width="800" height="400">-->
-                    <!--</a>-->
-                <!--</section>-->
-                <!--<section class="resultInformation">-->
-                    <!--<section class="resultIngs">-->
-                        <!--<a class="ings">+ Rancor brains</a><br>-->
-                        <!--<a class="ings">+ Magic beans</a><br>-->
-                        <!--<a class="ings">- Beer</a><br>-->
-                        <!--<a class="ings">- Skills</a>-->
-                    <!--</section>-->
-                <!--</section>-->
-            <!--</section>-->
+
             <script>
                 createCard('Jalapeno Popper Grilled Cheese Sandwich', 'http://static.food2fork.com/Jalapeno2BPopper2BGrilled2BCheese2BSandwich2B12B500fd186186.jpg','http://www.closetcooking.com/2011/04/jalapeno-popper-grilled-cheese-sandwich.html');
-                createCard('Surprisingly Filling Hobbit Broth', 'heartIcon3.png');
-                createCard('Something with cheese', 'heartIcon3.png');
-                createCard('desc', 'heartIcon3.png');
+                createCard('Surprisingly Filling Hobbit Broth', 'foodimage.jpg');
+                createCard('Something with cheese', 'foodimage.jpg');
+                createCard('rawr', 'foodimage.jpg');
 
-
-
+                //Function that will create and populate a recipe card
                 function createCard(desc, imgSrc, recipeSrc){
-                    alert("Creating card...");
 
-
-
-                    var resultCard = $('<section class="results">');
-                    var descWrapper = $('<section class="descWrapper">');
-                    var description = $('<section class="desc">').text(desc);
-                    var heart1 = $('<section class="heart1">');
-                    var img = $(JSON.parse(JSON));
+                    var resultCard = $('<div class="results"></div>');
+                    var descWrapper = $('<div class="descWrapper"></div>');
+                    var description = $('<div class="desc"></div>').text(desc);
+                    var heart1 = $('<div class="heart1"></div>');
+                    var img = $('<div class="img"></div>');
                     //var blank = $('<a class="_blank"></a>').attr('href', recipeSrc);
                     var image = $('<img />').attr('src', imgSrc).attr('alt', desc).attr('href', recipeSrc);
-                    var resultInformation = $('<section class="resultInformation">');
-                    var resultIngs = $('<section class="resultIngs"></section>');
+                    var resultInformation = $('<div class="resultInformation"></div>');
+                    var resultIngs = $('<div class="resultIngs"></div>');
 
                     $(resultCard).append(descWrapper);
                     $(descWrapper).append(description);
@@ -332,24 +248,11 @@
                     $(descWrapper).append(resultInformation);
                     $(resultInformation).append(resultIngs);
                     $(resultIngs).prepend('<a class="ings">+ Rancor brains</a>').prepend('<a class="ings">+ Magic Beans</a>').prepend('<a class="ings">- Beer</a>').prepend('<a class="ings">- Skills</a>');
-
-
                     $(resultCard).appendTo($('.ResultArea'));
-
-
-
-
-
-                   // div.innerHTML = div.innerHTML + desc;
-
-                    //$(resultCard).innerHTML();
-                    //$(resultCard).appendTo($('.ResultArea'));
-                    alert("Added");
 
                 }
             </script>
 
-        </section>
     </section>
     <!--Footer-->
     <footer id="PageFooter">
@@ -489,21 +392,21 @@
 
                 var baseURL = "http://food2fork.com/api/search?key=c374bfbac65d543206653a9fe750799d&q=eggs&callback=?";
                 /* $.getJSON(baseURL)
-                .success(function( data ) {
-                console.log("success: " +data);
-            })
-                .done(function( data ) {
-                console.log("done: " +data);
-            })
-                .error(function(error) {
-                console.log("error: " +error);
-            });*/
+                 .success(function( data ) {
+                 console.log("success: " +data);
+                 })
+                 .done(function( data ) {
+                 console.log("done: " +data);
+                 })
+                 .error(function(error) {
+                 console.log("error: " +error);
+                 });*/
 
                 $.ajax({url: baseURL,
                     success: function(jsondata){
-                console.log(
-                        jsondata);
-            }, error: function(xhr, status, error) {
+                        console.log(
+                                jsondata);
+                    }, error: function(xhr, status, error) {
                         console.log("error");
                         console.log(xhr);
                         console.log(status);
