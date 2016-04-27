@@ -160,6 +160,9 @@
 //                                    console.log(error);
 //                                }
 //                            });
+
+
+                            // WORKING
                             $.ajax({
                                 url: "http://pocketpantry.azurewebsites.net/theprox.php?url=http://food2fork.com/api/search",
                                 type: "GET",
@@ -167,7 +170,12 @@
                                 dataType: "json",
                                 success: function (response) {
                                     $('#whatsinyourpantry').text(JSON.stringify(response));
-                                    alert(response);
+                                    console.log(response);
+                                    var res = JSON.parse(JSON.stringify(response));
+                                    for (var i=0; i<res.length; i++)
+                                        for (var title in rest[i]) {
+                                            console.log("Recipe name: "+title);
+                                        }
                                 },
                                 error: function (xhr, status) {
                                     alert("error");
@@ -227,28 +235,28 @@
 
                 </section>
             </section>
-            <section class="results">
-                <section class="descWrapper">
-                    <section class="desc">Perfect Ice Coffee</section>
-                    <section class="heart1">
-                        <img src="heartIcon3.png" class="heart3" alt="heart">
-                    </section>
-                </section>
-                <section class="img">
-                    <a target="_blank" href="http://thepioneerwoman.com/cooking/2011/06/perfect-iced-coffee/">
-                        <img src="http://static.food2fork.com/icedcoffee5766.jpg" alt="Bolognese" width="800"
-                             height="400">
-                    </a>
-                </section>
-                <section class="resultInformation">
-                    <section class="resultIngs">
-                        <a class="ings">+ Rancor brains</a><br>
-                        <a class="ings">+ Magic beans</a><br>
-                        <a class="ings">- Beer</a><br>
-                        <a class="ings">- Skills</a>
-                    </section>
-                </section>
-            </section>
+            <!--<section class="results">-->
+                <!--<section class="descWrapper">-->
+                    <!--<section class="desc">Perfect Ice Coffee</section>-->
+                    <!--<section class="heart1">-->
+                        <!--<img src="heartIcon3.png" class="heart3" alt="heart">-->
+                    <!--</section>-->
+                <!--</section>-->
+                <!--<section class="img">-->
+                    <!--<a target="_blank" href="http://thepioneerwoman.com/cooking/2011/06/perfect-iced-coffee/">-->
+                        <!--<img src="http://static.food2fork.com/icedcoffee5766.jpg" alt="Bolognese" width="800"-->
+                             <!--height="400">-->
+                    <!--</a>-->
+                <!--</section>-->
+                <!--<section class="resultInformation">-->
+                    <!--<section class="resultIngs">-->
+                        <!--<a class="ings">+ Rancor brains</a><br>-->
+                        <!--<a class="ings">+ Magic beans</a><br>-->
+                        <!--<a class="ings">- Beer</a><br>-->
+                        <!--<a class="ings">- Skills</a>-->
+                    <!--</section>-->
+                <!--</section>-->
+            <!--</section>-->
             <!--<section class="results">-->
                 <!--<section class="descWrapper">-->
                     <!--<section class="desc">Crash Hot Potatoes</section>-->
@@ -296,7 +304,9 @@
                 createCard('Jalapeno Popper Grilled Cheese Sandwich', 'http://static.food2fork.com/Jalapeno2BPopper2BGrilled2BCheese2BSandwich2B12B500fd186186.jpg','http://www.closetcooking.com/2011/04/jalapeno-popper-grilled-cheese-sandwich.html');
                 createCard('Surprisingly Filling Hobbit Broth', 'heartIcon3.png');
                 createCard('Something with cheese', 'heartIcon3.png');
-                createCard("Otto's Special Bolognese", 'heartIcon3.png');
+                createCard('desc', 'heartIcon3.png');
+
+
 
                 function createCard(desc, imgSrc, recipeSrc){
                     alert("Creating card...");
@@ -307,7 +317,7 @@
                     var descWrapper = $('<section class="descWrapper">');
                     var description = $('<section class="desc">').text(desc);
                     var heart1 = $('<section class="heart1">');
-                    var img = $('<section class="img">');
+                    var img = $(JSON.parse(JSON));
                     //var blank = $('<a class="_blank"></a>').attr('href', recipeSrc);
                     var image = $('<img />').attr('src', imgSrc).attr('alt', desc).attr('href', recipeSrc);
                     var resultInformation = $('<section class="resultInformation">');
