@@ -14,6 +14,10 @@
     <script src="https://apis.google.com/js/platform.js" async defer></script>
     <meta name="google-signin-client_id"
           content="568823689660-386ik3kjs8gbu26p6l9i9eveoa5fk0c2.apps.googleusercontent.com">
+    <script>
+        var res;
+
+    </script>
 </head>
 <body>
 <!-- Trigger/Open The Modal -->
@@ -34,21 +38,21 @@
             }
         </script>
         <!--Facebook stuff-->
-        <section id="fb-root"></section>
+        <!--<section id="fb-root"></section>-->
 
-        <section class="fb-login-button" data-max-rows="2" data-size="large" data-show-faces="false"
-                 data-auto-logout-link="false"></section>
+        <!--<section class="fb-login-button" data-max-rows="2" data-size="large" data-show-faces="false"-->
+                 <!--data-auto-logout-link="false"></section>-->
 
         <!--Logout button-->
         <li><a href="#" class="logout" onclick="logout1()">Logout</a></li>
-        <script>
-            //Signout function
-            function signOut2() {
-                FB.logout();
-                // user is now logged out of Facebook
-                console.log('User signed out of Facebook');
-            }
-        </script>
+        <!--<script>-->
+            <!--//Signout function-->
+            <!--function signOut2() {-->
+                <!--FB.logout();-->
+                <!--// user is now logged out of Facebook-->
+                <!--console.log('User signed out of Facebook');-->
+            <!--}-->
+        <!--</script>-->
         <script>
             function signOut1() {
                 var auth2 = gapi.auth2.getAuthInstance();
@@ -62,7 +66,7 @@
             //            Logout function
             function logout1() {
                 signOut1();
-                signOut2();
+//                signOut2();
                 $('.login').text('Login')
             }
         </script>
@@ -118,7 +122,7 @@
                         <a class="add-box" href="#">
                             <button class="button addbutton">Add</button>
                         </a>
-                        <button class="button searchbutton" id="searchb">Search</button>
+                        <button class="button searchbutton" id="searchb" type="button">Search</button>
                     </form>
                 </section>
                 <!--Add, remove and search button functions-->
@@ -131,58 +135,52 @@
                                         userInput += $(this).val() + ',';
                                     }
                             );
-                            alert(userInput);
+
                             return userInput;
                         }
 
                         $("#searchb").click(function () {
                             console.log("clicked");
 
-                            //var baseURL = "https://food2fork.com/api/search?key=c374bfbac65d543206653a9fe750799d&q=eggs";
-                            /* $.getJSON(baseURL)
-                             .success(function( data ) {
-                             console.log("success: " +data);
-                             })
-                             .done(function( data ) {
-                             console.log("done: " +data);
-                             })
-                             .error(function(error) {
-                             console.log("error: " +error);
-                             });*/
-//                            $.ajax({
-//                                url: baseURL, success: function (result) {
-//                                    console.log("no result");
-//                                    console.log(result);
-//                                }, error: function (xhr, status, error) {
-//                                    console.log("error");
-//                                    console.log(xhr);
-//                                    console.log(status);
-//                                    console.log(error);
-//                                }
-//                            });
-
-
+                        });
+                        $('.ResultArea').empty();
+                        searchApi();
+                            function searchApi(){
                             // WORKING
                             $.ajax({
                                 url: "http://pocketpantry.azurewebsites.net/theprox.php?url=http://food2fork.com/api/search",
                                 type: "GET",
-                                data: {key:"c374bfbac65d543206653a9fe750799d",q: getSearchBox()},
+                                data: {key: "c374bfbac65d543206653a9fe750799d", q: getSearchBox().slice(0,-1)},
                                 dataType: "json",
                                 success: function (response) {
-                                    $('#whatsinyourpantry').text(JSON.stringify(response));
                                     console.log(response);
-                                    var res = JSON.parse(JSON.stringify(response));
-                                    for (var i=0; i<res.length; i++)
-                                        for (var title in rest[i]) {
-                                            console.log("Recipe name: "+title);
-                                        }
-                                },
-                                error: function (xhr, status) {
-                                    alert("error");
-                                }
-                            });
+                                    res = JSON.parse(JSON.stringify(response));
 
-                        });
+                                    console.log(res.recipes[0].title);
+
+
+                                    for (i = 0; i < res.recipes.length; i++) {
+                                        // createCard(res.recipes[i].title, res.recipes[i].image_url, res.recipes[i].source_url);
+                                        console.log(res.recipes[i].title);
+
+                                        var recipeTitle = res.recipes[i].title;
+                                        var imgSrc = res.recipes[i].image_url;
+
+
+
+
+                                        createCard(recipeTitle, imgSrc);
+
+                                    }
+                                    }
+                                    ,
+                                    error: function (xhr, status) {
+                                        alert("error");
+                                    }
+                                });
+
+
+                    }
                         //end function
 
 
@@ -194,62 +192,41 @@
         </nav>
         <!--Right side of the screen where results are shown-->
         <section class="ResultArea">
-            <div class="results">
-                <div class="descWrapper">
-                    <div class="desc">Jalapeno Popper Grilled Cheese Sandwich</div>
-                    <div class="heart1">
-                        <img src="heartIcon3.png" class="heart3" alt="heart">
-                    </div>
-                </div>
-                <div class="img">
-                    <a target="_blank"
-                       href="http://www.closetcooking.com/2011/04/jalapeno-popper-grilled-cheese-sandwich.html">
-                        <img src="http://static.food2fork.com/Jalapeno2BPopper2BGrilled2BCheese2BSandwich2B12B500fd186186.jpg"
-                             alt="HobbitBroth" width="800" height="400">
-                    </a>
-                </div>
-                <div class="resultInformation">
-                    <div class="resultIngs">
-                        <a class="ings">+ Unicorn meat</a><br>
-                        <a class="ings">+ Fairy dust</a><br>
-                        <a class="ings">+ Lava from Mordor</a><br>
-                        <a class="ings">- Motivation</a>
-                    </div>
 
-                </div>
-            </div>
             </section>
 
             <script>
-                createCard('Jalapeno Popper Grilled Cheese Sandwich', 'http://static.food2fork.com/Jalapeno2BPopper2BGrilled2BCheese2BSandwich2B12B500fd186186.jpg','http://www.closetcooking.com/2011/04/jalapeno-popper-grilled-cheese-sandwich.html');
-                createCard('Surprisingly Filling Hobbit Broth', 'foodimage.jpg');
-                createCard('Something with cheese', 'foodimage.jpg');
-                createCard('rawr', 'foodimage.jpg');
 
-                //Function that will create and populate a recipe card
-                function createCard(desc, imgSrc, recipeSrc){
+//                for (i = 0; i < res.recipes.length; i++) {
+//                    createCard(res.recipes[i].title, res.recipes[i].image_url, res.recipes[i].source_url);
+//                    console.log(res.recipes[i].title);
 
-                    var resultCard = $('<div class="results"></div>');
-                    var descWrapper = $('<div class="descWrapper"></div>');
-                    var description = $('<div class="desc"></div>').text(desc);
-                    var heart1 = $('<div class="heart1"></div>');
-                    var img = $('<div class="img"></div>');
-                    //var blank = $('<a class="_blank"></a>').attr('href', recipeSrc);
-                    var image = $('<img />').attr('src', imgSrc).attr('alt', desc).attr('href', recipeSrc);
-                    var resultInformation = $('<div class="resultInformation"></div>');
-                    var resultIngs = $('<div class="resultIngs"></div>');
 
-                    $(resultCard).append(descWrapper);
-                    $(descWrapper).append(description);
-                    $(descWrapper).append(heart1);
-                    $(heart1).prepend('<img src="heartIcon3.png" class="heart3" alt="heart" />');
-                    $(descWrapper).append(img);
-                    $(img).prepend(image);
-                    $(descWrapper).append(resultInformation);
-                    $(resultInformation).append(resultIngs);
-                    $(resultIngs).prepend('<a class="ings">+ Rancor brains</a>').prepend('<a class="ings">+ Magic Beans</a>').prepend('<a class="ings">- Beer</a>').prepend('<a class="ings">- Skills</a>');
-                    $(resultCard).appendTo($('.ResultArea'));
+                    //Function that will create and populate a recipe card
+                    function createCard(desc, imgSrc, recipeSrc) {
 
+                        var resultCard = $('<div class="results"></div>');
+                        var descWrapper = $('<div class="descWrapper"></div>');
+                        var description = $('<div class="desc"></div>').text(desc);
+                        var heart1 = $('<div class="heart1"></div>');
+                        var img = $('<div class="img"></div>');
+                        //var blank = $('<a class="_blank"></a>').attr('href', recipeSrc);
+                        var image = $('<img />').attr('src', imgSrc).attr('alt', desc).attr('href', recipeSrc);
+                        var resultInformation = $('<div class="resultInformation"></div>');
+                        var resultIngs = $('<div class="resultIngs"></div>');
+
+                        $(resultCard).append(descWrapper);
+                        $(descWrapper).append(description);
+                        $(descWrapper).append(heart1);
+                        $(heart1).prepend('<img src="heartIcon3.png" class="heart3" alt="heart" />');
+                        $(descWrapper).append(img);
+                        $(img).prepend(image);
+                        $(descWrapper).append(resultInformation);
+                        $(resultInformation).append(resultIngs);
+                        $(resultIngs).prepend('<a class="ings">+ Rancor brains</a>').prepend('<a class="ings">+ Magic Beans</a>').prepend('<a class="ings">- Beer</a>').prepend('<a class="ings">- Skills</a>');
+                        $(resultCard).appendTo($('.ResultArea'));
+
+//                    }
                 }
             </script>
 
@@ -327,7 +304,6 @@
             } else {
                 //$(document).ready(function () {
                 $(window).scroll(function () {
-                    console.log($(window).scrollTop());
                     if ($(window).scrollTop() > 33) {
                         $("#nav").css({
                             top: 0,
@@ -375,7 +351,7 @@
                             userInput += $(this).val() + ',';
                         }
                 );
-                alert(userInput);
+
                 return userInput;
             }
 
@@ -402,18 +378,18 @@
                  console.log("error: " +error);
                  });*/
 
-                $.ajax({url: baseURL,
-                    success: function(jsondata){
-                        console.log(
-                                jsondata);
-                    }, error: function(xhr, status, error) {
-                        console.log("error");
-                        console.log(xhr);
-                        console.log(status);
-                        console.log(error);
-
-                    }
-                });
+//                $.ajax({url: baseURL,
+//                    success: function(jsondata){
+//                        console.log(
+//                                jsondata);
+//                    }, error: function(xhr, status, error) {
+//                        console.log("error");
+//                        console.log(xhr);
+//                        console.log(status);
+//                        console.log(error);
+//
+//                    }
+//                });
             }
 
             <!-- End of this Shit Works -->
@@ -513,126 +489,126 @@
                     'onsuccess': onSuccess,
                     'onfailure': onFailure
                 });
-            }
+            }});
 
             <!-- End of Google script -->
 
             <!-- Facebook Script -->
             //First Part
-            window.fbAsyncInit = function () {
-                FB.init({
-                    appId: '985300261517338',
-                    xfbml: true,
-                    version: 'v2.5'
-                });
-            };
-
-            (function (d, s, id) {
-                var js, fjs = d.getElementsByTagName(s)[0];
-                if (d.getElementById(id)) {
-                    return;
-                }
-                js = d.createElement(s);
-                js.id = id;
-                js.src = "//connect.facebook.net/en_US/sdk.js";
-                fjs.parentNode.insertBefore(js, fjs);
-            }(document, 'script', 'facebook-jssdk'));
-
-            //Second Part
-            // This is called with the results from from FB.getLoginStatus().
-            function statusChangeCallback(response) {
-                console.log('statusChangeCallback');
-                console.log(response);
-                // The response object is returned with a status field that lets the
-                // app know the current login status of the person.
-                // Full docs on the response object can be found in the documentation
-                // for FB.getLoginStatus().
-                if (response.status === 'connected') {
-                    // Logged into your app and Facebook.
-                    testAPI();
-                } else if (response.status === 'not_authorized') {
-                    // The person is logged into Facebook, but not your app.
-                    document.getElementById('status').innerHTML = 'Please log ' +
-                            'into this app.';
-                } else {
-                    // The person is not logged into Facebook, so we're not sure if
-                    // they are logged into this app or not.
-                    document.getElementById('status').innerHTML = 'Please log ' +
-                            'into Facebook.';
-                }
-            }
-
-            // This function is called when someone finishes with the Login
-            // Button.  See the onlogin handler attached to it in the sample
-            // code below.
-            function checkLoginState() {
-                FB.getLoginStatus(function (response) {
-                    statusChangeCallback(response);
-                });
-            }
-
-            window.fbAsyncInit = function () {
-                FB.init({
-                    appId: '{your-app-id}',
-                    cookie: true,  // enable cookies to allow the server to access
-                                   // the session
-                    xfbml: true,  // parse social plugins on this page
-                    version: 'v2.5' // use graph api version 2.5
-                });
-
-                // Now that we've initialized the JavaScript SDK, we call
-                // FB.getLoginStatus().  This function gets the state of the
-                // person visiting this page and can return one of three states to
-                // the callback you provide.  They can be:
-                //
-                // 1. Logged into your app ('connected')
-                // 2. Logged into Facebook, but not your app ('not_authorized')
-                // 3. Not logged into Facebook and can't tell if they are logged into
-                //    your app or not.
-                //
-                // These three cases are handled in the callback function.
-
-                FB.getLoginStatus(function (response) {
-                    statusChangeCallback(response);
-                });
-
-            };
-
-            // Load the SDK asynchronously
-            (function (d, s, id) {
-                var js, fjs = d.getElementsByTagName(s)[0];
-                if (d.getElementById(id)) return;
-                js = d.createElement(s);
-                js.id = id;
-                js.src = "//connect.facebook.net/en_US/sdk.js";
-                fjs.parentNode.insertBefore(js, fjs);
-            }(document, 'script', 'facebook-jssdk'));
-
-            // Here we run a very simple test of the Graph API after login is
-            // successful.  See statusChangeCallback() for when this call is made.
-            function testAPI() {
-                console.log('Welcome!  Fetching your information.... ');
-                FB.api('/me', function (response) {
-                    console.log('Successful login for: ' + response.name);
-                    document.getElementById('status').innerHTML =
-                            'Thanks for logging in, ' + response.name + '!';
-                });
-            }
-
-            //Facebook Login Status
-            FB.getLoginStatus(function (response) {
-                statusChangeCallback(response);
-            });
-        });
-
-        (function (d, s, id) {
-            var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) return;
-            js = d.createElement(s);
-            js.id = id;
-            js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.6&appId=985300261517338";
-            fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));
+//            window.fbAsyncInit = function () {
+//                FB.init({
+//                    appId: '985300261517338',
+//                    xfbml: true,
+//                    version: 'v2.5'
+//                });
+//            };
+//
+//            (function (d, s, id) {
+//                var js, fjs = d.getElementsByTagName(s)[0];
+//                if (d.getElementById(id)) {
+//                    return;
+//                }
+//                js = d.createElement(s);
+//                js.id = id;
+//                js.src = "//connect.facebook.net/en_US/sdk.js";
+//                fjs.parentNode.insertBefore(js, fjs);
+//            }(document, 'script', 'facebook-jssdk'));
+//
+//            //Second Part
+//            // This is called with the results from from FB.getLoginStatus().
+//            function statusChangeCallback(response) {
+//                console.log('statusChangeCallback');
+//                console.log(response);
+//                // The response object is returned with a status field that lets the
+//                // app know the current login status of the person.
+//                // Full docs on the response object can be found in the documentation
+//                // for FB.getLoginStatus().
+//                if (response.status === 'connected') {
+//                    // Logged into your app and Facebook.
+//                    testAPI();
+//                } else if (response.status === 'not_authorized') {
+//                    // The person is logged into Facebook, but not your app.
+//                    document.getElementById('status').innerHTML = 'Please log ' +
+//                            'into this app.';
+//                } else {
+//                    // The person is not logged into Facebook, so we're not sure if
+//                    // they are logged into this app or not.
+//                    document.getElementById('status').innerHTML = 'Please log ' +
+//                            'into Facebook.';
+//                }
+//            }
+//
+//            // This function is called when someone finishes with the Login
+//            // Button.  See the onlogin handler attached to it in the sample
+//            // code below.
+//            function checkLoginState() {
+//                FB.getLoginStatus(function (response) {
+//                    statusChangeCallback(response);
+//                });
+//            }
+//
+//            window.fbAsyncInit = function () {
+//                FB.init({
+//                    appId: '{your-app-id}',
+//                    cookie: true,  // enable cookies to allow the server to access
+//                                   // the session
+//                    xfbml: true,  // parse social plugins on this page
+//                    version: 'v2.5' // use graph api version 2.5
+//                });
+//
+//                // Now that we've initialized the JavaScript SDK, we call
+//                // FB.getLoginStatus().  This function gets the state of the
+//                // person visiting this page and can return one of three states to
+//                // the callback you provide.  They can be:
+//                //
+//                // 1. Logged into your app ('connected')
+//                // 2. Logged into Facebook, but not your app ('not_authorized')
+//                // 3. Not logged into Facebook and can't tell if they are logged into
+//                //    your app or not.
+//                //
+//                // These three cases are handled in the callback function.
+//
+//                FB.getLoginStatus(function (response) {
+//                    statusChangeCallback(response);
+//                });
+//
+//            };
+//
+//            // Load the SDK asynchronously
+//            (function (d, s, id) {
+//                var js, fjs = d.getElementsByTagName(s)[0];
+//                if (d.getElementById(id)) return;
+//                js = d.createElement(s);
+//                js.id = id;
+//                js.src = "//connect.facebook.net/en_US/sdk.js";
+//                fjs.parentNode.insertBefore(js, fjs);
+//            }(document, 'script', 'facebook-jssdk'));
+//
+//            // Here we run a very simple test of the Graph API after login is
+//            // successful.  See statusChangeCallback() for when this call is made.
+//            function testAPI() {
+//                console.log('Welcome!  Fetching your information.... ');
+//                FB.api('/me', function (response) {
+//                    console.log('Successful login for: ' + response.name);
+//                    document.getElementById('status').innerHTML =
+//                            'Thanks for logging in, ' + response.name + '!';
+//                });
+//            }
+//
+//            //Facebook Login Status
+//            FB.getLoginStatus(function (response) {
+//                statusChangeCallback(response);
+//            });
+//        });
+//
+//        (function (d, s, id) {
+//            var js, fjs = d.getElementsByTagName(s)[0];
+//            if (d.getElementById(id)) return;
+//            js = d.createElement(s);
+//            js.id = id;
+//            js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.6&appId=985300261517338";
+//            fjs.parentNode.insertBefore(js, fjs);
+//        }(document, 'script', 'facebook-jssdk'));
 
         <!-- End of Facebook Script -->
 
