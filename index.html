@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="normalize.css" charset="UTF-8">
+    <link rel="stylesheet" href="normalize.css">
     <!--Icons for social media buttons-->
-    <link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css' charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="style.css" charset="UTF-8">
+    <link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css'>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pocket Pantry</title>
     <!--jQuery for navigation bar sticky scroll function-->
@@ -17,7 +17,6 @@
 </head>
 <body>
 <!-- Trigger/Open The Modal -->
-
 <!-- The Modal -->
 <section id="myModal" class="modal">
 
@@ -35,10 +34,10 @@
             }
         </script>
         <!--Facebook stuff-->
-        <div id="fb-root"></div>
+        <section id="fb-root"></section>
 
-        <div class="fb-login-button" data-max-rows="2" data-size="large" data-show-faces="false"
-             data-auto-logout-link="false"></div>
+        <section class="fb-login-button" data-max-rows="2" data-size="large" data-show-faces="false"
+             data-auto-logout-link="false"></section>
 
         <!--Logout button-->
         <li><a href="#" class="logout" onclick="logout1()">Logout</a></li>
@@ -91,12 +90,13 @@
                     </form>
                 </li>
 
+
             </ul>
             <br class="clearLeft"/>
         </nav>
-        <div id="nav-trigger">
+        <section id="nav-trigger">
             <span>Menu</span>
-        </div>
+        </section>
         <nav id="nav-mobile"></nav>
         <img src="MaterialPantry.png" id="MaterialPantry2" alt="PocketPantryLogo">
 
@@ -109,7 +109,7 @@
         <nav id="LeftBar">
             <ul id="AddIngs">
                 <a id="whatsinyourpantry">What's In Your Pantry?</a>
-                <div class="my-form">
+                <section class="my-form">
                     <form role="form" method="post">
                         <p class="text-box">
                             <label for="box1"><span class="box-number">1</span></label>
@@ -120,57 +120,203 @@
                         </a>
                         <button class="button searchbutton" id="searchb">Search</button>
                     </form>
-                </div>
+                </section>
+                <!--Add, remove and search button functions-->
+                <script type="text/javascript">
+                    jQuery(document).ready(function ($) {
+
+                        function getSearchBox() {
+                            var userInput = "";
+                            $(".text-box input").each(function () {
+                                        userInput += $(this).val() + ',';
+                                    }
+                            );
+                            alert(userInput);
+                            return userInput;
+                        }
+
+                        $("#searchb").click(function () {
+                            console.log("clicked");
+
+                            var baseURL = "https://food2fork.com/api/search?key=c374bfbac65d543206653a9fe750799d&q=eggs";
+                            /* $.getJSON(baseURL)
+                             .success(function( data ) {
+                             console.log("success: " +data);
+                             })
+                             .done(function( data ) {
+                             console.log("done: " +data);
+                             })
+                             .error(function(error) {
+                             console.log("error: " +error);
+                             });*/
+//                            $.ajax({
+//                                url: baseURL, success: function (result) {
+//                                    console.log("no result");
+//                                    console.log(result);
+//                                }, error: function (xhr, status, error) {
+//                                    console.log("error");
+//                                    console.log(xhr);
+//                                    console.log(status);
+//                                    console.log(error);
+//                                }
+//                            });
+                            $.ajax({
+                                url: "http://pocketpantry,azurewebsites.net/theprox.php?url=http://food2fork.com/api/search",
+                                type: "GET",
+                                data: {key:"c374bfbac65d543206653a9fe750799d",q:"ham,eggs"},
+                                dataType: "json",
+                                success: function (response) {
+                                    $('#whatsinyourpantry').text(JSON.stringify(response));
+                                    alert(response);
+                                },
+                                error: function (xhr, status) {
+                                    alert("error");
+                                }
+                            });
+
+                        });
 
 
+                        //end function
 
 
+                        $('.my-form .add-box').click(function () {
+                            var n = $('.text-box').length + 1;
+                            var box_html = $('<p class="text-box"><label for="box' + n + '"><span class="box-number">'
+                                    + n + '</span></label> <input type="ingredient" name="boxes[]" value="" id="box'
+                                    + n + '" /> <a href="#" class="remove-box"><button class="button deletebutton">X</button></a></p>');
+                            box_html.hide();
+                            $('.my-form p.text-box:last').after(box_html);
+                            box_html.fadeIn('slow');
+                            return false;
+                        });
+                    });
+                    $('.my-form').on('click', '.remove-box', function () {
+                        $(this).parent().fadeOut("slow", function () {
+                            $(this).remove();
+                            $('.box-number').each(function (index) {
+                                $(this).text(index + 1);
+                            });
+                        });
+                        return false;
+                    });
+
+
+                </script>
             </ul>
         </nav>
         <!--Right side of the screen where results are shown-->
         <section class="ResultArea">
-            <div class="results">
-                <div class="descWrapper">
-                    <div class="desc">Jalapeno Popper Grilled Cheese Sandwich</div>
-                    <div class="heart1">
+            <section class="results">
+                <section class="descWrapper">
+                    <section class="desc">Jalapeno Popper Grilled Cheese Sandwich</section>
+                    <section class="heart1">
                         <img src="heartIcon3.png" class="heart3" alt="heart">
-                    </div>
-                </div>
-                <div class="img">
+                    </section>
+                </section>
+                <section class="img">
                     <a target="_blank"
                        href="http://www.closetcooking.com/2011/04/jalapeno-popper-grilled-cheese-sandwich.html">
                         <img src="http://static.food2fork.com/Jalapeno2BPopper2BGrilled2BCheese2BSandwich2B12B500fd186186.jpg"
                              alt="HobbitBroth" width="800" height="400">
                     </a>
-                </div>
-                <div class="resultInformation">
-                    <div class="resultIngs">
+                </section>
+                <section class="resultInformation">
+                    <section class="resultIngs">
                         <a class="ings">+ Unicorn meat</a><br>
                         <a class="ings">+ Fairy dust</a><br>
                         <a class="ings">+ Lava from Mordor</a><br>
                         <a class="ings">- Motivation</a>
-                    </div>
+                    </section>
 
-                </div>
-            </div>
-
+                </section>
+            </section>
+            <section class="results">
+                <section class="descWrapper">
+                    <section class="desc">Perfect Ice Coffee</section>
+                    <section class="heart1">
+                        <img src="heartIcon3.png" class="heart3" alt="heart">
+                    </section>
+                </section>
+                <section class="img">
+                    <a target="_blank" href="http://thepioneerwoman.com/cooking/2011/06/perfect-iced-coffee/">
+                        <img src="http://static.food2fork.com/icedcoffee5766.jpg" alt="Bolognese" width="800"
+                             height="400">
+                    </a>
+                </section>
+                <section class="resultInformation">
+                    <section class="resultIngs">
+                        <a class="ings">+ Rancor brains</a><br>
+                        <a class="ings">+ Magic beans</a><br>
+                        <a class="ings">- Beer</a><br>
+                        <a class="ings">- Skills</a>
+                    </section>
+                </section>
+            </section>
+            <section class="results">
+                <section class="descWrapper">
+                    <section class="desc">Crash Hot Potatoes</section>
+                    <section class="heart1">
+                        <img src="heartIcon3.png" class="heart3" alt="heart">
+                    </section>
+                </section>
+                <section class="img">
+                    <a target="_blank" href="http://thepioneerwoman.com/cooking/2008/06/crash-hot-potatoes/">
+                        <img src="http://static.food2fork.com/CrashHotPotatoes5736.jpg" alt="Bolognese" width="800"
+                             height="400">
+                    </a>
+                </section>
+                <section class="resultInformation">
+                    <section class="resultIngs">
+                        <a class="ings">+ Rancor brains</a><br>
+                        <a class="ings">+ Magic beans</a><br>
+                        <a class="ings">- Beer</a><br>
+                        <a class="ings">- Skills</a>
+                    </section>
+                </section>
+            </section>
+            <section class="results">
+                <section class="descWrapper">
+                    <section class="desc" id="1234">Spaghetti bolognese</section>
+                    <section class="heart1">
+                        <img src="heartIcon3.png" class="heart3" alt="heart">
+                    </section>
+                </section>
+                <section class="img">
+                    <a target="_blank" href="foodimage.jpg">
+                        <img src="foodimage.jpg" alt="Bolognese" width="800" height="400">
+                    </a>
+                </section>
+                <section class="resultInformation">
+                    <section class="resultIngs">
+                        <a class="ings">+ Rancor brains</a><br>
+                        <a class="ings">+ Magic beans</a><br>
+                        <a class="ings">- Beer</a><br>
+                        <a class="ings">- Skills</a>
+                    </section>
+                </section>
+            </section>
             <script>
                 createCard('Jalapeno Popper Grilled Cheese Sandwich', 'http://static.food2fork.com/Jalapeno2BPopper2BGrilled2BCheese2BSandwich2B12B500fd186186.jpg','http://www.closetcooking.com/2011/04/jalapeno-popper-grilled-cheese-sandwich.html');
                 createCard('Surprisingly Filling Hobbit Broth', 'foodimage.jpg');
                 createCard('Something with cheese', 'foodimage.jpg');
+
                 createCard("Otto's Special Bolognese", 'foodimage.jpg');
 
                 function createCard(desc, imgSrc, recipeSrc){
+                    alert("Creating card...");
 
-                    var resultCard = $('<div class="results">');
-                    var descWrapper = $('<div class="descWrapper">');
-                    var description = $('<div class="desc">').text(desc);
-                    var heart1 = $('<div class="heart1">');
-                    var img = $('<div class="img">');
+
+
+                    var resultCard = $('<section class="results">');
+                    var descWrapper = $('<section class="descWrapper">');
+                    var description = $('<section class="desc">').text(desc);
+                    var heart1 = $('<section class="heart1">');
+                    var img = $('<section class="img">');
                     //var blank = $('<a class="_blank"></a>').attr('href', recipeSrc);
                     var image = $('<img />').attr('src', imgSrc).attr('alt', desc).attr('href', recipeSrc);
-                    var resultInformation = $('<div class="resultInformation">');
-                    var resultIngs = $('<div class="resultIngs"></div>');
+                    var resultInformation = $('<section class="resultInformation">');
+                    var resultIngs = $('<section class="resultIngs"></section>');
 
                     $(resultCard).append(descWrapper);
                     $(descWrapper).append(description);
@@ -181,7 +327,19 @@
                     $(descWrapper).append(resultInformation);
                     $(resultInformation).append(resultIngs);
                     $(resultIngs).prepend('<a class="ings">+ Rancor brains</a>').prepend('<a class="ings">+ Magic Beans</a>').prepend('<a class="ings">- Beer</a>').prepend('<a class="ings">- Skills</a>');
+
+
                     $(resultCard).appendTo($('.ResultArea'));
+
+
+
+
+
+                   // div.innerHTML = div.innerHTML + desc;
+
+                    //$(resultCard).innerHTML();
+                    //$(resultCard).appendTo($('.ResultArea'));
+                    alert("Added");
 
                 }
             </script>
@@ -190,8 +348,8 @@
     </section>
     <!--Footer-->
     <footer id="PageFooter">
-        <div id="getInTouch">
-            <div id="getInTouchBox">
+        <section id="getInTouch">
+            <section id="getInTouchBox">
                 <a id="getInTouchHeader">Get In Touch</a><br>
                 <a></a><br>
                 <a>info@pocketpantry.co.uk</a><br>
@@ -200,20 +358,20 @@
                 <a>333 Pantry Way</a><br>
                 <a>Aberdeen</a><br>
                 <a>AB10 L0L</a>
-            </div>
-        </div>
-        <div id="aboutUs">
-            <div id="aboutUsBox">
+            </section>
+        </section>
+        <section id="aboutUs">
+            <section id="aboutUsBox">
                 <a id="aboutUsHeader">About Us</a><br>
                 <a></a><br>
                 <a>Pocket Pantry; a web app that allows</a><br>
                 <a>you to enter the food that you have in</a><br>
                 <a>your fridge/cupboards and it will suggest</a><br>
                 <a>recipes to make with what you have.</a>
-            </div>
-        </div>
+            </section>
+        </section>
         <!--Buttons for social media-->
-        <div id="socialButtons">
+        <section id="socialButtons">
             <a href="https://www.facebook.com/profile.php?id=563989053776695&ref=ts&fref=ts" class="icon-link facebook"><i
                     class="fa fa-facebook"></i></a>
             <a href="https://twitter.com/PocketPantryApp" class="icon-link twitter"><i class="fa fa-twitter"></i></a>
@@ -223,7 +381,7 @@
             <a href="https://www.instagram.com/pocketpantry/" class="icon-link pinterest"><i
                     class="fa fa-pinterest"></i></a>
             <a class="icon-link tumblr"><i class="fa fa-tumblr"></i></a>
-        </div>
+        </section>
     </footer>
 
     <!------------------------- Scripts ---------------------------->
@@ -313,9 +471,7 @@
                 return userInput;
             }
 
-            <!-- This shit *used to* work
-            * When you run the api search on page load (And outside of search fun
-            -->
+            <!-- This shit *used to* work-->
 
             $("#searchb").click(function () {
                 alert("Clicked");
@@ -338,32 +494,18 @@
                 console.log("error: " +error);
             });*/
 
-//                $.ajax({url: baseURL,
-//                    success: function(jsondata){
-//                console.log(
-//                        jsondata);
-//            }, error: function(xhr, status, error) {
-//                        console.log("error");
-//                        console.log(xhr);
-//                        console.log(status);
-//                        console.log(error);
-//
-//                    }
-//                });
-                $.ajax({
-                    url: "http://pocketpantry.azurewebsites.net/theprox.php?url=http://food2fork.com/api/search",
-                    type: "GET",
-                    data: {key:"c374bfbac65d543206653a9fe750799d",q:"ham,eggs"},
-                    dataType: "json",
-                    success: function (response) {
-                        $('#content').text(JSON.stringify(response));
-                        console.log(response);
-                    },
-                    error: function (xhr, status) {
-                        alert("error");
+                $.ajax({url: baseURL,
+                    success: function(jsondata){
+                console.log(
+                        jsondata);
+            }, error: function(xhr, status, error) {
+                        console.log("error");
+                        console.log(xhr);
+                        console.log(status);
+                        console.log(error);
+
                     }
                 });
-                return jsondata;
             }
 
             <!-- End of this Shit Works -->
@@ -382,19 +524,6 @@
                 }, 900, 'swing');
             });
             //});
-
-            //Logout function
-            function logout1() {
-                signOut();
-                $('.login').text('Login')
-            }
-
-            //Login function
-            function login1() {
-                if ($('.login').text('Login')) {
-                    $('.login').text('Logout')
-                }
-            }
 
             <!--Blur background when login button is clicked-->
             function Blur() {
@@ -424,13 +553,7 @@
 
             }
 
-            //Signout function
-            function signOut() {
-                var auth2 = gapi.auth2.getAuthInstance();
-                auth2.signOut().then(function () {
-                    console.log('User signed out.');
-                });
-            }
+
 
             <!-- Modal Script -->
             // Get the modal
