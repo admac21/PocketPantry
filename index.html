@@ -161,9 +161,9 @@
 //                                }
 //                            });
                             $.ajax({
-                                url: "http://pocketpantry,azurewebsites.net/theprox.php?url=http://food2fork.com/api/search",
+                                url: "http://pocketpantry.azurewebsites.net/theprox.php?url=http://food2fork.com/api/search",
                                 type: "GET",
-                                data: {key:"c374bfbac65d543206653a9fe750799d",q:"ham,eggs"},
+                                data: {key:"c374bfbac65d543206653a9fe750799d",q: getSearchBox()},
                                 dataType: "json",
                                 success: function (response) {
                                     $('#whatsinyourpantry').text(JSON.stringify(response));
@@ -175,10 +175,7 @@
                             });
 
                         });
-
-
                         //end function
-
 
                         $('.my-form .add-box').click(function () {
                             var n = $('.text-box').length + 1;
@@ -200,7 +197,6 @@
                         });
                         return false;
                     });
-
 
                 </script>
             </ul>
@@ -253,55 +249,54 @@
                     </section>
                 </section>
             </section>
-            <section class="results">
-                <section class="descWrapper">
-                    <section class="desc">Crash Hot Potatoes</section>
-                    <section class="heart1">
-                        <img src="heartIcon3.png" class="heart3" alt="heart">
-                    </section>
-                </section>
-                <section class="img">
-                    <a target="_blank" href="http://thepioneerwoman.com/cooking/2008/06/crash-hot-potatoes/">
-                        <img src="http://static.food2fork.com/CrashHotPotatoes5736.jpg" alt="Bolognese" width="800"
-                             height="400">
-                    </a>
-                </section>
-                <section class="resultInformation">
-                    <section class="resultIngs">
-                        <a class="ings">+ Rancor brains</a><br>
-                        <a class="ings">+ Magic beans</a><br>
-                        <a class="ings">- Beer</a><br>
-                        <a class="ings">- Skills</a>
-                    </section>
-                </section>
-            </section>
-            <section class="results">
-                <section class="descWrapper">
-                    <section class="desc" id="1234">Spaghetti bolognese</section>
-                    <section class="heart1">
-                        <img src="heartIcon3.png" class="heart3" alt="heart">
-                    </section>
-                </section>
-                <section class="img">
-                    <a target="_blank" href="foodimage.jpg">
-                        <img src="foodimage.jpg" alt="Bolognese" width="800" height="400">
-                    </a>
-                </section>
-                <section class="resultInformation">
-                    <section class="resultIngs">
-                        <a class="ings">+ Rancor brains</a><br>
-                        <a class="ings">+ Magic beans</a><br>
-                        <a class="ings">- Beer</a><br>
-                        <a class="ings">- Skills</a>
-                    </section>
-                </section>
-            </section>
+            <!--<section class="results">-->
+                <!--<section class="descWrapper">-->
+                    <!--<section class="desc">Crash Hot Potatoes</section>-->
+                    <!--<section class="heart1">-->
+                        <!--<img src="heartIcon3.png" class="heart3" alt="heart">-->
+                    <!--</section>-->
+                <!--</section>-->
+                <!--<section class="img">-->
+                    <!--<a target="_blank" href="http://thepioneerwoman.com/cooking/2008/06/crash-hot-potatoes/">-->
+                        <!--<img src="http://static.food2fork.com/CrashHotPotatoes5736.jpg" alt="Bolognese" width="800"-->
+                             <!--height="400">-->
+                    <!--</a>-->
+                <!--</section>-->
+                <!--<section class="resultInformation">-->
+                    <!--<section class="resultIngs">-->
+                        <!--<a class="ings">+ Rancor brains</a><br>-->
+                        <!--<a class="ings">+ Magic beans</a><br>-->
+                        <!--<a class="ings">- Beer</a><br>-->
+                        <!--<a class="ings">- Skills</a>-->
+                    <!--</section>-->
+                <!--</section>-->
+            <!--</section>-->
+            <!--<section class="results">-->
+                <!--<section class="descWrapper">-->
+                    <!--<section class="desc" id="1234">Spaghetti bolognese</section>-->
+                    <!--<section class="heart1">-->
+                        <!--<img src="heartIcon3.png" class="heart3" alt="heart">-->
+                    <!--</section>-->
+                <!--</section>-->
+                <!--<section class="img">-->
+                    <!--<a target="_blank" href="foodimage.jpg">-->
+                        <!--<img src="foodimage.jpg" alt="Bolognese" width="800" height="400">-->
+                    <!--</a>-->
+                <!--</section>-->
+                <!--<section class="resultInformation">-->
+                    <!--<section class="resultIngs">-->
+                        <!--<a class="ings">+ Rancor brains</a><br>-->
+                        <!--<a class="ings">+ Magic beans</a><br>-->
+                        <!--<a class="ings">- Beer</a><br>-->
+                        <!--<a class="ings">- Skills</a>-->
+                    <!--</section>-->
+                <!--</section>-->
+            <!--</section>-->
             <script>
                 createCard('Jalapeno Popper Grilled Cheese Sandwich', 'http://static.food2fork.com/Jalapeno2BPopper2BGrilled2BCheese2BSandwich2B12B500fd186186.jpg','http://www.closetcooking.com/2011/04/jalapeno-popper-grilled-cheese-sandwich.html');
-                createCard('Surprisingly Filling Hobbit Broth', 'foodimage.jpg');
-                createCard('Something with cheese', 'foodimage.jpg');
-
-                createCard("Otto's Special Bolognese", 'foodimage.jpg');
+                createCard('Surprisingly Filling Hobbit Broth', 'heartIcon3.png');
+                createCard('Something with cheese', 'heartIcon3.png');
+                createCard("Otto's Special Bolognese", 'heartIcon3.png');
 
                 function createCard(desc, imgSrc, recipeSrc){
                     alert("Creating card...");
