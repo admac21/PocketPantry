@@ -124,84 +124,14 @@
 
                 </div>
             </div>
-            <div class="results">
-                <div class="descWrapper">
-                    <div class="desc">Perfect Ice Coffee</div>
-                    <div class="heart1">
-                        <img src="heartIcon3.png" class="heart3" alt="heart">
-                    </div>
-                </div>
-                <div class="img">
-                    <a target="_blank" href="http://thepioneerwoman.com/cooking/2011/06/perfect-iced-coffee/">
-                        <img src="http://static.food2fork.com/icedcoffee5766.jpg" alt="Bolognese" width="800"
-                             height="400">
-                    </a>
-                </div>
-                <div class="resultInformation">
-                    <div class="resultIngs">
-                        <a class="ings">+ Rancor brains</a><br>
-                        <a class="ings">+ Magic beans</a><br>
-                        <a class="ings">- Beer</a><br>
-                        <a class="ings">- Skills</a>
-                    </div>
-                </div>
-            </div>
 
-            <div class="results">
-                <div class="descWrapper">
-                    <div class="desc">Crash Hot Potatoes</div>
-                    <div class="heart1">
-                        <img src="heartIcon3.png" class="heart3" alt="heart">
-                    </div>
-                </div>
-                <div class="img">
-                    <a target="_blank" href="http://thepioneerwoman.com/cooking/2008/06/crash-hot-potatoes/">
-                        <img src="http://static.food2fork.com/CrashHotPotatoes5736.jpg" alt="Bolognese" width="800"
-                             height="400">
-                    </a>
-                </div>
-                <div class="resultInformation">
-                    <div class="resultIngs">
-                        <a class="ings">+ Rancor brains</a><br>
-                        <a class="ings">+ Magic beans</a><br>
-                        <a class="ings">- Beer</a><br>
-                        <a class="ings">- Skills</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="results">
-                <div class="descWrapper">
-                    <div class="desc" id="1234">Spaghetti bolognese</div>
-                    <div class="heart1">
-                        <img src="heartIcon3.png" class="heart3" alt="heart">
-                    </div>
-                </div>
-                <div class="img">
-                    <a target="_blank" href="foodimage.jpg">
-                        <img src="foodimage.jpg" alt="Bolognese" width="800" height="400">
-                    </a>
-                </div>
-                <div class="resultInformation">
-                    <div class="resultIngs">
-                        <a class="ings">+ Rancor brains</a><br>
-                        <a class="ings">+ Magic beans</a><br>
-                        <a class="ings">- Beer</a><br>
-                        <a class="ings">- Skills</a>
-                    </div>
-                </div>
-            </div>
             <script>
                 createCard('Jalapeno Popper Grilled Cheese Sandwich', 'http://static.food2fork.com/Jalapeno2BPopper2BGrilled2BCheese2BSandwich2B12B500fd186186.jpg','http://www.closetcooking.com/2011/04/jalapeno-popper-grilled-cheese-sandwich.html');
                 createCard('Surprisingly Filling Hobbit Broth', 'foodimage.jpg');
                 createCard('Something with cheese', 'foodimage.jpg');
-
                 createCard("Otto's Special Bolognese", 'foodimage.jpg');
 
                 function createCard(desc, imgSrc, recipeSrc){
-                    alert("Creating card...");
-
-
 
                     var resultCard = $('<div class="results">');
                     var descWrapper = $('<div class="descWrapper">');
@@ -222,19 +152,7 @@
                     $(descWrapper).append(resultInformation);
                     $(resultInformation).append(resultIngs);
                     $(resultIngs).prepend('<a class="ings">+ Rancor brains</a>').prepend('<a class="ings">+ Magic Beans</a>').prepend('<a class="ings">- Beer</a>').prepend('<a class="ings">- Skills</a>');
-
-
                     $(resultCard).appendTo($('.ResultArea'));
-
-
-
-
-
-                   // div.innerHTML = div.innerHTML + desc;
-
-                    //$(resultCard).innerHTML();
-                    //$(resultCard).appendTo($('.ResultArea'));
-                    alert("Added");
 
                 }
             </script>
@@ -366,7 +284,9 @@
                 return userInput;
             }
 
-            <!-- This shit *used to* work-->
+            <!-- This shit *used to* work
+            * When you run the api search on page load (And outside of search fun
+            -->
 
             $("#searchb").click(function () {
                 alert("Clicked");
@@ -401,6 +321,7 @@
 
                     }
                 });
+                return jsondata;
             }
 
             <!-- End of this Shit Works -->
