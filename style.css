@@ -293,12 +293,21 @@ div.desc {
     padding-top: 1px;
     color: #333333;
     text-align: left;
-
+}
+.desc a{
+    text-decoration: none;
+}
+a:visited{
+    color: #333333;
+}
+a:link{
+    color: #333333;
+}
+a:hover{
+    text-decoration: underline;
 }
 .soRank {
-
     font-size: 20px;
-
     padding-top: 20px;
     padding-bottom: 6px;
     text-align: left    ;
@@ -307,6 +316,8 @@ div.desc {
 }
 .rateYo{
     padding-bottom: 10px;
+    margin-bottom: 20px;
+    margin-left: -8px;
     //float: right;
 }
 .descWrapper {

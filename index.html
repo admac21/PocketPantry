@@ -162,10 +162,10 @@
                                 searchApi(getOtherSearchBox());
                             }
                         });
-                        createCard('Placeholder', 'by Andrew Maclean', 'http://static.food2fork.com/Buffalo2BChicken2BGrilled2BCheese2BSandwich2B5002B4983f2702fe4.jpg','www.google.co.uk','3.5');
-                        createCard('Placeholder', 'by Andrew Maclean', 'http://static.food2fork.com/Buffalo2BChicken2BGrilled2BCheese2BSandwich2B5002B4983f2702fe4.jpg','www.google.co.uk','3.5');
-                        createCard('Placeholder', 'by Andrew Maclean', 'http://static.food2fork.com/Buffalo2BChicken2BGrilled2BCheese2BSandwich2B5002B4983f2702fe4.jpg','www.google.co.uk','3.5');
-                        //searchApi(getSearchBox());
+                        //createCard('Placeholder', 'by Andrew Maclean', 'http://static.food2fork.com/Buffalo2BChicken2BGrilled2BCheese2BSandwich2B5002B4983f2702fe4.jpg','https://www.google.co.uk/','https://www.google.co.uk/','3.5');
+                        //createCard('Placeholder', 'by Andrew Maclean', 'http://static.food2fork.com/Buffalo2BChicken2BGrilled2BCheese2BSandwich2B5002B4983f2702fe4.jpg','https://www.google.co.uk/','https://www.google.co.uk/','3.5');
+                        //createCard('Placeholder', 'by Andrew Maclean', 'http://static.food2fork.com/Buffalo2BChicken2BGrilled2BCheese2BSandwich2B5002B4983f2702fe4.jpg','https://www.google.co.uk/','https://www.google.co.uk/','3.5');
+                        searchApi(getSearchBox());
                         function searchApi(search){
                             // WORKING
                             $.ajax({
@@ -184,8 +184,9 @@
                                         var publisher = "by " + res.recipes[i].publisher;
                                         var imgSrc = res.recipes[i].image_url;
                                         var rating = (res.recipes[i].social_rank)/20;
-                                        var recSrc = "";
-                                        createCard(recipeTitle, publisher, imgSrc, recSrc, rating);
+                                        var recSrc = res.recipes[i].source_url;
+                                        var pubSrc = res.recipes[i].publisher_url;
+                                        createCard(recipeTitle, publisher, imgSrc, recSrc, pubSrc, rating);
                                     }
                                 }
                                 ,
@@ -206,32 +207,34 @@
 
         <script>
             //Function that will create and populate a recipe card
-            function createCard(desc, publisher, imgSrc, recipeSrc, rating) {
+            function createCard(desc, publisher, imgSrc, recipeSrc, pubSrc, rating) {
                 var resultCard = $('<div class="results"></div>');
                 var descWrapper = $('<div class="descWrapper"></div>');
                 var description = $('<div class="desc"></div>').text(desc).attr('href', recipeSrc);
-                var publisher = $('<div class="publisher"></div>').text(publisher);
+                var pub = $('<div class="publisher"></div>').text(publisher);
                 var heart1 = $('<div class="heart1"></div>');
                 var imgOuter = $('<div class="imgOuter"></div>');
                 var imgInner = $('<div class="imgInner"></div>');
                 //var blank = $('<a class="_blank"></a>').attr('href', recipeSrc);
                 var image = $('<img />').attr('src', imgSrc).attr('alt', desc).attr('href', recipeSrc);
                 var resultInformation = $('<div class="resultInformation"></div>');
-                var soRank = $('<div class="soRank"></div>').text("Social Rank : ");
+                var soRank = $('<div class="soRank"></div>').text("Rating : ");
                 var rateYo = $('<div class="rateYo" id="rateYo"></div>');
                 var resultIngs = $('<div class="resultIngs"></div>');
 
                 $(resultCard).append(descWrapper);
                 $(descWrapper).append(description);
-                $(description).append(publisher);
+                $(description).append(pub);
+                $(pub).wrapInner($('<a>',{
+                    href: pubSrc,
+                    target: '_blank'
+                }));
                 $(descWrapper).append(heart1);
                 $(heart1).prepend('<img src="heartIcon3.png" class="heart3" alt="heart" />');
                 $(descWrapper).append(imgOuter);
                 $(imgOuter).append(imgInner);
-
                 $(imgInner).prepend(image);
                 $(image).wrap($('<a>',{
-
                     href: recipeSrc,
                     target: '_blank'
                 }));
@@ -240,7 +243,7 @@
                 $(resultInformation).append(rateYo);
                 $(rateYo).rateYo({rating:rating, ratedFill: "#FF6138", readOnly: true});
                 $(resultInformation).append(resultIngs);
-                $(resultIngs).prepend('<a class="ings">Social Rank</a>').prepend('<a class="ings">+ Magic Beans</a>').prepend('<a class="ings">- Beer</a>').prepend('<a class="ings">- Skills</a>');
+                //$(resultIngs).prepend('<a class="ings">Social Rank</a>').prepend('<a class="ings">+ Magic Beans</a>').prepend('<a class="ings">- Beer</a>').prepend('<a class="ings">- Skills</a>');
                 $(resultCard).appendTo($('.ResultArea'));
             }
         </script>
@@ -375,31 +378,7 @@
                 return userInput;
             }
             <!-- This shit *used to* work-->
-            function search() {
-                var baseURL = "http://food2fork.com/api/search?key=c374bfbac65d543206653a9fe750799d&q=eggs&callback=?";
-                /* $.getJSON(baseURL)
-                 .success(function( data ) {
-                 console.log("success: " +data);
-                 })
-                 .done(function( data ) {
-                 console.log("done: " +data);
-                 })
-                 .error(function(error) {
-                 console.log("error: " +error);
-                 });*/
-//                $.ajax({url: baseURL,
-//                    success: function(jsondata){
-//                        console.log(
-//                                jsondata);
-//                    }, error: function(xhr, status, error) {
-//                        console.log("error");
-//                        console.log(xhr);
-//                        console.log(status);
-//                        console.log(error);
-//
-//                    }
-//                });
-            }
+
             <!-- End of this Shit Works -->
             //Function declaration
             //$(document).ready(function () {
