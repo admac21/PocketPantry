@@ -157,22 +157,20 @@ input[type=ingredient]:focus {
     text-shadow: 4px 4px 6px #000000;
     font-family: "Breamcatcher", Verdana, Serif;
 }
+#Title2 {
+    background-color: #00A388;
+    text-align: center;
+    color: white;
+    font-size: 40px;
+    font-family: "Breamcatcher", Verdana, Serif;
+    box-shadow: 0 0 8px rgba(0,0,0,0.5);
+}
 /*Logo*/
 #MaterialPantry {
     position: relative;
     margin-top: -70px;
     z-index: 999;
     overflow: visible;
-}
-#MaterialPantry2 {
-    position: relative;
-    height: 120px;
-    width: 120px;
-    alignment: center;
-    margin-top: 40px;
-    visibility: hidden;
-    overflow: hidden;
-    z-index: 1;
 }
 /*Customise left bar*/
 #LeftBar {
@@ -194,6 +192,8 @@ input[type=ingredient]:focus {
     #LeftBar {
         width: 92%;
         margin-bottom: 10%;
+        margin-top: +14%;
+
     }
 }
 #row1:after {
@@ -627,36 +627,50 @@ div.desc {
 
 /*Mobile navbar*/
 #nav-trigger {
+    z-index: 999;
     display: none;
     text-align: center;
     position: static;
     margin-left: -5px;
+    margin-right: -5px;
+    margin-top: -5px;
+    transition: all, 0.4s;
+    transition-timing-function: ease-in-out;
+    top: 0;
 }
 #nav-trigger span {
+    z-index: 999;
     display: inline-block;
     padding: 10px 30px;
     width: 100%;
-    background-color: #FF6138;
+    background-color: #00A388;
     color: white;
     cursor: pointer;
     text-transform: uppercase;
+    top: 0;
 }
-#nav-trigger span:after {
-    display: inline-block;
-    width: 20px;
-    height: 10px;
-    content: "";
-}
+/*#nav-trigger span:after {*/
+    /*z-index: 999;*/
+    /*display: inline-block;*/
+    /*width: 20px;*/
+    /*height: 40px;*/
+    /*content: "";*/
+/*}*/
 #nav-trigger span:hover {
-    background-color: #FF9138;
+    background-color: #007D67;
 }
 
 
 
 nav#nav-mobile {
+    z-index: 999;
     position: static;
     display: none;
     margin-left: -5px;
+    transition: all, 0.4s;
+    transition-timing-function: ease-in-out;
+    top: 0;
+    height: 0;
 }
 nav#nav-mobile ul {
     display: none;
@@ -697,11 +711,38 @@ nav#nav-mobile a:hover {
     }
 }
 
+/*Up button in mobile view*/
+#upBtn {
+    visibility: hidden;
+    z-index: 9999;
+    float: right;
+    overflow: visible;
+    bottom: 5%;
+    position: fixed;
+    width: 4px;
+    height: 4px;
+    background-color: transparent;
+    text-align: center;
+    cursor: pointer;
+    margin: 10%;
+    right: 35px;
+    border-radius: 60%;
+}
+#MaterialPantry2:hover {
+    -moz-box-shadow: 2px 3px 4px rgba(0,0,0,.5);
+    -webkit-box-shadow: 2px 3px 4px rgba(0,0,0,.5);
+    box-shadow: 2px 3px 4px rgba(0,0,0,.5);
+}
+/*Up button icon*/
+#MaterialPantry2 {
+    -moz-box-shadow: 1px 2px 3px rgba(0,0,0,.5);
+    -webkit-box-shadow: 1px 2px 3px rgba(0,0,0,.5);
+    box-shadow: 1px 2px 3px rgba(0,0,0,.5);
+    transition: all 0.3s;
+    border-radius: 50%;
+}
 
-
-
-
-/* The Modal (background) */
+/* The Popup (background) */
 .popup {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
@@ -716,7 +757,7 @@ nav#nav-mobile a:hover {
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
 
-/* Modal Content */
+/* Popup Content */
 .popup-content {
     position: relative;
     background-color: #fefefe;

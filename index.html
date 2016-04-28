@@ -19,6 +19,8 @@
     <meta property="og:title"         content="Pocket Pantry" />
     <meta property="og:description"   content="Search recipes!" />
     <meta property="og:image"         content="MaterialPantry.png" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.0.1/jquery.rateyo.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.0.1/jquery.rateyo.min.js"></script>
 </head>
 <body>
 <!-- The Popup -->
@@ -103,10 +105,11 @@
             <br class="clearLeft"/>
         </nav>
         <section id="nav-trigger">
-            <span>Menu</span>
+            <span id="Title2">Pocket Pantry</span>
         </section>
         <nav id="nav-mobile"></nav>
-        <img src="MaterialPantry.png" id="MaterialPantry2" alt="PocketPantryLogo">
+        <a id="upBtn" href="#top"><img src="MaterialPantry.png" id="MaterialPantry2" alt="PocketPantryLogo"
+                                       height="60" width="60" align="center"></a>
 
     </header>
     <!--Make navigation bar sticky when user scrolls past it.
@@ -188,8 +191,9 @@
 
                                         var recipeTitle = res.recipes[i].title;
                                         var imgSrc = res.recipes[i].image_url;
-
-                                        createCard(recipeTitle, imgSrc);
+                                        var rating = (res.recipes[i].social_rank)/20;
+                                        var recSrc = "";
+                                        createCard(recipeTitle, imgSrc, recSrc, rating);
 
                                     }
                                     }
@@ -218,17 +222,18 @@
             <script>
 
                     //Function that will create and populate a recipe card
-                    function createCard(desc, imgSrc, recipeSrc) {
+                    function createCard(desc, imgSrc, recipeSrc,rating) {
 
                         var resultCard = $('<div class="results"></div>');
                         var descWrapper = $('<div class="descWrapper"></div>');
-                        var description = $('<div class="desc"></div>').text(desc);
+                        var description = $('<div class="desc"></div>').text(desc).attr('href', recipeSrc);
                         var heart1 = $('<div class="heart1"></div>');
                         var imgOuter = $('<div class="imgOuter"></div>');
                         var imgInner = $('<div class="imgInner"></div>');
                         //var blank = $('<a class="_blank"></a>').attr('href', recipeSrc);
                         var image = $('<img />').attr('src', imgSrc).attr('alt', desc).attr('href', recipeSrc);
                         var resultInformation = $('<div class="resultInformation"></div>');
+                        var rateYo = $('<div class="rateYo" id="rateYo"></div>').text("Social Rank : ");
                         var resultIngs = $('<div class="resultIngs"></div>');
 
                         $(resultCard).append(descWrapper);
@@ -239,9 +244,13 @@
                         $(imgOuter).append(imgInner);
                         $(imgInner).prepend(image);
                         $(descWrapper).append(resultInformation);
+                        $(resultInformation).append(rateYo);
+                        $(rateYo).rateYo({rating:rating, ratedFill: "#FF6138", readOnly: true});
                         $(resultInformation).append(resultIngs);
-                        $(resultIngs).prepend('<a class="ings">+ Rancor brains</a>').prepend('<a class="ings">+ Magic Beans</a>').prepend('<a class="ings">- Beer</a>').prepend('<a class="ings">- Skills</a>');
+                        $(resultIngs).prepend('<a class="ings">Social Rank</a>').prepend('<a class="ings">+ Magic Beans</a>').prepend('<a class="ings">- Beer</a>').prepend('<a class="ings">- Skills</a>');
                         $(resultCard).appendTo($('.ResultArea'));
+
+
 
                     }
             </script>
@@ -300,11 +309,14 @@
 
             <!-- Responsive nav bar script -->
             if ($(window).width() < 700) {
+
+                $("#upBtn").css({visibility: 'visible'});
+
                 $("#nav").hide();
                 $("#MainHeader").toggleClass("toggle");
 
                 $("#nav-mobile").html($("#nav").html());
-                $("#nav-trigger span").click(function () {
+                $("#Title2").click(function () {
                     if ($("nav#nav-mobile ul").hasClass("expanded")) {
                         $("nav#nav-mobile ul.expanded").removeClass("expanded").slideUp(350);
                         $(this).removeClass("open");
@@ -320,7 +332,7 @@
                     if ($(window).scrollTop() > 25) {
                         $("#nav-trigger").css({width: '100%', marginTop: 0, top: 0, position: 'fixed'});
                         $("#nav-mobile").css({width: '100%', marginTop: 0, top: 0, position: 'fixed'});
-                        $("nav#nav-mobile ul.expanded").css({marginTop: '40px'});
+                        $("nav#nav-mobile ul.expanded").css({marginTop: '65px'});
                     }
                 });
                 //});
