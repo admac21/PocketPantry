@@ -90,20 +90,20 @@ body {
 br.clearLeft {
     clear: left;
 }​
-/*Customise search boxes*/
+     /*Customise search boxes*/
  input:not([type]), input[type="searchBox"], input[type="ingredient"] {
-    width: 190px;
-    box-sizing: border-box;
-    border: 3px solid #333;
-    border-radius: 4px;
-    font-size: 16px;
-    background-color: white;
-    background-image: url('searchIcon.png');
-    background-position: 10px 10px;
-    background-repeat: no-repeat;
-    padding: 10px 20px 12px 40px;
+     width: 190px;
+     box-sizing: border-box;
+     border: 3px solid #333;
+     border-radius: 4px;
+     font-size: 16px;
+     background-color: white;
+     background-image: url('searchIcon.png');
+     background-position: 10px 10px;
+     background-repeat: no-repeat;
+     padding: 10px 20px 12px 40px;
      transition: all .4s ease;
-}
+ }
 /*Change border color of recipe search box when clicked*/
 input[type=searchBox]:focus {
     border-color: #79BD8F;
@@ -280,11 +280,35 @@ div.imgInner img {
 }
 /*Results text*/
 div.desc {
+    font-size: 22px;
+    color: #FF6138;
+    //text-shadow: 1px 1px 1px rgba(0,0,0,0.7);
     float: left;
     padding: 20px;
     text-align: left;
-    width: 50%;
+    width: 70%;
+
+}
+
+.publisher {
+    font-size: 18px;
+    color: #333333;
+    text-align: left;
+
+}
+.soRank {
+
     font-size: 20px;
+
+    padding-top: 20px;
+    padding-bottom: 6px;
+    text-align: left    ;
+    width: 50%;
+
+}
+.rateYo{
+    padding-bottom: 10px;
+    //float: right;
 }
 .descWrapper {
     margin: auto;
@@ -318,6 +342,7 @@ div.desc {
 /*Container for result information*/
 .resultInformation {
     margin: auto;
+    padding-left: 5%;
     width: 100%;
 }
 .resultIngs {
@@ -333,7 +358,7 @@ div.desc {
 .ings {
     width: 60%;
     margin: 0.5%;
-    padding-left: 5%;
+    //padding-left: 5%;
     float: left;
     overflow: hidden;
 }
@@ -650,11 +675,11 @@ div.desc {
     top: 0;
 }
 /*#nav-trigger span:after {*/
-    /*z-index: 999;*/
-    /*display: inline-block;*/
-    /*width: 20px;*/
-    /*height: 40px;*/
-    /*content: "";*/
+/*z-index: 999;*/
+/*display: inline-block;*/
+/*width: 20px;*/
+/*height: 40px;*/
+/*content: "";*/
 /*}*/
 #nav-trigger span:hover {
     background-color: #007D67;
@@ -794,7 +819,7 @@ nav#nav-mobile a:hover {
 a.logout {
     font-size: large;
 }
- Add Animation
+Add Animation
 @-webkit-keyframes animatetop {
     from {top:-300px; opacity:0}
     to {top:0; opacity:1}
