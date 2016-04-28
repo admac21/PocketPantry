@@ -171,7 +171,7 @@
                             $.ajax({
                                 url: "http://pocketpantry.azurewebsites.net/theprox.php?url=http://food2fork.com/api/search",
                                 type: "GET",
-                                data: {key: "c374bfbac65d543206653a9fe750799d", q: search.slice(0,-1)},
+                                data: {key: "e3be4f880ddb28c4772c0a42ac6180a5", q: search.slice(0,-1)},
                                 dataType: "json",
                                 success: function (response) {
                                     console.log(response);
@@ -206,7 +206,7 @@
 
         <script>
             //Function that will create and populate a recipe card
-            function createCard(desc, publisher, imgSrc, recipeSrc,rating) {
+            function createCard(desc, publisher, imgSrc, recipeSrc, rating) {
                 var resultCard = $('<div class="results"></div>');
                 var descWrapper = $('<div class="descWrapper"></div>');
                 var description = $('<div class="desc"></div>').text(desc).attr('href', recipeSrc);
