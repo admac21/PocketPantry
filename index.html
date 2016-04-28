@@ -228,10 +228,12 @@
                 $(heart1).prepend('<img src="heartIcon3.png" class="heart3" alt="heart" />');
                 $(descWrapper).append(imgOuter);
                 $(imgOuter).append(imgInner);
-                $(imgOuter).wrap($('<a>',{
+
+                $(imgInner).prepend(image);
+                $(image).wrap($('<a>',{
+                    target: '_blank',
                     href: recipeSrc
                 }));
-                $(imgInner).prepend(image);
                 $(descWrapper).append(resultInformation);
                 $(resultInformation).append(soRank);
                 $(resultInformation).append(rateYo);
