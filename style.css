@@ -261,7 +261,7 @@ input[type=ingredient]:focus {
 /*Results images*/
 div.imgOuter{
     z-index: 1;
-    height: 500px;
+    max-height: 500px;
     width:100%;
     overflow: hidden;
 }
@@ -282,16 +282,15 @@ div.imgInner img {
 div.desc {
     font-size: 22px;
     color: #FF6138;
-    //text-shadow: 1px 1px 1px rgba(0,0,0,0.7);
     float: left;
     padding: 20px;
     text-align: left;
     width: 70%;
-
 }
 
 .publisher {
     font-size: 18px;
+    padding-top: 1px;
     color: #333333;
     text-align: left;
 
