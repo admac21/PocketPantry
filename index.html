@@ -231,8 +231,9 @@
 
                 $(imgInner).prepend(image);
                 $(image).wrap($('<a>',{
-                    target: '_blank',
-                    href: recipeSrc
+
+                    href: recipeSrc,
+                    target: '_blank'
                 }));
                 $(descWrapper).append(resultInformation);
                 $(resultInformation).append(soRank);
