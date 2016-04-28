@@ -162,10 +162,10 @@
                                 searchApi(getOtherSearchBox());
                             }
                         });
-                        //createCard('Placeholder', 'by Andrew Maclean', 'http://static.food2fork.com/Buffalo2BChicken2BGrilled2BCheese2BSandwich2B5002B4983f2702fe4.jpg','test','3.5');
-                        //createCard('Placeholder', 'by Andrew Maclean', 'http://static.food2fork.com/Buffalo2BChicken2BGrilled2BCheese2BSandwich2B5002B4983f2702fe4.jpg','test','3.5');
-                        //createCard('Placeholder', 'by Andrew Maclean', 'http://static.food2fork.com/Buffalo2BChicken2BGrilled2BCheese2BSandwich2B5002B4983f2702fe4.jpg','test','3.5');
-                        searchApi(getSearchBox());
+                        createCard('Placeholder', 'by Andrew Maclean', 'http://static.food2fork.com/Buffalo2BChicken2BGrilled2BCheese2BSandwich2B5002B4983f2702fe4.jpg','www.google.co.uk','3.5');
+                        createCard('Placeholder', 'by Andrew Maclean', 'http://static.food2fork.com/Buffalo2BChicken2BGrilled2BCheese2BSandwich2B5002B4983f2702fe4.jpg','www.google.co.uk','3.5');
+                        createCard('Placeholder', 'by Andrew Maclean', 'http://static.food2fork.com/Buffalo2BChicken2BGrilled2BCheese2BSandwich2B5002B4983f2702fe4.jpg','www.google.co.uk','3.5');
+                        //searchApi(getSearchBox());
                         function searchApi(search){
                             // WORKING
                             $.ajax({
@@ -228,6 +228,9 @@
                 $(heart1).prepend('<img src="heartIcon3.png" class="heart3" alt="heart" />');
                 $(descWrapper).append(imgOuter);
                 $(imgOuter).append(imgInner);
+                $(imgOuter).wrap($('<a>',{
+                    href: recipeSrc
+                }));
                 $(imgInner).prepend(image);
                 $(descWrapper).append(resultInformation);
                 $(resultInformation).append(soRank);
