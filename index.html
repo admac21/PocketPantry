@@ -14,10 +14,6 @@
     <script src="https://apis.google.com/js/platform.js" async defer></script>
     <meta name="google-signin-client_id"
           content="568823689660-386ik3kjs8gbu26p6l9i9eveoa5fk0c2.apps.googleusercontent.com">
-    <script>
-        var res;
-
-    </script>
 </head>
 <body>
 <!-- Trigger/Open The Modal -->
@@ -94,7 +90,6 @@
                     </form>
                 </li>
 
-
             </ul>
             <br class="clearLeft"/>
         </nav>
@@ -141,9 +136,10 @@
 
                         $("#searchb").click(function () {
                             console.log("clicked");
-
+                            $('.ResultArea').empty();
+                            searchApi();
                         });
-                        $('.ResultArea').empty();
+
                         searchApi();
                             function searchApi(){
                             // WORKING
@@ -154,7 +150,7 @@
                                 dataType: "json",
                                 success: function (response) {
                                     console.log(response);
-                                    res = JSON.parse(JSON.stringify(response));
+                                    var res = JSON.parse(JSON.stringify(response));
 
                                     console.log(res.recipes[0].title);
 
@@ -165,9 +161,6 @@
 
                                         var recipeTitle = res.recipes[i].title;
                                         var imgSrc = res.recipes[i].image_url;
-
-
-
 
                                         createCard(recipeTitle, imgSrc);
 
@@ -197,11 +190,6 @@
 
             <script>
 
-//                for (i = 0; i < res.recipes.length; i++) {
-//                    createCard(res.recipes[i].title, res.recipes[i].image_url, res.recipes[i].source_url);
-//                    console.log(res.recipes[i].title);
-
-
                     //Function that will create and populate a recipe card
                     function createCard(desc, imgSrc, recipeSrc) {
 
@@ -226,7 +214,6 @@
                         $(resultIngs).prepend('<a class="ings">+ Rancor brains</a>').prepend('<a class="ings">+ Magic Beans</a>').prepend('<a class="ings">- Beer</a>').prepend('<a class="ings">- Skills</a>');
                         $(resultCard).appendTo($('.ResultArea'));
 
-//                    }
                 }
             </script>
 
@@ -357,11 +344,7 @@
 
             <!-- This shit *used to* work-->
 
-            $("#searchb").click(function () {
-                alert("Clicked");
-                search();
-                //createCard();
-            });
+
 
             function search() {
 
