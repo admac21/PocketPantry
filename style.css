@@ -878,8 +878,9 @@ Add Animation
     text-align: center;
     margin: 4%;
     width: 10%;
+    height: 10%;
     margin-left: 20%;
-    padding: 5px;
+    padding: 12px;
     text-decoration: none;
     display: inline-block;
     transition-duration: 0.4s;
