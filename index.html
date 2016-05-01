@@ -314,6 +314,9 @@
                 }));
                 $(descWrapper).append(resultInformation);
                 $(resultInformation).append(soRank);
+                $(soRank).wrapInner($('<span>',{
+                    title: "Recipe ID"
+                }));
                 $(resultInformation).append(rateYo);
                 $(rateYo).rateYo({rating:rating, ratedFill: "#FF6138", readOnly: true});
                 $(resultInformation).append(resultIngs);
