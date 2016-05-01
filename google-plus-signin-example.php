@@ -75,18 +75,7 @@
 		</script>
 		<script type="text/javascript">
 			function gvnSignOut() {
-				$.post( "/ajx/plus.php?logout", {state: "' . $_SESSION['state'] . '"},
-				function( data ) {
-					$(\'#gPlus\').empty().append( data );
-				});
-				gapi.auth.signOut();
-			};
-		</script>
-		<style type="text/css">
-			#customBtn {cursor: pointer;}
-			#customBtn:hover {text-decoration: underline; cursor: hand;}
-		</style>
-';
+				$.post( "/ajx/plus.php?logout", {state: "' . $_SESSION['state'] . ';
 	$gPlusWhenLogout = '		<div id="gSignInWrapper">
 				<div id="customBtn">
 					<a onclick="gapi.auth.signIn({\'clientid\' : \'' . $_SESSION['clientid'] . '\',\'cookiepolicy\' : \'single_host_origin\',

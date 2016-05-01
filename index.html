@@ -23,7 +23,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.0.1/jquery.rateyo.min.js"></script>
 </head>
 <body>
-<!-- The Popup -->
+<!-- The Login Popup -->
 <section id="myPopup" class="popup">
 
     <!-- Popup content -->
@@ -70,7 +70,7 @@
             }
         </script>
         <script>
-            //            Logout function
+            //Logout function
             function logout1() {
                 signOut1();
                 signOut2();
@@ -91,7 +91,6 @@
                 <li class="left"><a href="#top" id="home" tabindex="1">Home</a></li>
                 <li><a href="#aboutUs" class="about" tabindex="2">About</a></li>
                 <li><a href="#getInTouch" class="contact" tabindex="3">Contact</a></li>
-
 
                 <!--Login button-->
                 <li><a href="#signlogin" id="loginBtn" class="login">Login</a></li>
@@ -124,7 +123,7 @@
                     <form role="form" method="post">
                         <p class="text-box">
                             <label for="box1"><span class="box-number">1</span></label>
-                            <input type="ingredient" name="boxes[]" value="" id="box1"/>
+                            <input type="search" name="boxes[]" value="" id="box1"/>
                         </p>
                         <a class="add-box" href="#">
                             <button class="button addbutton">Add</button>
@@ -145,16 +144,15 @@
                             return userInput;
                         }
                         function getOtherSearchBox() {
-                            var userInput = $('#recipeSearch').val();
-                            return userInput;
+                            return $('#recipeSearch').val() + ',';
                         }
-                        //Run ingredient search
+                        //Run ingredient (leftbar) search
                         $("#searchb").click(function () {
                             console.log("clicked");
                             $('.ResultArea').empty();
                             searchApi(getSearchBox());
                         });
-                        //Run general search
+                        //Run quick (navbar) search
                         $("#recipeSearch").keypress(function (e) {
                             if(e.which==13){
                                 console.log("entered");
@@ -166,8 +164,9 @@
                         //createCard('Placeholder', 'by Andrew Maclean', 'http://static.food2fork.com/Buffalo2BChicken2BGrilled2BCheese2BSandwich2B5002B4983f2702fe4.jpg','https://www.google.co.uk/','https://www.google.co.uk/','3.5');
                         //createCard('Placeholder', 'by Andrew Maclean', 'http://static.food2fork.com/Buffalo2BChicken2BGrilled2BCheese2BSandwich2B5002B4983f2702fe4.jpg','https://www.google.co.uk/','https://www.google.co.uk/','3.5');
                         searchApi(getSearchBox());
+
                         function searchApi(search){
-                            // WORKING
+                            //Perform API call and display results
                             $.ajax({
                                 url: "http://pocketpantry.azurewebsites.net/theprox.php?url=http://food2fork.com/api/search",
                                 type: "GET",
@@ -176,18 +175,23 @@
                                 success: function (response) {
                                     console.log(response);
                                     var res = JSON.parse(JSON.stringify(response));
-                                    console.log(res.recipes[0].title);
-                                    for (i = 0; i < res.recipes.length; i++) {
-                                        // createCard(res.recipes[i].title, res.recipes[i].image_url, res.recipes[i].source_url);
-                                        console.log(res.recipes[i].title);
-                                        var recipeTitle = res.recipes[i].title;
-                                        var publisher = "by " + res.recipes[i].publisher;
-                                        var imgSrc = res.recipes[i].image_url;
-                                        var rating = (res.recipes[i].social_rank)/20;
-                                        var recSrc = res.recipes[i].source_url;
-                                        var pubSrc = res.recipes[i].publisher_url;
-                                        createCard(recipeTitle, publisher, imgSrc, recSrc, pubSrc, rating);
+                                    //If results are found create and populate card for each recipe
+                                    if(res.recipes.length > 0){
+                                        for (i = 0; i < res.recipes.length; i++) {
+                                            var recipeTitle = res.recipes[i].title;
+                                            var publisher = "by " + res.recipes[i].publisher;
+                                            var imgSrc = res.recipes[i].image_url;
+                                            var rating = (res.recipes[i].social_rank) / 20;
+                                            var recSrc = res.recipes[i].source_url;
+                                            var pubSrc = res.recipes[i].publisher_url;
+                                            createCard(recipeTitle, publisher, imgSrc, recSrc, pubSrc, rating);
+                                        }
+                                    //If no results returned display message and load most popular recipes instead
+                                    }else if(res.recipes.length == 0){
+                                        noResultsCard('https://media.giphy.com/media/TydZAW0DVCbGE/giphy-facebook_s.jpg');
+                                        searchApi(",");
                                     }
+
                                 }
                                 ,
                                 error: function (xhr, status) {
@@ -202,10 +206,23 @@
         </nav>
         <!--Right side of the screen where results are shown-->
         <section class="ResultArea">
-
+        <!-- Result cards will be displayed here -->
         </section>
 
         <script>
+            //Function that will display a no results found card
+            function noResultsCard(imgSrc){
+                var resultCard = $('<div class="results"></div>');
+                var descWrapper = $('<div class="descWrapper"></div>');
+                var description = $('<div class="desc"></div>').text("No Recipes found");
+                var pub = $('<div class="publisher"></div>').text("Why not try some of these popular recipes instead: ");
+
+                $(resultCard).append(descWrapper);
+                $(descWrapper).append(description);
+                $(description).append(pub);
+                $(resultCard).appendTo($('.ResultArea'));
+
+            }
             //Function that will create and populate a recipe card
             function createCard(desc, publisher, imgSrc, recipeSrc, pubSrc, rating) {
                 var resultCard = $('<div class="results"></div>');
@@ -215,7 +232,6 @@
                 var heart1 = $('<div class="heart1"></div>');
                 var imgOuter = $('<div class="imgOuter"></div>');
                 var imgInner = $('<div class="imgInner"></div>');
-                //var blank = $('<a class="_blank"></a>').attr('href', recipeSrc);
                 var image = $('<img />').attr('src', imgSrc).attr('alt', desc).attr('href', recipeSrc);
                 var resultInformation = $('<div class="resultInformation"></div>');
                 var soRank = $('<div class="soRank"></div>').text("Rating : ");
@@ -243,7 +259,6 @@
                 $(resultInformation).append(rateYo);
                 $(rateYo).rateYo({rating:rating, ratedFill: "#FF6138", readOnly: true});
                 $(resultInformation).append(resultIngs);
-                //$(resultIngs).prepend('<a class="ings">Social Rank</a>').prepend('<a class="ings">+ Magic Beans</a>').prepend('<a class="ings">- Beer</a>').prepend('<a class="ings">- Skills</a>');
                 $(resultCard).appendTo($('.ResultArea'));
             }
         </script>
@@ -352,7 +367,7 @@
             $('.my-form .add-box').click(function () {
                 var n = $('.text-box').length + 1;
                 var box_html = $('<p class="text-box"><label for="box' + n + '"><span class="box-number">'
-                        + n + '</span></label> <input type="ingredient" name="boxes[]" value="" id="box'
+                        + n + '</span></label> <input type="search" name="boxes[]" value="" id="box'
                         + n + '" /> <a href="#" class="remove-box"><button class="button deletebutton">X</button></a></p>');
                 box_html.hide();
                 $('.my-form p.text-box:last').after(box_html);
@@ -369,17 +384,7 @@
                 return false;
             });
             <!-- end of add/remove new ingredient box script -->
-            function getSearchBox() {
-                var userInput = "";
-                $(".text-box input").each(function () {
-                            userInput += $(this).val() + ',';
-                        }
-                );
-                return userInput;
-            }
-            <!-- This shit *used to* work-->
 
-            <!-- End of this Shit Works -->
             //Function declaration
             //$(document).ready(function () {
             $('a[href^="#"]').on('click', function (e) {
@@ -406,14 +411,13 @@
             function unBlur() {
                 $(' #Title, .results, #PageContent, #LeftBar, #PageFooter,#MainHeader').css({
                     'z-index': 900,
-                    'filter': 'blur(0px)',
-                    '-webkit-filter': 'blur(0px)',
-                    '-moz-filter': 'blur(0px)',
-                    '-o-filter': 'blur(0px)',
-                    '-ms-filter': 'blur(0px)',
+                    'filter': 'none',
+                    '-webkit-filter': 'none',
+                    '-moz-filter': 'none',
+                    '-o-filter': 'none',
+                    '-ms-filter': 'none',
                     transition: 'all 0.3s ease-in-out'
                 });
-                $('#nav').css('z-index', 9999);
             }
             <!-- Popup Script -->
             // Get the popup
@@ -499,17 +503,6 @@
                 xfbml      : true,  // parse social plugins on this page
                 version    : 'v2.6' // use graph api version 2.6
             });
-            // Now that we've initialized the JavaScript SDK, we call
-            // FB.getLoginStatus().  This function gets the state of the
-            // person visiting this page and can return one of three states to
-            // the callback you provide.  They can be:
-            //
-            // 1. Logged into your app ('connected')
-            // 2. Logged into Facebook, but not your app ('not_authorized')
-            // 3. Not logged into Facebook and can't tell if they are logged into
-            //    your app or not.
-            //
-            // These three cases are handled in the callback function.
             FB.getLoginStatus(function(response) {
                 statusChangeCallback(response);
             });
