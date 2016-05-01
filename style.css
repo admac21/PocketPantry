@@ -148,9 +148,16 @@ input[type=search]:focus {
     background-color: #00A388;
     text-align: center;
     color: white;
-    font-size: 40px;
+    font-size: 60px;
     font-family: "Breamcatcher", Verdana, Serif;
     box-shadow: 0 0 8px rgba(0,0,0,0.5);
+    overflow: visible;
+}
+#hamburgerMenu {
+    width: 12%;
+    height: 12%;
+    float: right;
+    margin: 2% -3% 1% 1%;
 }
 /*Logo*/
 #MaterialPantry {
@@ -418,6 +425,7 @@ a:hover{
 }
 /*Make footer stick to bottom*/
 #PageFooter {
+    margin-top: 5%;
     bottom: 0;
     left: 0;
     right: 0;
