@@ -12,8 +12,8 @@
     <script type="text/javascript" src="//code.jquery.com/jquery-latest.js"></script>
     <!--include the Google Platform Library for Google sign-in-->
     <script src="https://apis.google.com/js/platform.js" async defer></script>
-    <meta name="google-signin-client_id"
-          content="568823689660-386ik3kjs8gbu26p6l9i9eveoa5fk0c2.apps.googleusercontent.com">
+    <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
+    <meta name="google-signin-client_id" content="568823689660-386ik3kjs8gbu26p6l9i9eveoa5fk0c2.apps.googleusercontent.com">
     <meta property="og:url"           content="http://pocketpantry.azurewebsites.net" />
     <meta property="og:type"          content="website" />
     <meta property="og:title"         content="Pocket Pantry" />
@@ -25,7 +25,6 @@
 <body>
 <!-- The Login Popup -->
 <section id="myPopup" class="popup">
-
     <!-- Popup content -->
     <section class="popup-content">
         <span class="close">X</span>
@@ -95,11 +94,8 @@
                 <!--Login button-->
                 <li><a href="#signlogin" id="loginBtn" class="login">Login</a></li>
                 <li class="right">
-
-                    <input type="searchBox" id="recipeSearch" name="search" placeholder="Search recipes">
-
+                        <input type="searchBox" id="recipeSearch" name="search" placeholder="Search recipes">
                 </li>
-
             </ul>
             <br class="clearLeft"/>
         </nav>
@@ -109,7 +105,6 @@
         <nav id="nav-mobile"></nav>
         <a id="upBtn" href="#top"><img src="MaterialPantry.png" id="MaterialPantry2" alt="PocketPantryLogo"
                                        height="60" width="60" align="center"></a>
-
     </header>
     <!--Make navigation bar sticky when user scrolls past it.
      One for desktop view and one for mobile view-->
@@ -201,6 +196,7 @@
                         }
                         //end function
                     });
+
                 </script>
             </ul>
         </nav>
@@ -268,7 +264,7 @@
     <footer id="PageFooter">
         <section id="getInTouch">
             <section id="getInTouchBox">
-                <a id="geta classHeader">Get In Touch</a><br>
+                <a id="getInTouchHeader">Get In Touch</a><br>
                 <a></a><br>
                 <a>info@pocketpantry.co.uk</a><br>
                 <a>01224 242399</a><br>
@@ -288,12 +284,12 @@
                 <a>recipes to make with what you have.</a>
             </section>
             <section class="fb-like"
-                     data-href="http://pocketpantry.azurewebsites.net"
-                     data-layout="button_count"
-                     data-action="like"
-                     data-show-faces="true"
-                     data-colorscheme="dark"
-                     data-share="true">
+                 data-href="http://pocketpantry.azurewebsites.net"
+                 data-layout="button_count"
+                 data-action="like"
+                 data-show-faces="true"
+                 data-colorscheme="dark"
+                 data-share="true">
             </section>
         </section>
         <!--Buttons for social media-->

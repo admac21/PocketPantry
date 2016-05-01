@@ -38,7 +38,7 @@ body {
     background: #333;
     list-style-type: none;
     overflow: hidden;
-    z-index: 9999;
+    z-index: 99999;
     position: static;
     transition: width, 0.7s;
     transition-timing-function: ease-in-out;
@@ -100,7 +100,7 @@ body {
      background-repeat: no-repeat;
      padding: 10px 20px 12px 40px;
      transition: all .4s ease;
- }
+}
 /*Change border color of recipe search box when clicked*/
 input[type=searchBox]:focus {
     border-color: #79BD8F;
@@ -189,7 +189,6 @@ input[type=search]:focus {
         width: 92%;
         margin-bottom: 10%;
         margin-top: +14%;
-
     }
 }
 #row1:after {
@@ -229,14 +228,20 @@ input[type=search]:focus {
     border: 3px solid #00A388;
 }
 .deletebutton {
+    font-size: 16px;
+    padding: 1px 1px;
     background-color: white;
     color: black;
     border: 3px solid red;
+    height: 8%;
+    width: 8%;
+    border-radius: 100%;
+    margin-left: 2%;
 }
-/* delete button Media Querie*/
+/* delete button Media Query*/
 @media all and (max-width: 700px) {
     .deletebutton {
-        width: 20%;
+        width: 11%;
     }
 }
 /*Change button color when mouse is hovered over*/
@@ -447,6 +452,9 @@ a:hover{
     font-weight: bold;
     color: #FF6138;
     float: left;
+}
+.fb-like {
+    margin: 2% 0 0 0;
 }
 #aboutUsBox a:not(#aboutUsHeader) {
     color: white;
@@ -680,13 +688,13 @@ a:hover{
     text-transform: uppercase;
     top: 0;
 }
-/*#nav-trigger span:after {*/
-/*z-index: 999;*/
-/*display: inline-block;*/
-/*width: 20px;*/
-/*height: 40px;*/
-/*content: "";*/
-/*}*/
+#nav-trigger span:after {
+    z-index: 999;
+    display: inline-block;
+    width: 20px;
+    height: 40px;
+    content: "";
+}
 #nav-trigger span:hover {
     background-color: #007D67;
 }
@@ -778,7 +786,7 @@ nav#nav-mobile a:hover {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 10000; /* Sit on top */
-    padding-top: 100px; /* Location of the box */
+    padding-top: 30px; /* Location of the box */
     left: 0;
     top: 0;
     width: 100%; /* Full width */
@@ -797,12 +805,23 @@ nav#nav-mobile a:hover {
     border: 1px solid #888;
     width: 25%;
     height: 70%;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    box-shadow: 0 40px 80px 0 rgba(0,0,0,0.29);
     -webkit-animation-name: animatetop;
     -webkit-animation-duration: 0.4s;
     animation-name: animatetop;
     animation-duration: 0.4s;
     transition: all 0.5s;
+}
+
+@media all and (max-width: 700px) {
+    .popup {
+        width: 20%;
+        height: 20%;
+    }
+    .popup-content {
+        width: 10%;
+        height: 10%;
+    }
 }
 
 .g-signin2, .logout, .fb-login-button {
@@ -818,9 +837,24 @@ nav#nav-mobile a:hover {
     width: 40%;
 }
 .logout {
-    background-color: #333333;
+    text-align: center;
+    margin: 10%;
     width: 60%;
     margin-left: 20%;
+    border-radius: 4px;
+    padding: 15px 32px;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    transition-duration: 0.4s;
+    background-color: white;
+    color: black;
+    border: 3px solid red;
+}
+/*Change button color when mouse is hovered over*/
+.logout:hover {
+    background-color: #FF6138;
+    color: white;
 }
 a.logout {
     font-size: large;
@@ -838,11 +872,26 @@ a.logout {
 
 /* The Close Button */
 .close {
-    color: #aaa;
     float: right;
-    font-size: 28px;
+    font-size: 16px;
     font-weight: bold;
-    margin-right: 2%;
+    text-align: center;
+    margin: 4%;
+    width: 10%;
+    margin-left: 20%;
+    padding: 8px;
+    text-decoration: none;
+    display: inline-block;
+    transition-duration: 0.4s;
+    background-color: white;
+    color: black;
+    border: 3px solid red;
+    border-radius: 100%;
+}
+/*Change button color when mouse is hovered over*/
+.close:hover {
+    background-color: #FF6138;
+    color: white;
 }
 
 .close:hover,

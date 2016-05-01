@@ -8,5 +8,6 @@
     <orderEntry type="library" name="jquery-latest" level="application" />
     <orderEntry type="library" name="platform" level="application" />
     <orderEntry type="library" name="jquery.mobile" level="application" />
+    <orderEntry type="library" name="jquery.rateyo" level="application" />
   </component>
 </module>
