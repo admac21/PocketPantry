@@ -239,7 +239,8 @@
                                             var rating = (res.recipes[i].social_rank) / 20;
                                             var recSrc = res.recipes[i].source_url;
                                             var pubSrc = res.recipes[i].publisher_url;
-                                            createCard(recipeTitle, publisher, imgSrc, recSrc, pubSrc, rating);
+                                            var recId = res.recipes[i].recipe_id;
+                                            createCard(recipeTitle, publisher, imgSrc, recSrc, pubSrc, rating,recId);
                                         }
                                     //If no results returned display message and load most popular recipes instead
                                     }else if(res.recipes.length == 0){
@@ -281,7 +282,7 @@
 
             }
             //Function that will create and populate a recipe card
-            function createCard(desc, publisher, imgSrc, recipeSrc, pubSrc, rating) {
+            function createCard(desc, publisher, imgSrc, recipeSrc, pubSrc, rating, recId) {
                 var resultCard = $('<div class="results"></div>');
                 var descWrapper = $('<div class="descWrapper"></div>');
                 var description = $('<div class="desc"></div>').text(desc).attr('href', recipeSrc);
@@ -291,7 +292,7 @@
                 var imgInner = $('<div class="imgInner"></div>');
                 var image = $('<img />').attr('src', imgSrc).attr('alt', desc).attr('href', recipeSrc);
                 var resultInformation = $('<div class="resultInformation"></div>');
-                var soRank = $('<div class="soRank"></div>').text("Rating : ");
+                var soRank = $('<div class="soRank"></div>').text("#"+recId);
                 var rateYo = $('<div class="rateYo" id="rateYo"></div>');
                 var resultIngs = $('<div class="resultIngs"></div>');
 

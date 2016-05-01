@@ -312,17 +312,19 @@ a:hover{
     text-decoration: underline;
 }
 .soRank {
-    font-size: 20px;
-    padding-top: 20px;
-    padding-bottom: 6px;
-    text-align: left    ;
-    width: 50%;
+    font-size: 16px;
+    text-align: right;
+    margin-top: 5px;
+    margin-right: 20px;
+    width: 100%;
+    float: right;
 
 }
 .rateYo{
     padding-bottom: 10px;
-    margin-bottom: 20px;
-    margin-left: -8px;
+    margin-bottom: 15px;
+    margin-top: 12px;
+    margin-left: -4%;
     //float: right;
 }
 .descWrapper {
