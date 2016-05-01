@@ -201,13 +201,13 @@
 
                         function searchApi(search){
 
-
+                            //Create Loading Spinner
                                 var opts = {
                                 lines: 14, // The number of lines to draw
                                 length: 20, // The length of each line
                                 width: 8, // The line thickness
                                 radius: 15, // The radius of the inner circle
-                                corners: 1, // Corner roundness (0..1)
+                                corners: 0, // Corner roundness (0..1)
                                 rotate: 0, // The rotation offset
                                 color: '#000', // #rgb or #rrggbb
                                 speed: 1, // Rounds per second
@@ -221,8 +221,6 @@
                             };
                                 var target = document.getElementById('ResultArea');
                                 var spinner = new Spinner(opts).spin(target);
-
-
 
                             $.ajax({
                                 url: "http://pocketpantry.azurewebsites.net/theprox.php?url=http://food2fork.com/api/search",

@@ -97,6 +97,7 @@ body {
      background-position: 10px 10px;
      background-repeat: no-repeat;
      padding: 10px 20px 12px 40px;
+     margin-left: -3%;
      transition: all .4s ease;
 }
 /*Change border color of recipe search box when clicked*/
@@ -230,6 +231,7 @@ input[type=search]:focus {
 }
 .deletebutton {
     font-size: 16px;
+    overflow: hidden;
     padding: 1px 1px;
     background-color: white;
     color: black;
@@ -345,7 +347,7 @@ a:hover{
     width: 45%;
     display: block;
     float: right;
-    //left: 50%;
+    margin: auto;
     margin-right: 37%;
     margin-bottom: 200px;
 }
