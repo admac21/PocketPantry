@@ -859,7 +859,6 @@ nav#nav-mobile a:hover {
 a.logout {
     font-size: large;
 }
-
 @-webkit-keyframes animatetop {
     from {top:-300px; opacity:0}
     to {top:0; opacity:1}
@@ -869,7 +868,6 @@ a.logout {
     from {top:-300px; opacity:0}
     to {top:0; opacity:1}
 }
-
 /* The Close Button */
 .close {
     float: right;
