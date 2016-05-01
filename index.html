@@ -10,10 +10,6 @@
     <title>Pocket Pantry</title>
     <!--jQuery for navigation bar sticky scroll function-->
     <script type="text/javascript" src="//code.jquery.com/jquery-latest.js"></script>
-    <!--include the Google Platform Library for Google sign-in-->
-    <script src="https://apis.google.com/js/platform.js" async defer></script>
-    <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
-    <meta name="google-signin-client_id" content="568823689660-386ik3kjs8gbu26p6l9i9eveoa5fk0c2.apps.googleusercontent.com">
     <meta property="og:url"           content="http://pocketpantry.azurewebsites.net" />
     <meta property="og:type"          content="website" />
     <meta property="og:title"         content="Pocket Pantry" />
@@ -21,6 +17,36 @@
     <meta property="og:image"         content="MaterialPantry.png" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.0.1/jquery.rateyo.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.0.1/jquery.rateyo.min.js"></script>
+    <!--include the Google stuff for Google sign-in-->
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
+    <script src="https://apis.google.com/js/api:client.js"></script>
+    <script>
+        var googleUser = {};
+        var startApp = function() {
+            gapi.load('auth2', function(){
+                // Retrieve the singleton for the GoogleAuth library and set up the client.
+                auth2 = gapi.auth2.init({
+                    client_id: '568823689660-386ik3kjs8gbu26p6l9i9eveoa5fk0c2.apps.googleusercontent.com',
+                    cookiepolicy: 'single_host_origin',
+                    // Request scopes in addition to 'profile' and 'email'
+                    //scope: 'additional_scope'
+                });
+                attachSignin(document.getElementById('customBtn'));
+            });
+        };
+
+        function attachSignin(element) {
+            console.log(element.id);
+            auth2.attachClickHandler(element, {},
+                    function(googleUser) {
+                        document.getElementById('name').innerText = "Signed in: " +
+                                googleUser.getBasicProfile().getName();
+                    }, function(error) {
+                        alert(JSON.stringify(error, undefined, 2));
+                    });
+        }
+    </script>
+
 </head>
 <body>
 <!-- The Login Popup -->
@@ -29,7 +55,17 @@
     <section class="popup-content">
         <span class="close">X</span>
         <!--Login button-->
-        <a class="g-signin2" data-onsuccess="onSignIn" onclick="login1()"></a>
+        <!-- In the callback, you would hide the gSignInWrapper element on a
+  successful sign in -->
+            <section id="customBtn" class="customGPlusSignIn" data-onsuccess="onSignIn" onclick="login1()">
+                <span class="icon"></span>
+                <span class="buttonText">Google</span>
+            </section>
+        <section id="name"></section>
+        <script>startApp();</script>
+
+        <section id="my-signin2" class="my-signin2" data-onsuccess="onSignIn" onclick="login1()"></section>
+
         <script>
             //Login function
             function login1() {
@@ -66,6 +102,7 @@
                     // user is now logged out of Google+
                     console.log('User signed out of Google+.');
                 });
+                $('#name').text('Signed out.')
             }
         </script>
         <script>
@@ -106,8 +143,6 @@
         <a id="upBtn" href="#top"><img src="MaterialPantry.png" id="MaterialPantry2" alt="PocketPantryLogo"
                                        height="60" width="60" align="center"></a>
     </header>
-    <!--Make navigation bar sticky when user scrolls past it.
-     One for desktop view and one for mobile view-->
 
     <section class="row1">
         <!--Left bar-->
@@ -438,25 +473,8 @@
                 }
             };
             <!-- End of popup script -->
-            <!-- Google Script -->
-            function onSuccess(googleUser) {
-                console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
-            }
-            function onFailure(error) {
-                console.log(error);
-            }
-            function renderButton() {
-                gapi.signin2.render('g-signin2', {
-                    'scope': 'profile email',
-                    'width': 240,
-                    'height': 50,
-                    'longtitle': true,
-                    'theme': 'dark',
-                    'onsuccess': onSuccess,
-                    'onfailure': onFailure
-                });
-            }});
-        <!-- End of Google script -->
+            });
+
         <!-- Facebook Script -->
         //First Part
         // This is called with the results from from FB.getLoginStatus().
@@ -519,9 +537,11 @@
                         'Thanks for logging in, ' + response.name + '!';
             });
         }
+        FB.logout(function(response) {
+            FB.Auth.setAuthResponse(null, 'unknown');
+        });
         <!-- End of Facebook Script -->
     </script>
-
 </section>
 </body>
 </html>

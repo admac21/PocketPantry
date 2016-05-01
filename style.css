@@ -14,9 +14,6 @@ body {
     #nav li {
         float: none;
     }
-    .results {
-        width: 100%;
-    }
     #Title, #MaterialPantry {
         display: none;
     }
@@ -30,6 +27,7 @@ body {
 }
 /*Customise navigation bar*/
 #nav {
+    height: 50px;
     padding: 0;
     margin-bottom: 100px;
     margin-left: 15%;
@@ -37,11 +35,11 @@ body {
     box-shadow: 0 0 10px rgba(0,0,0,0.8);
     background: #333;
     list-style-type: none;
-    overflow: hidden;
-    z-index: 99999;
+    z-index: 9999;
     position: static;
     transition: width, 0.7s;
     transition-timing-function: ease-in-out;
+    overflow: visible;
 }
 #nav ul {
     margin: 0;
@@ -134,13 +132,6 @@ input[type=search]:focus {
     background-image:none;
     height: 40px;
 }
-@media screen and (max-width: 700px){
-    #MainHeader {
-        background: url("background_food.png");
-        background-size: cover;
-        height: 240px;
-    }
-}
 /*Pocket Pantry title*/
 @font-face {
     font-family: Breamcatcher;
@@ -165,7 +156,7 @@ input[type=search]:focus {
 #MaterialPantry {
     position: relative;
     margin-top: -70px;
-    z-index: 999;
+    z-index: 1;
     overflow: visible;
 }
 /*Customise left bar*/
@@ -401,7 +392,7 @@ a:hover{
 /*Make search results responsive*/
 @media only screen and (max-width: 700px){
     .results {
-        width: 49.99999%;
+        width: 100%;
         margin: 6px 0;
     }
 }
@@ -666,7 +657,7 @@ a:hover{
 
 /*Mobile navbar*/
 #nav-trigger {
-    z-index: 999;
+    z-index: 9999;
     display: none;
     text-align: center;
     position: static;
@@ -678,7 +669,7 @@ a:hover{
     top: 0;
 }
 #nav-trigger span {
-    z-index: 999;
+    z-index: 9999;
     display: inline-block;
     padding: 10px 30px;
     width: 100%;
@@ -689,7 +680,7 @@ a:hover{
     top: 0;
 }
 #nav-trigger span:after {
-    z-index: 999;
+    z-index: 9999;
     display: inline-block;
     width: 20px;
     height: 40px;
@@ -702,7 +693,7 @@ a:hover{
 
 
 nav#nav-mobile {
-    z-index: 999;
+    z-index: 9999;
     position: static;
     display: none;
     margin-left: -5px;
@@ -790,7 +781,7 @@ nav#nav-mobile a:hover {
     left: 0;
     top: 0;
     width: 100%; /* Full width */
-    height: 100%; /* Full height */
+    height: 110%; /* Full height */
     overflow: auto; /* Enable scroll if needed */
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
@@ -800,7 +791,7 @@ nav#nav-mobile a:hover {
 .popup-content {
     position: relative;
     background-color: #fefefe;
-    margin: auto;
+    margin: 0 auto;
     padding: 0;
     border: 1px solid #888;
     width: 25%;
@@ -811,30 +802,49 @@ nav#nav-mobile a:hover {
     animation-name: animatetop;
     animation-duration: 0.4s;
     transition: all 0.5s;
+    text-align: center;
 }
 
 @media all and (max-width: 700px) {
     .popup {
-        width: 20%;
-        height: 20%;
+        width: 50%;
+        height: 50%;
+        bottom: 0;
+        left: 0;
+        right: 0;
     }
     .popup-content {
         width: 10%;
         height: 10%;
     }
 }
-
-.g-signin2, .logout, .fb-login-button {
+.logout, .fb-login-button {
     float: left;
     width: 100%;
     text-align: center;
-    margin: auto;
+    margin: 0 auto;
     padding: 7%;
 }
-.g-signin2 {
+.fb-login-button {
+    text-align: center;
+    margin: 1%;
+    width: 60%;
+    margin-left: 20%;
+    border-radius: 4px;
+    padding: 15px 32px;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    transition-duration: 0.4s;
+    background-color: white;
+    color: black;
+    border: 3px solid #3b5998;
     margin-top: 10%;
-    padding-left: 37%;
-    width: 40%;
+}
+.fb-login-button:hover {
+    background-color: #3b5998;
+    border-color: #FF6138;
+    color: white;
 }
 .logout {
     text-align: center;
@@ -876,7 +886,6 @@ a.logout {
     text-align: center;
     margin: 4%;
     width: 10%;
-    margin-left: 20%;
     padding: 8px;
     text-decoration: none;
     display: inline-block;
@@ -897,4 +906,48 @@ a.logout {
     color: black;
     text-decoration: none;
     cursor: pointer;
+}
+
+/*Google sign in button*/
+#customBtn {
+    background-color: white; /* Google red */
+    border-radius: 4px;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    transition-duration: 0.4s;
+    color: black;
+    border: 3px solid #FF6138;
+    margin-top: 25%;
+    margin-left: 19%;
+    width: 60%;
+}
+#customBtn:hover {
+    cursor: pointer;
+    background-color: #D50F25;
+    color: white;
+    border: 3px solid #FF6138;
+}
+span.label {
+    font-weight: normal;
+}
+span.icon {
+    background: url('new-google-favicon-128.png') transparent 5px 50% no-repeat;
+    background-size: 90% 90%;
+    display: inline-block;
+    vertical-align: middle;
+    width: 42px;
+    height: 42px;
+}
+span.buttonText {
+    display: inline-block;
+    vertical-align: middle;
+    padding-left: 42px;
+    padding-right: 42px;
+    font-size: 20px;
+    font-weight: bold;
+    /* Use the Roboto font that is loaded in the <head> */
+    font-family: 'Roboto', sans-serif;
 }
