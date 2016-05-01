@@ -149,7 +149,7 @@ input[type=search]:focus {
     background-color: #00A388;
     text-align: center;
     color: white;
-    font-size: 60px;
+    font-size: 40px;
     font-family: "Breamcatcher", Verdana, Serif;
     box-shadow: 0 0 8px rgba(0,0,0,0.5);
     overflow: visible;
