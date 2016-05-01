@@ -190,7 +190,6 @@ input[type=search]:focus {
 #whatsinyourpantry {
     font-size: 20px;
     color: #FF6138;
-    text-shadow: 1px 1px 1px rgba(0,0,0,0.7);
 }
 .text-box {
     color: white;
@@ -254,6 +253,7 @@ input[type=search]:focus {
     box-shadow: 0 0 12px rgba(0,0,0,0.6);
     transition: all 0.4s;
 }
+
 /*Results images*/
 div.imgOuter{
     z-index: 1;
@@ -334,6 +334,14 @@ a:hover{
     height: 100%;
 }
 /*Individual search results*/
+.spinner{
+    width: 45%;
+    display: block;
+    float: right;
+    //left: 50%;
+    margin-right: 37%;
+    margin-bottom: 200px;
+}
 .results {
     width: 45%;
     display: block;
@@ -356,9 +364,17 @@ a:hover{
     height: 100%;
     float: left;
 }
-@media screen and (max-width: 500px){
+@media screen and (max-width: 700px){
     .resultIngs {
         width: 85%;
+    }
+    #row1{
+        text-align: center;
+        margin: auto;
+    }
+    .spinner{
+        margin-right: 67%;
+        text-align: center;
     }
 }
 .ings {

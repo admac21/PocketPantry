@@ -18,6 +18,7 @@
     <meta property="og:image"         content="MaterialPantry.png" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.0.1/jquery.rateyo.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.0.1/jquery.rateyo.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/spin.js/1.2.7/spin.min.js"></script>
     <!--include the Google stuff for Google sign-in-->
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
     <script src="https://apis.google.com/js/api:client.js"></script>
@@ -181,6 +182,7 @@
                         $("#searchb").click(function () {
                             console.log("clicked");
                             $('.ResultArea').empty();
+
                             searchApi(getSearchBox());
                         });
                         //Run quick (navbar) search
@@ -188,6 +190,7 @@
                             if(e.which==13){
                                 console.log("entered");
                                 $('.ResultArea').empty();
+                                spinner.spin(target);
                                 searchApi(getOtherSearchBox());
                             }
                         });
@@ -197,11 +200,34 @@
                         searchApi(getSearchBox());
 
                         function searchApi(search){
-                            //Perform API call and display results
+
+
+                                var opts = {
+                                lines: 14, // The number of lines to draw
+                                length: 20, // The length of each line
+                                width: 8, // The line thickness
+                                radius: 15, // The radius of the inner circle
+                                corners: 1, // Corner roundness (0..1)
+                                rotate: 0, // The rotation offset
+                                color: '#000', // #rgb or #rrggbb
+                                speed: 1, // Rounds per second
+                                trail: 60, // Afterglow percentage
+                                shadow: false, // Whether to render a shadow
+                                hwaccel: false, // Whether to use hardware acceleration
+                                className: 'spinner', // The CSS class to assign to the spinner
+                                zIndex: 2e9, // The z-index (defaults to 2000000000)
+                                top: 40, // Top position relative to parent in px
+                                left: 25 // Left position relative to parent in px
+                            };
+                                var target = document.getElementById('ResultArea');
+                                var spinner = new Spinner(opts).spin(target);
+
+
+
                             $.ajax({
                                 url: "http://pocketpantry.azurewebsites.net/theprox.php?url=http://food2fork.com/api/search",
                                 type: "GET",
-                                data: {key: "e3be4f880ddb28c4772c0a42ac6180a5", q: search.slice(0,-1)},
+                                data: {key: "c374bfbac65d543206653a9fe750799d", q: search.slice(0,-1)},
                                 dataType: "json",
                                 success: function (response) {
                                     console.log(response);
@@ -223,6 +249,7 @@
                                         searchApi(",");
                                     }
 
+                                    spinner.stop();
                                 }
                                 ,
                                 error: function (xhr, status) {
@@ -237,7 +264,7 @@
             </ul>
         </nav>
         <!--Right side of the screen where results are shown-->
-        <section class="ResultArea">
+        <section class="ResultArea" id="ResultArea">
         <!-- Result cards will be displayed here -->
         </section>
 
@@ -278,7 +305,7 @@
                     target: '_blank'
                 }));
                 $(descWrapper).append(heart1);
-                $(heart1).prepend('<img src="heartIcon3.png" class="heart3" alt="heart""/>');
+                $(heart1).prepend('<img src="heartIcon3.png" class="heart3" alt="heart" />');
                 $(descWrapper).append(imgOuter);
                 $(imgOuter).append(imgInner);
                 $(imgInner).prepend(image);
@@ -543,11 +570,7 @@
         });
         <!-- End of Facebook Script -->
     </script>
-    <script>
-        function addFavorite() {
-            $('heart3').css({color: '#FF6138'})
-        }
-    </script>
+
 </section>
 </body>
 </html>
