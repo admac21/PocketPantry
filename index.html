@@ -154,7 +154,7 @@
                     <form role="form" method="post">
                         <p class="text-box">
                             <label for="box1"><span class="box-number">1</span></label>
-                            <input type="search" name="boxes[]" value="" id="box1"/>
+                            <input type="search" name="boxes[]" value="" id="box1 search-box"/>
                         </p>
                         <section class="add-box" href="#">
                             <button class="button addbutton">Add</button>
@@ -434,7 +434,7 @@
                 var n = $('.text-box').length + 1;
                 var box_html = $('<p class="text-box"><label for="box' + n + '"><span class="box-number">'
                         + n + '</span></label> <input type="search" name="boxes[]" value="" id="box'
-                        + n + '" /> <a href="#" class="remove-box"><button class="button deletebutton">X</button></a></p>');
+                        + n + ' search-box" /> <a href="#" class="remove-box"><button class="button deletebutton">X</button></a></p>');
                 box_html.hide();
                 $('.my-form p.text-box:last').after(box_html);
                 box_html.fadeIn('slow');
