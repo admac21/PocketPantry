@@ -301,21 +301,34 @@ input[type=search]:focus {
     cursor: pointer;
     height: 50px;
     max-width: 110px;
-    font: bold 15px/40px 'lucida sans', 'trebuchet MS', 'Tahoma';
+    min-width: 60px;
+    font: bold 20px/40px 'Tahoma';
     color: #fff;
     text-transform: uppercase;
-    background: #00A388;
     border-radius: 0 3px 3px 0;
     text-shadow: 0 -1px 0 rgba(0, 0 ,0, .3);
 }
-
-.form-wrapper button:hover{
+.add button{
+    background: #00A388;
+}
+.remove button{
+    background: #FF6138;
+}
+.add button:hover{
     background: #007D67;
 }
+.remove button:hover{
+    background: #BD4829;
+}
 
-.form-wrapper button:active,
-.form-wrapper button:focus{
+.add button:active,
+.add button:focus{
     background: #007D67;
+    outline: 0;
+}
+.remove button:active,
+.remove button:focus{
+    background: #BD4829;
     outline: 0;
 }
 
@@ -324,21 +337,33 @@ input[type=search]:focus {
     position: absolute;
     border-width: 8px 8px 8px 0;
     border-style: solid solid solid none;
-    border-color: transparent #00A388 transparent;
     top: 18px;
     left: -6px;
 }
-
-.form-wrapper button:hover:before{
-    border-right-color: #007D67;
+.add button:before{
+    border-color: transparent #00A388 transparent;
+}
+.remove button:before{
+    border-color: transparent #FF6138 transparent;
 }
 
-.form-wrapper button:focus:before,
-.form-wrapper button:active:before{
+.add button:hover:before{
     border-right-color: #007D67;
 }
+.remove button:hover:before{
+    border-right-color: #BD4829;
+}
 
-.form-wrapper button::-moz-focus-inner { /* remove extra button spacing for Mozilla Firefox */
+.add button:focus:before,
+.add button:active:before{
+    border-right-color: #007D67;
+}
+.remove button:focus:before,
+.remove button:active:before{
+    border-right-color: #BD4829;
+}
+
+.add button::-moz-focus-inner { /* remove extra button spacing for Mozilla Firefox */
     border: 0;
     padding: 0;
 }

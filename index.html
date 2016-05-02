@@ -163,14 +163,19 @@
                     addIngredientBox();
                     //Add additional ingredient box on click
                     $('#AddIngs').on('click','.add-box', function(){
+                        $('.form-wrapper').removeClass("add").addClass("remove");
+                        $('.add-box').removeClass("add-box").addClass("remove-box").text("-");
                         addIngredientBox();
+                    });
+                    $('#AddIngs').on('click','.remove-box', function(){
+                        $(this).parents('form').remove();
                     });
 
                     //function to add ingredient boxes
                     function addIngredientBox(){
-                        var formWrapper = $('<form class="form-wrapper cf" onsubmit="return false"></form>');
+                        var formWrapper = $('<form class="form-wrapper cf add" onsubmit="return false"></form>');
                         var textBox = $('<input class="text-box" type = "text" placeholder="Ingredient here..." required>');
-                        var button = $('<button class="add-box">Add</button>');
+                        var button = $('<button class="add-box">+</button>');
 
                         $(formWrapper).append(textBox);
                         $(formWrapper).append(button);
