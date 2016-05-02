@@ -100,7 +100,7 @@ input:not([type]), input[type="searchBox"], input[type="search"] {
     border: 3px solid #333;
     border-radius: 4px;
     font-size: 16px;
-    background: white url('searchIcon.png') no-repeat 10px 10px;
+    background: white url('Pictures/searchIcon.png') no-repeat 10px 10px;
     padding: 10px 20px 12px 40px;
     margin-left: -3%;
     transition: all .4s ease;
@@ -129,7 +129,7 @@ input[type=search]:focus {
 
 /*Display logo and header*/
 #MainHeader {
-    background: url(background_food.jpg) no-repeat fixed;
+    background: url(Pictures/background_food.jpg) no-repeat fixed;
     background-size: 100vw;
     color: white;
     text-align: center;
@@ -1232,7 +1232,7 @@ span.label {
 }
 
 span.icon {
-    background: url('new-google-favicon-128.png') transparent 5px 50% no-repeat;
+    background: url('Pictures/new-google-favicon-128.png') transparent 5px 50% no-repeat;
     background-size: 90% 90%;
     display: inline-block;
     vertical-align: middle;
