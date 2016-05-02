@@ -32,7 +32,7 @@
                 // Retrieve the singleton for the GoogleAuth library and set up the client.
                 auth2 = gapi.auth2.init({
                     client_id: '568823689660-386ik3kjs8gbu26p6l9i9eveoa5fk0c2.apps.googleusercontent.com',
-                    cookiepolicy: 'single_host_origin',
+                    cookiepolicy: 'single_host_origin'
                     // Request scopes in addition to 'profile' and 'email'
                     //scope: 'additional_scope'
                 });
@@ -47,7 +47,7 @@
                         document.getElementById('name').innerText = "Signed in: " +
                                 googleUser.getBasicProfile().getName();
                     }, function (error) {
-                        alert(JSON.stringify(error, undefined, 2));
+                        alert(JSON.stringify(error, 2));
                     });
         }
     </script>
@@ -121,7 +121,8 @@
 <section id="top">
     <!--Logo and header-->
     <header id="MainHeader">
-        <h1 id="Title">Pocket <img src="MaterialPantry.png" id="MaterialPantry" alt="PocketPantryLogo"
+        <h1 id="Title">Pocket <!--suppress CheckImageSize -->
+            <img src="MaterialPantry.png" id="MaterialPantry" alt="PocketPantryLogo"
                                    height="200" width="200" align="center"> Pantry</h1>
         <!--Navigation bar-->
         <nav id="nav">
@@ -131,7 +132,7 @@
                 <li><a href="#getInTouch" class="contact" tabindex="3">Contact</a></li>
 
                 <!--Login button in navbar-->
-                <li><a href="#signlogin" id="loginBtn" class="login">Login</a></li>
+                <li><a id="loginBtn" class="login">Login</a></li>
                 <li class="right">
                     <input type="searchBox" id="recipeSearch" name="search" placeholder="Search recipes">
                 </li>
@@ -141,7 +142,8 @@
             <span id="Title2">Pocket Pantry<img src="HMenu.png" id="hamburgerMenu"></span>
         </section>
         <nav id="nav-mobile"></nav>
-        <a id="upBtn" href="#top"><img src="MaterialPantry.png" id="MaterialPantry2" alt="PocketPantryLogo"
+        <a id="upBtn" href="#top"><!--suppress CheckImageSize -->
+            <img src="MaterialPantry.png" id="MaterialPantry2" alt="PocketPantryLogo"
                                        height="60" width="60" align="center"></a>
     </header>
 
@@ -156,7 +158,7 @@
                             <label for="box1"><span class="box-number">1</span></label>
                             <input type="search" name="boxes[]" value="" id="box1 search-box"/>
                         </p>
-                        <section class="add-box" href="#">
+                        <section class="add-box">
                             <button class="button addbutton">Add</button>
                         </section>
                         <button class="button searchbutton" id="searchb" type="button">Search</button>
@@ -227,14 +229,23 @@
                             $.ajax({
                                 url: "http://pocketpantry.azurewebsites.net/theprox.php?url=http://food2fork.com/api/search",
                                 type: "GET",
-                                data: {key: "c374bfbac65d543206653a9fe750799d", q: search.slice(0, -1)},
+                                data: {key: "e3be4f880ddb28c4772c0a42ac6180a5", q: search.slice(0, -1)},
                                 dataType: "json",
+                                /**
+                                 * @property {string} recipes
+                                 * @property {string} recipe_id
+                                 * @property {string} publisher
+                                 * @property {string} image_url
+                                 * @property {string} social_rank
+                                 * @property {string} source_url
+                                 * @property {string} publisher_url
+                                 */
                                 success: function (response) {
                                     console.log(response);
                                     var res = JSON.parse(JSON.stringify(response));
                                     //If results are found create and populate card for each recipe
                                     if (res.recipes.length > 0) {
-                                        for (i = 0; i < res.recipes.length; i++) {
+                                        for (var i = 0; i < res.recipes.length; i++) {
                                             var recipeTitle = res.recipes[i].title;
                                             var publisher = "by " + res.recipes[i].publisher;
                                             var imgSrc = res.recipes[i].image_url;
@@ -253,7 +264,7 @@
                                     spinner.stop();
                                 }
                                 ,
-                                error: function (xhr, status) {
+                                error: function () {
                                     alert("error");
                                 }
                             });
@@ -272,7 +283,7 @@
 
         <script>
             //Function that will display a no results found card
-            function noResultsCard(imgSrc) {
+            function noResultsCard() {
                 var resultCard = $('<div class="results"></div>');
                 var descWrapper = $('<div class="descWrapper"></div>');
                 var description = $('<div class="desc"></div>').text("No Recipes found");

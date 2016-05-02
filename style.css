@@ -3,7 +3,7 @@
 }
 
 body {
-    font-family: "Verdana", "Times New Roman", Serif;
+    font-family: "Verdana", "Times New Roman", sans-serif, serif;
 }
 
 /*Make things responsive*/
@@ -103,10 +103,7 @@ input:not([type]), input[type="searchBox"], input[type="search"] {
     border: 3px solid #333;
     border-radius: 4px;
     font-size: 16px;
-    background-color: white;
-    background-image: url('searchIcon.png');
-    background-position: 10px 10px;
-    background-repeat: no-repeat;
+    background: white url('searchIcon.png') no-repeat 10px 10px;
     padding: 10px 20px 12px 40px;
     margin-left: -3%;
     transition: all .4s ease;
@@ -135,10 +132,8 @@ input[type=search]:focus {
 
 /*Display logo and header*/
 #MainHeader {
-    background-image: url(background_food.jpg);
+    background: url(background_food.jpg) no-repeat fixed;
     background-size: 100vw;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
     color: white;
     text-align: center;
     padding: 5px;
@@ -164,7 +159,7 @@ input[type=search]:focus {
     padding-bottom: 20px;
     font-size: 90px;
     text-shadow: 4px 4px 6px #000000;
-    font-family: "Breamcatcher", Verdana, Serif;
+    font-family: "Breamcatcher", Verdana, sans-serif, serif;
 }
 
 /*Customise mobile view title*/
@@ -173,7 +168,7 @@ input[type=search]:focus {
     text-align: center;
     color: white;
     font-size: 40px;
-    font-family: "Breamcatcher", Verdana, Serif;
+    font-family: "Breamcatcher", Verdana, sans-serif, serif;
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
     overflow: visible;
 }
@@ -205,7 +200,7 @@ input[type=search]:focus {
     margin-left: 4%;
     margin-bottom: 80%;
     background-color: #ffffff;
-    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
 }
 
 /*Fix size of LeftBar in mobile view*/
@@ -407,9 +402,7 @@ a:hover {
     width: 45%;
     display: block;
     float: right;
-    margin: auto;
-    margin-right: 37%;
-    margin-bottom: 200px;
+    margin: auto 37% 200px auto;
 }
 
 .results {
@@ -419,9 +412,7 @@ a:hover {
     border-radius: 8px;
     background-color: white;
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
-    margin: 1%;
-    margin-left: 10%;
-    margin-right: 10%;
+    margin: 1% 10%;
 }
 
 /*Container for result information*/
@@ -990,9 +981,7 @@ nav#nav-mobile a:hover {
 
 .fb-login-button {
     text-align: center;
-    margin: 1%;
     width: 60%;
-    margin-left: 20%;
     border-radius: 4px;
     padding: 15px 32px;
     text-decoration: none;
@@ -1002,7 +991,7 @@ nav#nav-mobile a:hover {
     background-color: white;
     color: black;
     border: 3px solid #3b5998;
-    margin-top: 10%;
+    margin: 10% 1% 1% 20%;
 }
 
 .fb-login-button:hover {
@@ -1013,9 +1002,8 @@ nav#nav-mobile a:hover {
 
 .logout {
     text-align: center;
-    margin: 10%;
     width: 60%;
-    margin-left: 20%;
+    margin: 10% 10% 10% 20%;
     border-radius: 4px;
     padding: 15px 32px;
     text-decoration: none;
