@@ -17,11 +17,6 @@ body {
         display: none;
     }
 
-    #LeftBar {
-        width: 92%;
-        margin-bottom: 10%;
-    }
-
     #MainHeader {
         height: 200px;
     }
@@ -112,7 +107,7 @@ input:not([type]), input[type="searchBox"], input[type="search"] {
 /*Change border color of recipe search box when clicked and make wider*/
 input[type=searchBox]:focus {
     border-color: #79BD8F;
-    width: 250px;
+    width: 300px;
     transition: all .4s ease;
 }
 
@@ -120,6 +115,7 @@ input[type=searchBox]:focus {
 input[type=search]:focus {
     border-color: #79BD8F;
     transition: all .4s ease;
+    width: 72%;
 }
 
 /*Mae search box responsive*/
@@ -203,10 +199,15 @@ input[type=search]:focus {
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
 }
 
+#AddIngs {
+    margin-left: 16%;
+}
+
 /*Fix size of LeftBar in mobile view*/
 @media only screen and (max-width: 700px) {
     #LeftBar {
-        width: 92%;
+        margin-left: 0;
+        width: 100%;
         margin-bottom: 10%;
         margin-top: +14%;
     }
@@ -222,6 +223,7 @@ input[type=search]:focus {
 #whatsinyourpantry {
     font-size: 20px;
     color: #FF6138;
+    margin-left: -3%;
 }
 
 .text-box {
@@ -234,7 +236,7 @@ input[type=search]:focus {
     border: none;
     border-radius: 4px;
     color: white;
-    padding: 15px 32px;
+    line-height: 60px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -247,8 +249,10 @@ input[type=search]:focus {
     color: black;
     border: 3px solid #00A388;
     float: left;
-    margin-right: 3%;
+    margin-right: 4%;
     margin-bottom: 3%;
+    margin-left: -3%;
+    width: 34%;
 }
 
 .searchbutton {
@@ -256,26 +260,19 @@ input[type=search]:focus {
     color: black;
     border: 3px solid #00A388;
     float: left;
+    width: 34%;
 }
 
 .deletebutton {
+    line-height: 16px;
+    padding: 8px 10px;
     font-size: 16px;
     overflow: hidden;
-    padding: 1px 1px;
     background-color: white;
     color: black;
     border: 3px solid red;
-    height: 8%;
-    width: 8%;
     border-radius: 100%;
     margin-left: 2%;
-}
-
-/* delete button Media Query*/
-@media all and (max-width: 700px) {
-    .deletebutton {
-        width: 11%;
-    }
 }
 
 /*Change button color when mouse is hovered over*/
