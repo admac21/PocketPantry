@@ -132,7 +132,7 @@
                 <li><a href="#getInTouch" class="contact" tabindex="3">Contact</a></li>
 
                 <!--Login button in navbar-->
-                <li><a id="loginBtn" class="login">Login</a></li>
+                <li><a id="loginBtn" class="login" href="#">Login</a></li>
                 <li class="right">
                     <input type="searchBox" id="recipeSearch" name="search" placeholder="Search recipes">
                 </li>
@@ -167,6 +167,7 @@
                         $('.add-box').removeClass("add-box").addClass("remove-box").text("-");
                         addIngredientBox();
                     });
+                    //Remove selected ingredient box on click
                     $('#AddIngs').on('click','.remove-box', function(){
                         $(this).parents('form').remove();
                     });
@@ -317,7 +318,7 @@
                 $(resultCard).append(descWrapper);
                 $(descWrapper).append(description);
                 $(description).append(pub);
-                $(resultCard).appendTo($('.ResultArea'));
+                $(resultCard).insertBefore($('.ResultArea'));
 
             }
             //Function that will create and populate a recipe card
