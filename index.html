@@ -150,26 +150,42 @@
     <section class="row1">
         <!--Left bar-->
         <nav id="LeftBar">
-            <ul id="AddIngs">
-                <a id="whatsinyourpantry">What's In Your Pantry?</a>
-                <section class="my-form">
-                    <form role="form" method="post">
-                        <p class="text-box">
-                            <input type="search" name="boxes[]" value="" id="box1 search-box"/>
-                        </p>
-                        <section class="add-box">
-                            <button class="button addbutton">Add</button>
-                        </section>
-                        <button class="button searchbutton" id="searchb" type="button">Search</button>
-                    </form>
+            <section id="AddIngs">
+                <p class="ingSearch" id="whatsinyourpantry">What's In Your Pantry?</p>
+                <section id="ing-Wrapper"></section>
+                <section class="add-clrButton">
+                    <button class="button searchbutton" id="searchb" type="button">SEARCH</button>
+                    <button class="button clearbutton" id="clearb" type="button">CLEAR</button>
                 </section>
-                <!--Add, remove and search button functions-->
+
+                <script>
+                    //Add ingredient box on page load
+                    addIngredientBox();
+                    //Add additional ingredient box on click
+                    $('#AddIngs').on('click','.add-box', function(){
+                        addIngredientBox();
+                    });
+
+                    //function to add ingredient boxes
+                    function addIngredientBox(){
+                        var formWrapper = $('<form class="form-wrapper cf" onsubmit="return false"></form>');
+                        var textBox = $('<input class="text-box" type = "text" placeholder="Ingredient here..." required>');
+                        var button = $('<button class="add-box">Add</button>');
+
+                        $(formWrapper).append(textBox);
+                        $(formWrapper).append(button);
+                        $(formWrapper).appendTo($('#ing-Wrapper'));
+                    }
+
+                </script>
+
+                <!--search button functions-->
                 <script type="text/javascript">
                     jQuery(document).ready(function ($) {
                         //Function to return box contents
                         function getSearchBox() {
                             var userInput = "";
-                            $(".text-box input").each(function () {
+                            $(".form-wrapper input").each(function () {
                                         userInput += $(this).val() + ',';
                                     }
                             );
@@ -195,6 +211,11 @@
                                 spinner.spin(target);
                                 searchApi(getOtherSearchBox());
                             }
+                        });
+                        //clear all additional ingredient boxes
+                        $("#clearb").click(function () {
+                            $('#ing-Wrapper').empty();
+                            addIngredientBox();
                         });
                         <!-- Please don't delete my placeholder cards =] -->
                         //createCard('Placeholder', 'by Andrew Maclean', 'http://static.food2fork.com/Buffalo2BChicken2BGrilled2BCheese2BSandwich2B5002B4983f2702fe4.jpg','https://www.google.co.uk/','https://www.google.co.uk/','3.5');
@@ -273,7 +294,7 @@
                     });
 
                 </script>
-            </ul>
+            </section>
         </nav>
         <!--Right side of the screen where results are shown-->
         <section class="ResultArea" id="ResultArea">
@@ -471,7 +492,7 @@
             });
             <!--Blur background when login button is clicked-->
             function Blur() {
-                $('#Title, #PageContent, .results, #LeftBar, #PageFooter, #MainHeader').css({
+                $('#Title, .results, #LeftBar, #PageFooter, #MainHeader').css({
                     'filter': 'blur(2px)',
                     '-webkit-filter': 'blur(2px)',
                     '-moz-filter': 'blur(2px)',
@@ -483,7 +504,7 @@
 
             <!--unblur background when popup is closed-->
             function unBlur() {
-                $(' #Title, .results, #PageContent, #LeftBar, #PageFooter,#MainHeader').css({
+                $(' #Title, .results, #LeftBar, #PageFooter,#MainHeader').css({
                     'z-index': 900,
                     'filter': 'none',
                     '-webkit-filter': 'none',

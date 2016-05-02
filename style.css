@@ -17,6 +17,11 @@ body {
         display: none;
     }
 
+    #LeftBar {
+        width: 92%;
+        margin-bottom: 10%;
+    }
+
     #MainHeader {
         height: 200px;
     }
@@ -107,7 +112,7 @@ input:not([type]), input[type="searchBox"], input[type="search"] {
 /*Change border color of recipe search box when clicked and make wider*/
 input[type=searchBox]:focus {
     border-color: #79BD8F;
-    width: 300px;
+    width: 250px;
     transition: all .4s ease;
 }
 
@@ -115,7 +120,6 @@ input[type=searchBox]:focus {
 input[type=search]:focus {
     border-color: #79BD8F;
     transition: all .4s ease;
-    width: 72%;
 }
 
 /*Mae search box responsive*/
@@ -199,20 +203,12 @@ input[type=search]:focus {
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
 }
 
-#AddIngs {
-    margin-left: 16%;
-}
-
 /*Fix size of LeftBar in mobile view*/
 @media only screen and (max-width: 700px) {
     #LeftBar {
-        margin-left: 0;
-        width: 100%;
+        width: 92%;
         margin-bottom: 10%;
         margin-top: +14%;
-    }
-    #AddIngs {
-        margin-left: 5%;
     }
 }
 
@@ -225,69 +221,175 @@ input[type=search]:focus {
 /*"What's in your pantry?" text customisation*/
 #whatsinyourpantry {
     font-size: 20px;
+
+    margin-top: 10px;
     color: #FF6138;
-    margin-left: -3%;
 }
 
-.text-box {
-    color: white;
+#AddIngs {
+    padding-left: 4%;
 }
+
+
+/*Clearing Floats*/
+.cf:before, .cf:after{
+    content:"";
+    display:table;
+}
+
+.cf:after{
+    clear:both;
+}
+
+.cf{
+    zoom:1;
+}
+/* Form wrapper styling */
+.form-wrapper {
+    width:100%;
+    margin: auto;
+    margin-bottom: 6%;
+}
+/* Form text input */
+
+.form-wrapper input {
+    width:65%;
+    max-width: 100%;
+    height: 50px;
+    padding: 10px 5px;
+    float: left;
+    font: bold 15px 'lucida sans', 'trebuchet MS', 'Tahoma';
+    border: 0;
+    border-radius: 3px 0 0 3px;
+    outline: 0;
+    background: #eee;
+    box-shadow: 0 0 2px rgba(0,0,0,.8) inset;
+}
+
+.form-wrapper input:focus {
+    outline: 0;
+    background: #fff;
+    box-shadow: 0 0 2px rgba(0,0,0,.8) inset;
+}
+
+.form-wrapper input::-webkit-input-placeholder {
+    color: #999;
+    font-weight: normal;
+    font-style: italic;
+}
+
+.form-wrapper input:-moz-placeholder {
+    color: #999;
+    font-weight: normal;
+    font-style: italic;
+}
+
+.form-wrapper input:-ms-input-placeholder {
+    color: #999;
+    font-weight: normal;
+    font-style: italic;
+}
+
+/* Form submit button */
+.form-wrapper button {
+    overflow: visible;
+    position: relative;
+    border: 0;
+    padding: 0;
+    padding-left: 4%;
+    padding-right: 4%;
+    cursor: pointer;
+    height: 50px;
+    max-width: 110px;
+    font: bold 15px/40px 'lucida sans', 'trebuchet MS', 'Tahoma';
+    color: #fff;
+    text-transform: uppercase;
+    background: #00A388;
+    border-radius: 0 3px 3px 0;
+    text-shadow: 0 -1px 0 rgba(0, 0 ,0, .3);
+}
+
+.form-wrapper button:hover{
+    background: #007D67;
+}
+
+.form-wrapper button:active,
+.form-wrapper button:focus{
+    background: #007D67;
+    outline: 0;
+}
+
+.form-wrapper button:before { /* left arrow */
+    content: '';
+    position: absolute;
+    border-width: 8px 8px 8px 0;
+    border-style: solid solid solid none;
+    border-color: transparent #00A388 transparent;
+    top: 18px;
+    left: -6px;
+}
+
+.form-wrapper button:hover:before{
+    border-right-color: #007D67;
+}
+
+.form-wrapper button:focus:before,
+.form-wrapper button:active:before{
+    border-right-color: #007D67;
+}
+
+.form-wrapper button::-moz-focus-inner { /* remove extra button spacing for Mozilla Firefox */
+    border: 0;
+    padding: 0;
+}
+
 
 /*Customise buttons*/
-.button {
-    background-color: white; /* White */
+.add-clrButton button {
     border: none;
+    height: 50px;
     border-radius: 4px;
     color: white;
-    line-height: 60px;
+    padding-left: 7%;
+    padding-right: 7%;
+    margin: 0 5% 15px 0;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
-    transition-duration: 0.4s;
-}
-
-.addbutton {
-    background-color: white;
-    color: black;
-    border: 3px solid #00A388;
-    float: left;
-    margin-right: 4%;
-    margin-bottom: 3%;
-    margin-left: -3%;
-    width: 34%;
+    font: bold 16px/40px 'lucida sans', 'trebuchet MS', 'Tahoma';
+    text-shadow: 0 -1px 0 rgba(0, 0 ,0, .3);
+    transition-duration: 0.2s;
 }
 
 .searchbutton {
-    background-color: white;
+    background-color: #00A388;
     color: black;
     border: 3px solid #00A388;
     float: left;
-    width: 34%;
 }
-
-.deletebutton {
-    line-height: 16px;
-    padding: 8px 10px;
-    font-size: 16px;
-    overflow: hidden;
-    background-color: white;
-    color: black;
-    border: 3px solid red;
-    border-radius: 100%;
-    margin-left: 2%;
-}
-
-/*Change button color when mouse is hovered over*/
-.addbutton:hover, .searchbutton:hover {
-    background-color: #79BD8F;
-    color: white;
-}
-
-/*Change button color when mouse is hovered over*/
-.deletebutton:hover {
+.clearbutton {
     background-color: #FF6138;
-    color: white;
+    color: black;
+    border: 3px solid #00A388;
+    float: left;
+}
+
+/* delete button Media Query*/
+@media all and (max-width: 700px) {
+    .deletebutton {
+        width: 11%;
+    }
+}
+
+/*Change button color when mouse is hovered over*/
+.searchbutton:hover {
+    background-color: #007D67;
+}
+
+/*Change button color when mouse is hovered over*/
+.clearbutton:hover {
+    background-color: #BD4829;
+
 }
 
 /*Strengthen box shadow when mouse is hovered over*/
