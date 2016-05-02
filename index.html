@@ -205,7 +205,7 @@
                         //Run ingredient (leftbar) search
                         $("#searchb").click(function () {
                             console.log("clicked");
-                            $('.ResultArea').empty();
+                            $('.results').remove();
 
                             searchApi(getSearchBox());
                         });
@@ -213,7 +213,7 @@
                         $("#recipeSearch").keypress(function (e) {
                             if (e.which == 13) {
                                 console.log("entered");
-                                $('.ResultArea').empty();
+                                $('.results').remove();
                                 spinner.spin(target);
                                 searchApi(getOtherSearchBox());
                             }
