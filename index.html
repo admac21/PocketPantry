@@ -336,6 +336,10 @@
 
                 $(resultCard).append(descWrapper);
                 $(descWrapper).append(description);
+                $(description).wrap($('<a>',{
+                    href: recipeSrc,
+                    target: '_blank'
+                }));
                 $(description).append(pub);
                 $(pub).wrapInner($('<a>', {
                     href: pubSrc,
