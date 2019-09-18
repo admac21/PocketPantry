@@ -143,7 +143,8 @@
             <span id="Title2">Pocket Pantry<img src="Pictures/HMenu.png" id="hamburgerMenu"></span>
         </section>
         <nav id="nav-mobile"></nav>
-        <a id="upBtn" href="#top"><!--suppress CheckImageSize -->
+        <a id="upBtn" href="#top">
+            <!--suppress CheckImageSize -->
             <img src="Pictures/MaterialPantry.png" id="MaterialPantry2" alt="PocketPantryLogo"
                  height="60" width="60" align="center"></a>
     </header>
@@ -200,7 +201,10 @@
                         }
 
                         function getOtherSearchBox() {
-                            return $('#recipeSearch').val() + ',';
+                            var recipeSearch = "";
+                            recipeSearch = $('#recipeSearch').val() + ',';
+                            recipeSearch = recipeSearch.replace(/\s+/g, '+');
+                            return recipeSearch;
                         }
 
                         //Run ingredient (leftbar) search
