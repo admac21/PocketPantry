@@ -224,9 +224,9 @@
                             addIngredientBox();
                         });
                         <!-- Please don't delete my placeholder cards =] -->
-                        createCard('Placeholder', 'by Andrew Maclean', 'http://static.food2fork.com/Buffalo2BChicken2BGrilled2BCheese2BSandwich2B5002B4983f2702fe4.jpg','https://www.google.co.uk/','https://www.google.co.uk/','3.5');
-                        createCard('Placeholder', 'by Andrew Maclean', 'http://www.twopeasandtheirpod.com/wp-content/uploads/2012/04/avocado-mac-and-cheese.jpg','https://www.google.co.uk/','https://www.google.co.uk/','3.5');
-                        createCard('Placeholder', 'by Andrew Maclean', 'http://static.food2fork.com/Buffalo2BChicken2BGrilled2BCheese2BSandwich2B5002B4983f2702fe4.jpg','https://www.google.co.uk/','https://www.google.co.uk/','3.5');
+                        //createCard('Placeholder', 'by Andrew Maclean', 'http://static.food2fork.com/Buffalo2BChicken2BGrilled2BCheese2BSandwich2B5002B4983f2702fe4.jpg','https://www.google.co.uk/','https://www.google.co.uk/','3.5');
+                        //createCard('Placeholder', 'by Andrew Maclean', 'http://www.twopeasandtheirpod.com/wp-content/uploads/2012/04/avocado-mac-and-cheese.jpg','https://www.google.co.uk/','https://www.google.co.uk/','3.5');
+                        //createCard('Placeholder', 'by Andrew Maclean', 'http://static.food2fork.com/Buffalo2BChicken2BGrilled2BCheese2BSandwich2B5002B4983f2702fe4.jpg','https://www.google.co.uk/','https://www.google.co.uk/','3.5');
                         searchApi(getSearchBox());
 
                         function searchApi(search) {
@@ -255,7 +255,7 @@
                             $.ajax({
                                 url: "http://pocketpantry.azurewebsites.net/theprox.php?url=http://food2fork.com/api/search",
                                 type: "GET",
-                                data: {key: "e3be4f880ddb28c4772c0a42ac6180a5", q: search.slice(0, -1)},
+                                data: {key: "8bf002c9f347185cbda5f0cf1f34261c", q: search.slice(0, -1)},
                                 dataType: "json",
                                 /**
                                  * @property {string} recipes
