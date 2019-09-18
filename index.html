@@ -224,9 +224,9 @@
                             addIngredientBox();
                         });
                         <!-- Please don't delete my placeholder cards =] -->
-                        createCard('Placeholder', 'by Andrew Maclean', 'http://static.food2fork.com/Buffalo2BChicken2BGrilled2BCheese2BSandwich2B5002B4983f2702fe4.jpg','https://www.google.co.uk/','https://www.google.co.uk/','3.5');
-                        createCard('Placeholder', 'by Andrew Maclean', 'http://www.twopeasandtheirpod.com/wp-content/uploads/2012/04/avocado-mac-and-cheese.jpg','https://www.google.co.uk/','https://www.google.co.uk/','3.5');
-                        createCard('Placeholder', 'by Andrew Maclean', 'http://static.food2fork.com/Buffalo2BChicken2BGrilled2BCheese2BSandwich2B5002B4983f2702fe4.jpg','https://www.google.co.uk/','https://www.google.co.uk/','3.5');
+                        createCard('Placeholder', 'by Andrew Maclean', 'https://static.food2fork.com/Buffalo2BChicken2BGrilled2BCheese2BSandwich2B5002B4983f2702fe4.jpg','https://www.google.co.uk/','https://www.google.co.uk/','3.5');
+                        createCard('Placeholder', 'by Andrew Maclean', 'https://www.twopeasandtheirpod.com/wp-content/uploads/2012/04/avocado-mac-and-cheese.jpg','https://www.google.co.uk/','https://www.google.co.uk/','3.5');
+                        createCard('Placeholder', 'by Andrew Maclean', 'https://static.food2fork.com/Buffalo2BChicken2BGrilled2BCheese2BSandwich2B5002B4983f2702fe4.jpg','https://www.google.co.uk/','https://www.google.co.uk/','3.5');
                         searchApi(getSearchBox());
 
                         function searchApi(search) {
@@ -253,7 +253,7 @@
                             var spinner = new Spinner(opts).spin(target);
 
                             $.ajax({
-                                url: "http://pocketpantry.azurewebsites.net/theprox.php?url=https://food2fork.com/api/search",
+                                url: "http://pocketpantry.azurewebsites.net/theprox.php?url=https://www.food2fork.com/api/search",
                                 type: "GET",
                                 data: {key: "8bf002c9f347185cbda5f0cf1f34261c", q: search.slice(0, -1)},
                                 dataType: "json",
